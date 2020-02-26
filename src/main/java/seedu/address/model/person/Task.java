@@ -19,6 +19,7 @@ public class Task {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Remark remark;
 
     // Data fields
     //private final Address address;
@@ -27,11 +28,12 @@ public class Task {
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Set<Tag> tags) {
+    public Task(Name name, Phone phone, Email email, Set<Tag> tags, Remark remark) {
         requireAllNonNull(name, phone, email, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.remark = remark;
         this.tags.addAll(tags);
     }
 
@@ -45,6 +47,10 @@ public class Task {
 
     public Email getEmail() {
         return email;
+    }
+
+    public Remark getRemark() {
+        return remark;
     }
 
 
@@ -105,6 +111,8 @@ public class Task {
                 .append(getPhone())
                 .append(" Email: ")
                 .append(getEmail())
+                .append(" Remark: ")
+                .append(getRemark())
                 //.append(" Address: ")
                 //.append(getAddress())
                 .append(" Tags: ");

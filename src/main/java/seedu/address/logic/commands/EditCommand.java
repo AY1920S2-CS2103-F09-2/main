@@ -22,6 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Remark;
 import seedu.address.model.person.Task;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -97,8 +98,9 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(taskToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(taskToEdit.getTags());
+        Remark updatedRemark = editPersonDescriptor.getRemark().orElse(taskToEdit.getRemark()); // edit command does not allow editing remarks
 
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedTags);
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedTags, updatedRemark);
     }
 
     @Override
@@ -129,6 +131,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Remark remark;
 
         public EditPersonDescriptor() {}
 
@@ -142,6 +145,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setRemark(toCopy.remark);
         }
 
         /**
@@ -183,6 +187,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
+        public void setRemark(Remark remark) {
+            this.remark = remark;
+        }
+
+        public Optional<Remark> getRemark() {
+            return Optional.ofNullable(remark);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -219,7 +231,8 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getRemark().equals(e.getRemark());
         }
     }
 }
