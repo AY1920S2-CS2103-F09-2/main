@@ -24,6 +24,10 @@ public class TaskUtil {
     /**
      * Returns the part of command string for the given {@code person}'s details.
      */
+<<<<<<< HEAD
+=======
+    // TODO: add in datetime stuff
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
     public static String getPersonDetails(Task task) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + task.getDescription().fullDescription + " ");

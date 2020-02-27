@@ -5,7 +5,11 @@ import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 import seedu.jelphabot.model.task.Task;
 import seedu.jelphabot.model.task.exceptions.DuplicatePersonException;
+<<<<<<< HEAD
 import seedu.jelphabot.testutil.PersonBuilder;
+=======
+import seedu.jelphabot.testutil.TaskBuilder;
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,7 +17,10 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+<<<<<<< HEAD
 import static seedu.jelphabot.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+=======
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
 import static seedu.jelphabot.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.jelphabot.testutil.Assert.assertThrows;
 import static seedu.jelphabot.testutil.TypicalPersons.ALICE;
@@ -43,7 +50,11 @@ public class JelphaBotTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
+<<<<<<< HEAD
         Task editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+=======
+        Task editedAlice = new TaskBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
                 .build();
         List<Task> newTasks = Arrays.asList(ALICE, editedAlice);
         JelphaBotStub newData = new JelphaBotStub(newTasks);
@@ -70,7 +81,11 @@ public class JelphaBotTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInJelphaBot_returnsTrue() {
         addressBook.addPerson(ALICE);
+<<<<<<< HEAD
         Task editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+=======
+        Task editedAlice = new TaskBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
                 .build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
@@ -91,8 +106,13 @@ public class JelphaBotTest {
         }
 
         @Override
+<<<<<<< HEAD
         public ObservableList<Person> getPersonList() {
             return persons;
+=======
+        public ObservableList<Task> getPersonList() {
+            return tasks;
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
         }
     }
 

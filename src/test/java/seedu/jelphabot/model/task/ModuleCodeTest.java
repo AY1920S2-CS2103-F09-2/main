@@ -15,6 +15,7 @@ public class ModuleCodeTest {
 
     @Test
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void constructor_invalidEmail_throwsIllegalArgumentException() {
         String invalidEmail = "";
         assertThrows(IllegalArgumentException.class, () -> new ModuleCode(invalidEmail));
@@ -65,6 +66,14 @@ public class ModuleCodeTest {
     }
 
     @Test
+=======
+    public void constructor_invalidModuleCode_throwsIllegalArgumentException() {
+        String invalidModuleCode = "";
+        assertThrows(IllegalArgumentException.class, () -> new ModuleCode(invalidModuleCode));
+    }
+
+    @Test
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
     public void isValidModuleCode() {
         // null address
         assertThrows(NullPointerException.class, () -> ModuleCode.isValidModuleCode(null));
@@ -80,6 +89,9 @@ public class ModuleCodeTest {
         assertTrue(ModuleCode.isValidModuleCode("CS2101")); // No ending tag
         assertTrue(ModuleCode.isValidModuleCode("CS2103T")); // yes module tag
         assertTrue(ModuleCode.isValidModuleCode("ACC1301")); // module code has max 3 chars
+<<<<<<< HEAD
 >>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
+=======
+>>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
     }
 }
