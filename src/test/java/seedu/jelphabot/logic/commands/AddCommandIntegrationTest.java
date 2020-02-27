@@ -26,13 +26,22 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_newPerson_success() {
+<<<<<<< HEAD
         Task validTask = new PersonBuilder().build();
+=======
+        Person validPerson = new PersonBuilder().build();
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
 
         Model expectedModel = new ModelManager(model.getJelphaBot(), new UserPrefs());
         expectedModel.addPerson(validTask);
 
+<<<<<<< HEAD
         assertCommandSuccess(new AddCommand(validTask), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, validTask), expectedModel);
+=======
+        assertCommandSuccess(new AddCommand(validPerson), model,
+                String.format(AddCommand.MESSAGE_SUCCESS, validPerson), expectedModel);
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
     }
 
     @Test

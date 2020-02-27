@@ -197,7 +197,8 @@ public class EditCommand extends Command {
             return getDescription().equals(e.getDescription())
                     && getModuleCode().equals(e.getModuleCode())
                     && getTags().equals(e.getTags())
-                    && getDateTime().equals(e.getDateTime());
+                    && getDateTime().equals(e.getDateTime())
+                    && getTags().equals(e.getTags());
         }
     }
 }

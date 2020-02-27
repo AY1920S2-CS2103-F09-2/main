@@ -8,7 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.jelphabot.logic.commands.CommandTestUtil.*;
 
+<<<<<<< HEAD
 public class EditTaskDescriptorTest {
+=======
+public class EditPersonDescriptorTest {
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
 
     @Test
     public void equals() {
@@ -33,7 +37,17 @@ public class EditTaskDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different phone -> returns false
+<<<<<<< HEAD
+<<<<<<< HEAD:src/test/java/seedu/jelphabot/logic/commands/EditTaskDescriptorTest.java
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
+=======
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .build();
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf:src/test/java/seedu/jelphabot/logic/commands/EditPersonDescriptorTest.java
+=======
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .build();
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different module code -> returns false

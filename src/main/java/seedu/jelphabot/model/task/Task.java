@@ -14,15 +14,12 @@ import static seedu.jelphabot.commons.util.CollectionUtil.requireAllNonNull;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
-
     // Identity fields
     private final Description description;
     private final ModuleCode moduleCode;
     // TODO properly define status and dateTime
     private final Status status;
     private final DateTime dateTime;
-
-    // Data fields
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -61,6 +58,7 @@ public class Task {
      * Returns true if both persons of the same description have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
+
     public boolean isSameTask(Task otherTask) {
         if (otherTask == this) {
             return true;
@@ -69,7 +67,8 @@ public class Task {
         return otherTask != null
                 && otherTask.getDescription().equals(getDescription())
                 && otherTask.getModuleCode().equals(getModuleCode())
-                && otherTask.getDateTime().equals(getDateTime());
+                && otherTask.getDateTime().equals(getDateTime())
+                && otherTask.getModuleCode().equals(getModuleCode());
     }
 
     /**
@@ -81,11 +80,9 @@ public class Task {
         if (other == this) {
             return true;
         }
-
         if (!(other instanceof Task)) {
             return false;
         }
-
         Task otherTask = (Task) other;
         return otherTask.getDescription().equals(getDescription())
                 && otherTask.getModuleCode().equals(getModuleCode())

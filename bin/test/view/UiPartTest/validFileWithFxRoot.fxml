@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <fx:root type="seedu.address.ui.TestFxmlObject" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml">
+=======
+<?import seedu.jelphabot.ui.TestFxmlObject?>
+<fx:root xmlns:fx="http://javafx.com/fxml" type="seedu.jelphabot.ui.TestFxmlObject"
+         xmlns="http://javafx.com/javafx">
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
     <text>Hello World!</text>
 </fx:root>

@@ -20,6 +20,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 import static seedu.jelphabot.testutil.Assert.assertThrows;
 
+// TODO rewrite
 public class AddCommandTest {
 
     @Test

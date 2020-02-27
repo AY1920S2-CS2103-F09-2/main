@@ -46,7 +46,11 @@
           </padding>
         </StackPane>
 
+<<<<<<< HEAD
         <VBox fx:id="taskList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+=======
+        <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>

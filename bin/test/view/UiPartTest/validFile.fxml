@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import seedu.address.ui.TestFxmlObject?>
+=======
+<?import seedu.jelphabot.ui.TestFxmlObject?>
+>>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
 <TestFxmlObject xmlns:fx="http://javafx.com/fxml/1" fx:id="validFileRoot">Hello World!</TestFxmlObject>
