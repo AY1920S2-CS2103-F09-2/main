@@ -67,11 +67,7 @@ public class DescriptionContainsKeywordsPredicateTest {
 
         // Keywords match phone, module code and address, but does not match name
         predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-<<<<<<< HEAD
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-=======
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice")
->>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
                 .withEmail("alice@email.com").build()));
     }
 }

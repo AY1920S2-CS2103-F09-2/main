@@ -58,15 +58,10 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withDescription(VALID_NAME_AMY)
-<<<<<<< HEAD:src/test/java/seedu/jelphabot/logic/commands/CommandTestUtil.java
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_MODULE_CODE_AMY)
                 .withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withDescription(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_MODULE_CODE_BOB)
-=======
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withDescription(VALID_NAME_BOB)
->>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf:src/test/java/seedu/jelphabot/logic/commands/CommandTestUtil.java
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 

@@ -14,7 +14,6 @@ public class ModuleCodeTest {
     }
 
     @Test
-<<<<<<< HEAD
     public void constructor_invalidEmail_throwsIllegalArgumentException() {
         String invalidEmail = "";
         assertThrows(IllegalArgumentException.class, () -> new ModuleCode(invalidEmail));
@@ -58,28 +57,5 @@ public class ModuleCodeTest {
         assertTrue(ModuleCode.isValidEmail("a1+be!@example1.com")); // mixture of alphanumeric and special characters
         assertTrue(ModuleCode.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
         assertTrue(ModuleCode.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
-=======
-    public void constructor_invalidModuleCode_throwsIllegalArgumentException() {
-        String invalidModuleCode = "";
-        assertThrows(IllegalArgumentException.class, () -> new ModuleCode(invalidModuleCode));
-    }
-
-    @Test
-    public void isValidModuleCode() {
-        // null address
-        assertThrows(NullPointerException.class, () -> ModuleCode.isValidModuleCode(null));
-
-        // invalid addresses
-        assertFalse(ModuleCode.isValidModuleCode("")); // empty string
-        assertFalse(ModuleCode.isValidModuleCode(" ")); // spaces only
-        assertFalse(ModuleCode.isValidModuleCode("CS")); // No numbers only
-        assertFalse(ModuleCode.isValidModuleCode("2101S")); // No Faculty code
-        assertFalse(ModuleCode.isValidModuleCode("A2101")); // Invalid Faculty code
-
-        // valid addresses
-        assertTrue(ModuleCode.isValidModuleCode("CS2101")); // No ending tag
-        assertTrue(ModuleCode.isValidModuleCode("CS2103T")); // yes module tag
-        assertTrue(ModuleCode.isValidModuleCode("ACC1301")); // module code has max 3 chars
->>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
     }
 }
