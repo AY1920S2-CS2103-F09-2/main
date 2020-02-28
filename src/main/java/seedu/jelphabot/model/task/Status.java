@@ -7,4 +7,3 @@ public enum Status {
     COMPLETE,
     INCOMPLETE
 }
-

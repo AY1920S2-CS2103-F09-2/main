@@ -38,7 +38,6 @@ public class EditPersonDescriptorTest {
 
         // different phone -> returns false
 <<<<<<< HEAD
-<<<<<<< HEAD
 <<<<<<< HEAD:src/test/java/seedu/jelphabot/logic/commands/EditTaskDescriptorTest.java
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
 =======
@@ -49,10 +48,6 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
                 .build();
 >>>>>>> 95397b1d4961ff23ae35cb13d7514e827de096bf
-=======
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
-                .build();
->>>>>>> d45233b98fc1ee46828325c99aaf8bd09fefdaa5
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different module code -> returns false
