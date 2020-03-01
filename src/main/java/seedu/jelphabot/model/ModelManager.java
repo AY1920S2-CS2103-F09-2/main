@@ -21,7 +21,7 @@ public class ModelManager implements Model {
 
     private final JelphaBot addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Person> filteredPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,15 +34,14 @@ public class ModelManager implements Model {
 
         this.addressBook = new JelphaBot(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
     public ModelManager() {
         this(new JelphaBot(), new UserPrefs());
     }
 
-    // =========== UserPrefs
-    // ==================================================================================
+    //=========== UserPrefs ==================================================================================
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -77,8 +76,7 @@ public class ModelManager implements Model {
         userPrefs.setJelphaBotFilePath(addressBookFilePath);
     }
 
-    // =========== JelphaBot
-    // ================================================================================
+    //=========== JelphaBot ================================================================================
 
     @Override
     public ReadOnlyJelphaBot getJelphaBot() {
@@ -91,45 +89,44 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasTask(Task task) {
-        requireNonNull(task);
-        return addressBook.hasPerson(task);
+    public boolean hasPerson(Person person) {
+        requireNonNull(person);
+        return addressBook.hasPerson(person);
     }
 
     @Override
-    public void deleteTask(Task target) {
+    public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
 
     @Override
-    public void addTask(Task task) {
-        addressBook.addPerson(task);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    public void addPerson(Person person) {
+        addressBook.addPerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
-    public void setTask(Task target, Task editedTask) {
-        requireAllNonNull(target, editedTask);
+    public void setPerson(Person target, Person editedPerson) {
+        requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedTask);
+        addressBook.setPerson(target, editedPerson);
     }
 
-    // =========== Filtered Person List Accessors
-    // =============================================================
+    //=========== Filtered Person List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the
-     * internal list of {@code versionedJelphaBot}
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedJelphaBot}
      */
     @Override
-    public ObservableList<Task> getFilteredTaskList() {
-        return filteredTasks;
+    public ObservableList<Person> getFilteredPersonList() {
+        return filteredPersons;
     }
 
     @Override
-    public void updateFilteredTaskList(Predicate<Task> predicate) {
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        filteredTasks.setPredicate(predicate);
+        filteredPersons.setPredicate(predicate);
     }
 
     @Override
@@ -146,8 +143,9 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook) && userPrefs.equals(other.userPrefs)
-                && filteredTasks.equals(other.filteredTasks);
+        return addressBook.equals(other.addressBook)
+                && userPrefs.equals(other.userPrefs)
+                && filteredPersons.equals(other.filteredPersons);
     }
 
 }

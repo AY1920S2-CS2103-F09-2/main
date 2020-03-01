@@ -12,12 +12,12 @@ import java.util.*;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.jelphabot.logic.parser.CliSyntax.*;
-import static seedu.jelphabot.model.Model.PREDICATE_SHOW_ALL_TASKS;
+import static seedu.jelphabot.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 /**
  * Edits the details of an existing person in the address book.
  */
-// TODO go through this manually
+// TODO replace command with updated fields.
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
@@ -25,14 +25,19 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) " 
-            + "[" + PREFIX_NAME + "DESCRIPTION] " + "[" + PREFIX_MODULE_CODE + "MODULE_CODE] " 
-            + "[" + PREFIX_DATETIME + "DATETIME]" + "[" + PREFIX_TAG + "TAG]...\n"  
-            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_MODULE_CODE + "CS2105" + PREFIX_DATETIME + "23 01 2020 20 20";
+            + "Parameters: INDEX (must be a positive integer) "
+            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_MODULE_CODE + "MODULE_CODE] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_PHONE + "91234567 "
+            + PREFIX_MODULE_CODE + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -52,38 +57,36 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = model.getFilteredTaskList();
+        List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Task taskToEdit = lastShownList.get(index.getZeroBased());
-        Task editedTask = createEditedPerson(taskToEdit, editPersonDescriptor);
+        Person personToEdit = lastShownList.get(index.getZeroBased());
+        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        if (!taskToEdit.isSameTask(editedTask) && model.hasPerson(editedTask)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setTask(taskToEdit, editedTask);
-        model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
-        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
+        model.setPerson(personToEdit, editedPerson);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Task createEditedPerson(Task taskToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert taskToEdit != null;
+    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+        assert personToEdit != null;
 
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(taskToEdit.getDescription());
         ModuleCode updatedModuleCode = editPersonDescriptor.getModuleCode().orElse(taskToEdit.getModuleCode());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(taskToEdit.getTags());
-        DateTime dateTime = editPersonDescriptor.getDateTime().orElse(taskToEdit.getDateTime());
-        Status updatedStatus = editPersonDescriptor.getStatus();
 
-        return new Task(updatedDescription, updatedStatus, dateTime, updatedModuleCode, updatedTags);
+        return new Task(updatedDescription, new Status(), new DateTime(), updatedModuleCode, updatedTags);
     }
 
     @Override
@@ -100,32 +103,29 @@ public class EditCommand extends Command {
 
         // state check
         EditCommand e = (EditCommand) other;
-        return index.equals(e.index) && editPersonDescriptor.equals(e.editPersonDescriptor);
+        return index.equals(e.index)
+                && editPersonDescriptor.equals(e.editPersonDescriptor);
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will
-     * replace the corresponding field value of the person.
+     * Stores the details to edit the person with. Each non-empty field value will replace the
+     * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
         private Description description;
         private ModuleCode moduleCode;
         private Set<Tag> tags;
-        private DateTime dateTime;
-        private Status status;
 
-        public EditPersonDescriptor() {
-        }
+        public EditPersonDescriptor() {}
 
         /**
-         * Copy constructor. A defensive copy of {@code tags} is used internally.
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setDescription(toCopy.description);
             setModuleCode(toCopy.moduleCode);
             setTags(toCopy.tags);
-            setDateTime(toCopy.dateTime);
-            setStatus(toCopy.status);
         }
 
         /**
@@ -151,42 +151,21 @@ public class EditCommand extends Command {
             this.moduleCode = moduleCode;
         }
 
-        public Status getStatus() {
-            return status;
-        }
-
         /**
-         * Sets {@code status} to this object's {@code status}.
-         * 
-         * @param status sets the status to the specified status.
-         */
-        public void setStatus(Status status) {
-            this.status = status;
-        }
-
-        /**
-         * Sets {@code tags} to this object's {@code tags}. A defensive copy of
-         * {@code tags} is used internally.
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
          */
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws
-         * {@code UnsupportedOperationException} if modification is attempted. Returns
-         * {@code Optional#empty()} if {@code tags} is null.
+         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code tags} is null.
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
-        public void setDateTime(DateTime dateTime) {
-            this.dateTime = dateTime;
-        }
-
-        public Optional<DateTime> getDateTime() {
-            return Optional.ofNullable(dateTime);
         }
 
         @Override
@@ -204,8 +183,8 @@ public class EditCommand extends Command {
             // state check
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
-            return getDescription().equals(e.getDescription()) && getModuleCode().equals(e.getModuleCode())
-                    && getStatus().equals(e.getStatus()) && getDateTime().equals(e.getDateTime())
+            return getDescription().equals(e.getDescription())
+                    && getModuleCode().equals(e.getModuleCode())
                     && getTags().equals(e.getTags());
         }
     }
