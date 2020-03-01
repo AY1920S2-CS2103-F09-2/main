@@ -20,6 +20,7 @@ public class Task {
     private final ModuleCode moduleCode;
     private final DateTime dateTime;
     private final Status status;
+    private final Priority priority;
     // TODO implement priority
 
     // Data fields
@@ -28,12 +29,13 @@ public class Task {
     /**
      * Every field must be present and not null.
      */
-    public Task(Description description, Status status, DateTime dateTime, ModuleCode moduleCode, Set<Tag> tags) {
+    public Task(Description description, Status status, DateTime dateTime, ModuleCode moduleCode, Priority priority, Set<Tag> tags) {
         requireAllNonNull(description, status, dateTime, moduleCode, tags);
         this.description = description;
         this.status = status;
         this.dateTime = dateTime;
         this.moduleCode = moduleCode;
+        this.priority = priority;
     }
 
 
@@ -57,6 +59,14 @@ public class Task {
         return dateTime;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+    }
     /**
      * Returns true if both persons of the same description have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
