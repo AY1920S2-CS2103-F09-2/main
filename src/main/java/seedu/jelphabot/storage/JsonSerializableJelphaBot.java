@@ -3,14 +3,15 @@ package seedu.jelphabot.storage;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.jelphabot.commons.exceptions.IllegalValueException;
 import seedu.jelphabot.model.JelphaBot;
 import seedu.jelphabot.model.ReadOnlyJelphaBot;
 import seedu.jelphabot.model.task.Task;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * An Immutable JelphaBot that is serializable to JSON format.
@@ -36,7 +37,7 @@ class JsonSerializableJelphaBot {
      * @param source future changes to this will not affect the created {@code JsonSerializableJelphaBot}.
      */
     public JsonSerializableJelphaBot(ReadOnlyJelphaBot source) {
-        tasks.addAll(source.getPersonList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
+        tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
 
     /**
