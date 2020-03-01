@@ -82,8 +82,9 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(taskToEdit.getTags());
         DateTime dateTime = editPersonDescriptor.getDateTime().orElse(taskToEdit.getDateTime());
         Status updatedStatus = editPersonDescriptor.getStatus();
+        Priority updatedPriority = editPersonDescriptor.getPriority();
 
-        return new Task(updatedDescription, updatedStatus, dateTime, updatedModuleCode, updatedTags);
+        return new Task(updatedDescription, updatedStatus, dateTime, updatedModuleCode, updatedPriority, updatedTags);
     }
 
     @Override
@@ -113,6 +114,7 @@ public class EditCommand extends Command {
         private Set<Tag> tags;
         private DateTime dateTime;
         private Status status;
+        private Priority priority;
 
         public EditPersonDescriptor() {
         }
@@ -126,6 +128,7 @@ public class EditCommand extends Command {
             setTags(toCopy.tags);
             setDateTime(toCopy.dateTime);
             setStatus(toCopy.status);
+            setPriority(toCopy.priority);
         }
 
         /**
@@ -189,6 +192,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(dateTime);
         }
 
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
+
+        public Priority getPriority() {
+            return this.priority;
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -206,7 +217,7 @@ public class EditCommand extends Command {
 
             return getDescription().equals(e.getDescription()) && getModuleCode().equals(e.getModuleCode())
                     && getStatus().equals(e.getStatus()) && getDateTime().equals(e.getDateTime())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags()) && getPriority().equals(e.getPriority());
         }
     }
 }
