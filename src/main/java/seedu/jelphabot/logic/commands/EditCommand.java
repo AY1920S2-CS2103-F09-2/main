@@ -85,8 +85,16 @@ public class EditCommand extends Command {
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(taskToEdit.getDescription());
         ModuleCode updatedModuleCode = editPersonDescriptor.getModuleCode().orElse(taskToEdit.getModuleCode());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(taskToEdit.getTags());
+<<<<<<< HEAD
 
         return new Task(updatedDescription, new Status(), new DateTime(), updatedModuleCode, updatedTags);
+=======
+        DateTime dateTime = editPersonDescriptor.getDateTime().orElse(taskToEdit.getDateTime());
+        Status updatedStatus = editPersonDescriptor.getStatus();
+        Priority updatedPriority = editPersonDescriptor.getPriority();
+
+        return new Task(updatedDescription, updatedStatus, dateTime, updatedModuleCode, updatedPriority, updatedTags);
+>>>>>>> 5808c88f33b3f239fb811943d7249a19db5879df
     }
 
     @Override
@@ -115,6 +123,12 @@ public class EditCommand extends Command {
         private Description description;
         private ModuleCode moduleCode;
         private Set<Tag> tags;
+<<<<<<< HEAD
+=======
+        private DateTime dateTime;
+        private Status status;
+        private Priority priority;
+>>>>>>> 5808c88f33b3f239fb811943d7249a19db5879df
 
         public EditPersonDescriptor() {}
 
@@ -126,6 +140,12 @@ public class EditCommand extends Command {
             setDescription(toCopy.description);
             setModuleCode(toCopy.moduleCode);
             setTags(toCopy.tags);
+<<<<<<< HEAD
+=======
+            setDateTime(toCopy.dateTime);
+            setStatus(toCopy.status);
+            setPriority(toCopy.priority);
+>>>>>>> 5808c88f33b3f239fb811943d7249a19db5879df
         }
 
         /**
@@ -168,6 +188,25 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+<<<<<<< HEAD
+=======
+        public void setDateTime(DateTime dateTime) {
+            this.dateTime = dateTime;
+        }
+
+        public Optional<DateTime> getDateTime() {
+            return Optional.ofNullable(dateTime);
+        }
+
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
+
+        public Priority getPriority() {
+            return this.priority;
+        }
+
+>>>>>>> 5808c88f33b3f239fb811943d7249a19db5879df
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -183,9 +222,15 @@ public class EditCommand extends Command {
             // state check
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
+<<<<<<< HEAD
             return getDescription().equals(e.getDescription())
                     && getModuleCode().equals(e.getModuleCode())
                     && getTags().equals(e.getTags());
+=======
+            return getDescription().equals(e.getDescription()) && getModuleCode().equals(e.getModuleCode())
+                    && getStatus().equals(e.getStatus()) && getDateTime().equals(e.getDateTime())
+                    && getTags().equals(e.getTags()) && getPriority().equals(e.getPriority());
+>>>>>>> 5808c88f33b3f239fb811943d7249a19db5879df
         }
     }
 }
