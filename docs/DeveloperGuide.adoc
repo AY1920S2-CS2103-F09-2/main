@@ -1,4 +1,4 @@
-= AddressBook Level 3 - Developer Guide
+= JelphaBot - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -12,9 +12,9 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level3/tree/master
+:repoURL: https://github.com/AY1920S2-CS2103T-F09-2/main.git
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team 2103T-F09-02`      Since: `Jan 2020`      Licence: `MIT`
 
 == Setting up
 
@@ -98,7 +98,7 @@ image::LogicClassDiagram.png[]
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `AddressBookParser` class to parse the user command.
+.  `Logic` uses the `JelphaBotParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
 .  The command execution can affect the `Model` (e.g. adding a person).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -147,7 +147,7 @@ The `Storage` component,
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.jelphabot.commons` package.
 
 == Implementation
 
@@ -279,13 +279,15 @@ Refer to the guide <<DevOps#, here>>.
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing over mouse input
+* NUS students who need to manage a large number of tasks
+* prefer using a desktop app over other types
+* wants to distinguish at first glance important and unimportant tasks
+* can type fast; prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: The user will be able to manage tasks faster than a typical mouse/GUI driven app, and the visual
+representation of tasks in the UI will allow the user to look through entire lists of tasks more quickly than in
+the terminal.
 
 [appendix]
 == User Stories
@@ -313,35 +315,84 @@ _{More to be added}_
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `JelphaBot` and the *Actor* is the `user`, unless specified otherwise)
 
-[discrete]
-=== Use case: Delete person
-
+//[discrete]
+=== Use case: UC1 - Add Task
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User keys in command to add task.
+2.  JelphaBot adds the task and displays the added task to the user.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 1a. JelphaBot detects an error in the entered command.
++
+[none]
+** 1a1. JelphaBot detects error and displays the correct input format to be expected.
+** 1a2. User enters new command.
+** Steps 1a1-1a2 are repeated until the command entered is correct.
++
+Use case resumes from step 2.
+
+=== Use case: UC2 - List Tasks
+*MSS*
+
+1.  User keys in command to list tasks.
+2.  JelphaBot displays the list of all the tasks.
 +
 Use case ends.
 
-* 3a. The given index is invalid.
+*Extensions*
+
+[none]
+* 1a. JelphaBot detects an error in the entered command.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 1a1. JelphaBot detects error and displays the correct input format to be expected.
+** 1a2. User enters new command.
+** Steps 1a1-1a2 are repeated until the command entered is correct.
 +
-Use case resumes at step 2.
+Use case resumes from step 2.
 
-_{More to be added}_
+=== Use case: UC3 - Mark Task as Done
+*MSS*
+
+1.  User specifies to mark a task as done by specifying the task index.
+2.  JelphaBot updates the task status and displays the updated task to the user.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. JelphaBot detects an error in the entered command.
++
+[none]
+** 1a1. JelphaBot detects error and displays the correct input format to be expected.
+** 1a2. User enters new command.
+** Steps 1a1-1a2 are repeated until the command entered is correct.
++
+Use case resumes from step 2.
+* 1b. JelphaBot detects that the specified task does not exist.
++
+[none]
+** 1b1. JelphaBot detects error and displays the correct input format to be expected.
+** 1b2. User enters new task index to be marked as done.
+** Steps 1b1-1b2 are repeated until the command entered is correct.
++
+Use case resumes from step 2.
+
+=== Use case: UC4 - Edit Task Details
+
+
+=== Use case: UC5 - Find Task(s) by Keyword(s)
+
+
+=== Use case: UC6 - Delete Task
 
 [appendix]
 == Non Functional Requirements
@@ -358,8 +409,6 @@ _{More to be added}_
 [[mainstream-os]] Mainstream OS::
 Windows, Linux, Unix, OS-X
 
-[[private-contact-detail]] Private contact detail::
-A contact detail that is not meant to be shared with others
 
 [appendix]
 == Product Survey
