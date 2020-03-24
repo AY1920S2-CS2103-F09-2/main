@@ -28,7 +28,7 @@
 <ul class="sectlevel2">
 <li><a href="#switching-tabs-code-ctrl-tab-code">4.1. Switching tabs : <code>Ctrl + tab</code></a></li>
 <li><a href="#track-productivity-code-productivity-code">4.2. Track productivity : <code>productivity</code></a></li>
-<li><a href="#integrate-calender-on-interface-code-coming-in-v2-0-code">4.3. Integrate Calender on Interface  <code>[coming in v2.0]</code></a></li>
+<li><a href="#integrating-calender-code-calendartab-code">4.3. Integrating calender : <code>calendarTab</code></a></li>
 <li><a href="#morning-call-night-debrief-code-coming-in-v2-0-code">4.4. Morning call/Night debrief  <code>[coming in v2.0]</code></a></li>
 <li><a href="#sticky-notes-code-coming-in-v2-0-code">4.5. Sticky notes  <code>[coming in v2.0]</code></a></li>
 <li><a href="#reorganizing-tasks">4.6. Reorganizing tasks</a></li>
@@ -581,8 +581,79 @@ There is need to manually ask for compliments or criticism.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="integrate-calender-on-interface-code-coming-in-v2-0-code"><a class="link" href="#integrate-calender-on-interface-code-coming-in-v2-0-code">4.3. Integrate Calender on Interface  <code>[coming in v2.0]</code></a></h3>
-
+<h3 id="integrating-calender-code-calendartab-code"><a class="link" href="#integrating-calender-code-calendartab-code">4.3. Integrating calender : <code>calendarTab</code></a></h3>
+<div class="paragraph">
+<p>Switches to the calendar panel showing the user&#8217;s schedule for the current month with today&#8217;s date
+highlighted.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendarTab</code></p>
+</div>
+<div class="sect3">
+<h4 id="change-month-and-year-view-of-calendar-code-changecalendar-code"><a class="link" href="#change-month-and-year-view-of-calendar-code-changecalendar-code">4.3.1. Change month and year view of Calendar : <code>changeCalendar</code></a></h4>
+<div class="paragraph">
+<p>Displays the tasks due on specified date, while highlighting that day on the calendar.
+The task list panel on the left will display the tasks due today.<br>
+Format: <code>changeCalendar MONTHYEAR</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>For MONTHYEAR format, it should be MMM-YYYY, but it also allows some other formats shown when you type in the command word.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>changeCalendar Apr-2020</code>
+Displays month of April in the year 2020 in the calendar panel on the right.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-tasks-due-on-specific-date-code-calendar-code"><a class="link" href="#show-tasks-due-on-specific-date-code-calendar-code">4.3.2. Show tasks due on specific date : <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>Displays the tasks due on specified date, while highlighting that day on the calendar<br>
+Format: <code>calendar DATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The date specified <strong>must be for the month and year of the shown Ui</strong> for that corresponding date to be highlighted</p>
+</li>
+<li>
+<p>For DATE formats, we recommend the format to be MMM-dd-YYYY, but it also allows some other formats shown when you type in the command word.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar Jan-1-2020</code></p>
+</li>
+<li>
+<p><code>calendar Jan/1/2020</code><br>
+Highlights 1st of January in the calendar panel on the right and displays the corresponding tasks due on the left.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="morning-call-night-debrief-code-coming-in-v2-0-code"><a class="link" href="#morning-call-night-debrief-code-coming-in-v2-0-code">4.4. Morning call/Night debrief  <code>[coming in v2.0]</code></a></h3>
@@ -663,7 +734,18 @@ e.g. <code>delete 3</code></p>
 <p><strong>Timer</strong> : <code>start INDEX</code> or <code>stop INDEX</code><br>
 e.g. <code>start 1</code> or <code>stop 1</code></p>
 </li>
+<li>
+<p><strong>Calendar</strong> : <code>calendar</code></p>
+</li>
+<li>
+<p><strong>Calendar Date</strong> : <code>calendar DATE</code><br>
+e.g. <code>calendar Jan-1-2020</code></p>
+</li>
+<li>
+<p><strong>Change Calendar View</strong> : <code>changeCalendar MONTHYEAR</code><br>
+e.g. <code>changeCalendar Apr-2020</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-23 15:53:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 18:13:13 UTC</div></div></div></body></html>
