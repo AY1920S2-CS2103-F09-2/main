@@ -12,10 +12,11 @@
 <li><a href="#preface">1. Preface</a>
 <ul class="sectlevel2">
 <li><a href="#introduction">1.1. Introduction</a></li>
-<li><a href="#how-to-use-this-guide">1.2. How to Use this Guide</a></li>
+<li><a href="#purpose-of-this-document">1.2. Purpose of this Document</a></li>
+<li><a href="#notation-used-in-this-guide">1.3. Notation used in this Guide</a></li>
 </ul>
 </li>
-<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#setting-up">2. Setting Up</a></li>
 <li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">3.1. Architecture</a></li>
@@ -28,14 +29,15 @@
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#task-grouping-feature-in-task-list-tab">4.1. Task Grouping feature in Task List tab</a></li>
-<li><a href="#calendar-feature">4.2. Calendar feature</a></li>
-<li><a href="#productivity-feature">4.3. Productivity feature</a></li>
-<li><a href="#reminder-feature">4.4. Reminder feature</a></li>
-<li><a href="#morning-call-night-debrief-feature">4.5. Morning Call / Night Debrief feature</a></li>
-<li><a href="#proposed-undo-redo-feature">4.6. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+<li><a href="#swap-between-different-tabs-in-code-mainwindow-code">4.1. Swap between different Tabs in <code>MainWindow</code></a></li>
+<li><a href="#task-grouping-feature-in-task-list-tab">4.2. Task Grouping feature in Task List tab</a></li>
+<li><a href="#calendar-feature">4.3. Calendar feature</a></li>
+<li><a href="#productivity-feature">4.4. Productivity feature</a></li>
+<li><a href="#reminder-feature">4.5. Reminder feature</a></li>
+<li><a href="#morning-call-night-debrief-feature">4.6. Morning Call / Night Debrief feature</a></li>
+<li><a href="#proposed-undo-redo-feature">4.7. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -85,13 +87,25 @@ is still used for improved design and user experience.</p>
 <div class="paragraph">
 <p>JelphaBot is based on the AddressBook-Level3 (AB3) project created by SE-EDU initiative at <a href="https://se-education.org" class="bare">https://se-education.org</a></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="purpose-of-this-document"><a class="link" href="#purpose-of-this-document">1.2. Purpose of this Document</a></h3>
+<div class="paragraph">
+<p>The following section describes the software architecture and design decisions behind the implementation of JelphaBot.
+This guide is intended for developers who wish to maintain, modify or understand the software development behind our application.
+The guide is divided into various sections. First, it explores the overarching architecture of the software before exploring each individual component,
+as well as the individual implementations of each distinct feature.</p>
+</div>
+<div class="paragraph">
+<p>The guide is designed to be read as-needed, new developers can choose to start from the overarching view before narrowing down to the specific implementation they require.</p>
+</div>
 <div class="paragraph">
 <p>This Developer Guide consists of the following sections:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Setting Up">Setting Up</a> - Assists new developers in cloning and initializing a copy of JelphaBot.</p>
+<p><a href="#setting-up">Setting Up</a> - Assists new developers in cloning and initializing a copy of JelphaBot.</p>
 </li>
 <li>
 <p><a href="#design">Design</a> - Provides an overview of the architecture design.</p>
@@ -113,7 +127,7 @@ and explains the design considerations of these implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-to-use-this-guide"><a class="link" href="#how-to-use-this-guide">1.2. How to Use this Guide</a></h3>
+<h3 id="notation-used-in-this-guide"><a class="link" href="#notation-used-in-this-guide">1.3. Notation used in this Guide</a></h3>
 <table class="tableblock frame-all grid-all" style="width: 70%;">
 <colgroup>
 <col style="width: 15%;">
@@ -156,7 +170,7 @@ and explains the design considerations of these implementations.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting Up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
@@ -167,9 +181,21 @@ and explains the design considerations of these implementations.</p>
 <h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following section describes the software architecture and software design decisions for the implementation of JelphaBot.
-JelphaBot is a desktop app built in Java based on the AddressBook-Level3 project created by the SE-EDU initiative.
-The data in JelphaBot is stored as .json files in the <code>data</code> subdirectory.</p>
+<p>JelphaBot is a desktop app built in Java based on the AddressBook-Level3 project created by the SE-EDU initiative,
+and inherits its architectural design. The software is split into various components, each with its own package.
+Each component is in charge of a single aspect of the software.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The data in JelphaBot is stored as .json files in the <code>data</code> subdirectory.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
@@ -193,7 +219,7 @@ The data in JelphaBot is stored as .json files in the <code>data</code> subdirec
 </td>
 <td class="content">
 The <code>.drawio</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/docs/diagrams/">diagrams</a> folder.
-To update a diagram __.
+To update a diagram, import the <code>.drawio</code> file to the webapp <a href="{https://draw.io}">here</a>.
 </td>
 </tr>
 </table>
@@ -464,36 +490,75 @@ This includes classes which implement utility functions which can be used by all
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="task-grouping-feature-in-task-list-tab"><a class="link" href="#task-grouping-feature-in-task-list-tab">4.1. Task Grouping feature in Task List tab</a></h3>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.1. Implementation</a></h4>
+<h3 id="swap-between-different-tabs-in-code-mainwindow-code"><a class="link" href="#swap-between-different-tabs-in-code-mainwindow-code">4.1. Swap between different Tabs in <code>MainWindow</code></a></h3>
 <div class="paragraph">
-<p>The task category mechanism is facilitated by the <code>GroupedTaskList</code> interface.
-Each 'GroupedTaskList' is a container for <code>ObservableList&lt;Task&gt;</code> objects, each containing a unique filter over the full task list.</p>
+<p>TODO</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="task-grouping-feature-in-task-list-tab"><a class="link" href="#task-grouping-feature-in-task-list-tab">4.2. Task Grouping feature in Task List tab</a></h3>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">4.2.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The task category mechanism is facilitated by the <code>ViewTaskList</code> interface, which serves as a wrapper for any list of tasks.<br>
+The ViewTaskList interface supports methods that facilitate getting and iterating through the tasks contained within the list.
+This is to accommodate a common access for Tasks in <code>GroupedTaskList</code>, which contains multiple sub-lists.<br>
+The diagram below describes the class structure.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskListClassDiagram.png" alt="TaskListClassDiagram">
+</div>
+<div class="title">Figure 9. Class Diagram for Task List classes</div>
 </div>
 <div class="paragraph">
-<p>Each <code>GroupedTaskList</code> implements the following operations:</p>
+<p>Grouping tasks into sub-lists is done through the <code>GroupedTaskList</code> class.<br>
+Each <code>GroupedTaskList</code> is a container for <code>ObservableList&lt;Task&gt;</code> objects, each containing a unique filter over the full task list.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>GroupedTaskList</code> implements the following operations on top of those in <code>ViewTaskList</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A enum that maps strings to current valid groupings.<br>
-(For use with ListCommand)</p>
+<p>A enum class which describes the valid <code>Category</code> groupings, and the corresponding methods of getting these groupings from a <code>String</code>.<br></p>
 </li>
 <li>
-<p>A public method for instantiating the GroupedTaskList called getGroupedList with the unfiltered TaskList as argument.</p>
+<p>An <code>ObservableList</code> of <code>SubgroupTaskList</code> that represents the sub-groupings of each corresponding <code>Category</code>.</p>
 </li>
 <li>
-<p>Getter methods for each group defined in the extended class.</p>
+<p>A public method for instantiating a <code>GroupedTaskList</code> called <code>getGroupedList</code> with the return from <code>getFilteredTaskList()</code> as argument.</p>
+</li>
+<li>
+<p>An iterator method which iterates through a list of <code>SubgroupTaskList</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>When users modify the displayed category with the corresponding <code>list</code> command, a different GroupedTaskList is displayed in the main panel.<br>
-Currently, the intended groupings for JelphaBot are groupings by date (via the 'list date') and groupings by module (via the 'list module' command).</p>
+<p>Users can modify the <code>GroupTaskList</code> being displayed in the main panel by calling a <code>ListCommand</code>.
+Currently, the supported groupings for JelphaBot are group by date (<code>GroupedTaskList.Category.DATE</code> and <code>GroupedByDateTaskList</code>)
+and group by module (<code>GroupedTaskList.Category.MODULE</code> and <code>GroupedByModuleTaskList</code>).</p>
 </div>
 <div class="paragraph">
-<p>The operation for retrieving the corresponding GroupedTaskLists are exposed in the <code>Model</code> interface as <code>Model#getGroupedByDateList()</code> and <code>Model#getGroupedByModuleList()</code>.</p>
+<p>The operation for retrieving the corresponding GroupedTaskLists are exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
+The following diagram shows the sequence flow of a <code>ListCommand</code> which modifies the currently shown Task List:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListCommandActivityDiagram.png" alt="ListCommandActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity (Will change to sequence) Diagram for ListCommand</div>
+</div>
+<div class="paragraph">
+<p>As <code>GroupedTaskList</code> has more than one underlying <code>ObservableList&lt;Task&gt;</code>, tasks cannot be retrieved the usual way.
+Thus, the <code>get()</code> function defined in the <code>ViewTaskList</code> interface must be implemented and used instead.<br>
+The following diagram shows the process of retrieving a <code>Task</code> from <code>ViewTaskList</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GetTaskActivityDiagram.png" alt="GetTaskActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity Diagram for <code>ViewTaskList.get()</code></div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the task category mechanism behaves at each step.</p>
@@ -518,13 +583,13 @@ If the user tries to switch to a sublist type which is already set, the command 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-swap-between-groupings"><a class="link" href="#aspect-how-to-swap-between-groupings">Aspect: How to swap between groupings</a></h5>
+<h5 id="aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code"><a class="link" href="#aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code">Aspect 1: <code>ListCommand</code> swaps to a different <code>ViewTaskList</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Initializes each grouped list as a different <code>list</code> command is called.</p>
+<p><strong>Alternative 1 (current choice):</strong> Initializes each grouped list as each <code>ListCommand</code> is called and stores the latest list as <code>Model.lastShownList</code>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -533,15 +598,18 @@ If the user tries to switch to a sublist type which is already set, the command 
 <li>
 <p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
 </li>
+<li>
+<p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Keep instances of all GroupedList objects and update them as underlying TaskList changes.</p>
+<p><strong>Alternative 2:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Consecutive <code>list</code> operations are less expensive.</p>
+<p>Pros: Consecutive <code>ListCommand</code> executions are less expensive.</p>
 </li>
 <li>
 <p>Cons: All other commands that update the underlying list now have additional checks as each grouped list is updated.</p>
@@ -552,10 +620,66 @@ If the user tries to switch to a sublist type which is already set, the command 
 </ul>
 </div>
 </div>
+<div class="sect4">
+<h5 id="aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks"><a class="link" href="#aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks">Aspect 2: <code>get()</code> Task from <code>ViewTaskList</code> and iterate between Tasks.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Current solution: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>. (Not Done Yet)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-3-remove-empty-categories-in-code-groupbydatetasklist-code"><a class="link" href="#aspect-3-remove-empty-categories-in-code-groupbydatetasklist-code">Aspect 3: Remove empty Categories in <code>GroupByDateTaskList</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>setPredicate</code> to hide empty categories without removing them.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: because these categories are meant to be reused when applicable tasks are added back to the list.</p>
+</li>
+<li>
+<p>Pros: Provides good protection over unexpected changes on the displayed problem list.</p>
+</li>
+<li>
+<p>Cons: Additional load on the UI as the Filtering happens constantly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Let UI displays problems in an <code>ObservableList&lt;Task&gt;</code> and update the list directly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This implementation is more straightforward as the logic updates the displayed list directly and all changes are reflected immediately.</p>
+</li>
+<li>
+<p>Cons: <code>ObservableList</code> is able to be modified by the containing panel class. Empty <code>SubgroupTaskList</code> members have to be hidden manually which requires complex logic.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code"><a class="link" href="#aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code">Aspect 4: Remove empty Categories in <code>GroupByModuleTaskList</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>section does not exist as i have not solved this issue.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.2. Calendar feature</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.3. Calendar feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a calendar feature which provides an overarching view of their schedules and to allow users to view their tasks due.</p>
 </div>
@@ -573,7 +697,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 </ul>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p><strong>Function 1: Display calendar view in a selected month</strong></p>
 </div>
@@ -603,7 +727,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 </div>
 </div>
 <div class="sect2">
-<h3 id="productivity-feature"><a class="link" href="#productivity-feature">4.3. Productivity feature</a></h3>
+<h3 id="productivity-feature"><a class="link" href="#productivity-feature">4.4. Productivity feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a productivity feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
@@ -621,7 +745,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 </ul>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p><strong>Function 1: Starts timer for a specified task</strong><br>
 In order to start timing a task, the user enters <code>start INDEX</code> command
@@ -665,12 +789,12 @@ the command fails its execution so that it does not execute that start or stop o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-feature"><a class="link" href="#reminder-feature">4.4. Reminder feature</a></h3>
+<h3 id="reminder-feature"><a class="link" href="#reminder-feature">4.5. Reminder feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a reminder feature that reminds users whenever they have tasks that are about to overdue.
 This feature offers two main functions:</p>
@@ -686,7 +810,7 @@ This feature offers two main functions:</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p><strong>Function 1: Creates a reminder for a specified task</strong><br>
 To add a reminder to a certain task, the user enters the <code>reminder INDEX days/DAYS hours/HOURS</code> command.
@@ -731,12 +855,12 @@ still warn the user.
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="morning-call-night-debrief-feature"><a class="link" href="#morning-call-night-debrief-feature">4.5. Morning Call / Night Debrief feature</a></h3>
+<h3 id="morning-call-night-debrief-feature"><a class="link" href="#morning-call-night-debrief-feature">4.6. Morning Call / Night Debrief feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a Morning Call and Night Debrief feature which provides an overview of the tasks to be completed
 for the day (Morning Call), and all tasks that have been complete within the day (Night Debrief).</p>
@@ -745,7 +869,7 @@ for the day (Morning Call), and all tasks that have been complete within the day
 <p>Both come in the form of a separate window that opens upon app startup for Morning Call, and app exit for Night Debrief.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>To view the respective tasks, the user enters the <code>summary</code> command.</p>
 </div>
@@ -753,14 +877,14 @@ for the day (Morning Call), and all tasks that have been complete within the day
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 9. Sequence of execution of the <code>summary</code> command</div>
+<div class="title">Figure 12. Sequence of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.6. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.7. [Proposed] Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.6.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.7.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -902,7 +1026,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -939,14 +1063,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -977,7 +1101,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1935,4 +2059,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 14:23:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 16:29:55 UTC</div></div></div></body></html>
