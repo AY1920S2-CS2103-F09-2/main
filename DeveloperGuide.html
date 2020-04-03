@@ -30,10 +30,12 @@
 <ul class="sectlevel2">
 <li><a href="#task-grouping-feature-in-task-list-tab">4.1. Task Grouping feature in Task List tab</a></li>
 <li><a href="#calendar-feature">4.2. Calendar feature</a></li>
-<li><a href="#morning-call-night-debrief-feature">4.3. Morning Call / Night Debrief feature</a></li>
-<li><a href="#proposed-undo-redo-feature">4.4. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#productivity-feature">4.3. Productivity feature</a></li>
+<li><a href="#reminder-feature">4.4. Reminder feature</a></li>
+<li><a href="#morning-call-night-debrief-feature">4.5. Morning Call / Night Debrief feature</a></li>
+<li><a href="#proposed-undo-redo-feature">4.6. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -200,7 +202,7 @@ To update a diagram __.
 <p>Given below is a quick overview of each component.</p>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.gitsrc/main/java/seedu/jelphabot/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.gitsrc/main/java/seedu/JelphaBot/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -286,19 +288,19 @@ This includes input fields where commands are entered as well as translations of
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UiClassDiagram.png" alt="UiClassDiagram">
+<img src="images/UiClassDiagram2.png" alt="UiClassDiagram2">
 </div>
 <div class="title">Figure 4. Class Diagram of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>CalendarDayCard</code>, <code>ResultDisplay</code>, <code>TaskListPanel</code>, <code>StatusBarFooter</code> etc.
 All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -327,7 +329,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -382,7 +384,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -425,12 +427,12 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>JelphaBot</co
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
+<img src="images/Storage.png" alt="Storage">
 </div>
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/jelphabot/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -449,7 +451,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>JelphaBot</co
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.jelphabot.commons</code> package.
+<p>Classes used by multiple components are in the <code>seedu.JelphaBot.commons</code> package.
 This includes classes which implement utility functions which can be used by all other components.</p>
 </div>
 </div>
@@ -596,9 +598,14 @@ If the user tries to switch to a sublist type which is already set, the command 
 <p><strong>-insert sequence diagram-</strong></p>
 </div>
 <div class="paragraph">
-<p>Upon the completion of the execution of the command, the tasks due on 1st January 2020 would be displayed to the user on the task list panel to the left.
-=== Productivity feature
-JelphaBot has a productivity feature which provides an overarching view of user&#8217;s overall productivity.</p>
+<p>Upon the completion of the execution of the command, the tasks due on 1st January 2020 would be displayed to the user on the task list panel to the left.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="productivity-feature"><a class="link" href="#productivity-feature">4.3. Productivity feature</a></h3>
+<div class="paragraph">
+<p>JelphaBot has a productivity feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
 <div class="paragraph">
 <p>This feature offers two main functions:</p>
@@ -613,11 +620,10 @@ JelphaBot has a productivity feature which provides an overarching view of user&
 </li>
 </ul>
 </div>
-</div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.2.2. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
 <div class="paragraph">
-<p><strong>Function 1: Starts timer for a specified task</strong>
+<p><strong>Function 1: Starts timer for a specified task</strong><br>
 In order to start timing a task, the user enters <code>start INDEX</code> command
 (e.g. start 1)</p>
 </div>
@@ -630,7 +636,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timers header.</p>
 </div>
 <div class="paragraph">
-<p><strong>Function 2: Stops timer for a specified task</strong>
+<p><strong>Function 2: Stops timer for a specified task</strong><br>
 In order to stop timing a task, the user enters <code>stop INDEX</code> command
 (e.g. stop 1)</p>
 </div>
@@ -659,12 +665,78 @@ the command fails its execution so that it does not execute that start or stop o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.3. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="morning-call-night-debrief-feature"><a class="link" href="#morning-call-night-debrief-feature">4.3. Morning Call / Night Debrief feature</a></h3>
+<h3 id="reminder-feature"><a class="link" href="#reminder-feature">4.4. Reminder feature</a></h3>
+<div class="paragraph">
+<p>JelphaBot has a reminder feature that reminds users whenever they have tasks that are about to overdue.
+This feature offers two main functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a reminder to a task.</p>
+</li>
+<li>
+<p>Delete a reminder that is associated to a task.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.1. Implementation</a></h4>
+<div class="paragraph">
+<p><strong>Function 1: Creates a reminder for a specified task</strong><br>
+To add a reminder to a certain task, the user enters the <code>reminder INDEX days/DAYS hours/HOURS</code> command.
+(e.g, reminder 2 days/2 hours/1)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
+the reminder will be saved. By the next time the users starts JelphaBot, it will remind the user should the task&#8217;s due date fall
+within the period set by the user from the current date.</p>
+</div>
+<div class="paragraph">
+<p><strong>Function 2: Deletes a reminder for a specified task</strong><br>
+To delete a reminder associated to a certain task, the user enters the <code>delrem INDEX</code> command.
+(e.g. delrem 2)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user attempts to add a reminder to tasks that have reminders, the command will fail to execute. The user also need not
+to set reminders to tasks that are complete. However, if tasks that has reminders are not completed, JelphaBot will
+still warn the user.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="morning-call-night-debrief-feature"><a class="link" href="#morning-call-night-debrief-feature">4.5. Morning Call / Night Debrief feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a Morning Call and Night Debrief feature which provides an overview of the tasks to be completed
 for the day (Morning Call), and all tasks that have been complete within the day (Night Debrief).</p>
@@ -673,7 +745,7 @@ for the day (Morning Call), and all tasks that have been complete within the day
 <p>Both come in the form of a separate window that opens upon app startup for Morning Call, and app exit for Night Debrief.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.3.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>To view the respective tasks, the user enters the <code>summary</code> command.</p>
 </div>
@@ -686,9 +758,9 @@ for the day (Morning Call), and all tasks that have been complete within the day
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.4. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.6. [Proposed] Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.4.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.6.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -830,7 +902,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -867,14 +939,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -905,7 +977,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1659,11 +1731,11 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Jelphabot detects the task does not have a running timer.</p>
+<p>1a. JelphaBot detects the task does not have a running timer.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Jelphabot displays to user that the task does not have a running timer.</p>
+<p>1a1. JelphaBot displays to user that the task does not have a running timer.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1863,4 +1935,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 13:36:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 14:23:50 UTC</div></div></div></body></html>
