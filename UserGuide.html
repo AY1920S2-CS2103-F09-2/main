@@ -25,7 +25,7 @@
 <li><a href="#calendar-amanda">3.4. Calendar (Amanda)</a></li>
 <li><a href="#productivity-tracking-jel">3.5. Productivity Tracking (Jel)</a></li>
 <li><a href="#set-reminders-and-notifications-dian-hao">3.6. Set Reminders and Notifications (Dian Hao)</a></li>
-<li><a href="#colour-code-modules-and-font-style-for-prioritised-tasks-code-coming-in-v2-0-code">3.7. Colour-code modules and font style for prioritised tasks <code>[coming in v2.0]</code></a></li>
+<li><a href="#colour-code-module-codes-code-coming-in-v2-0-code">3.7. Colour-code module codes <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -40,7 +40,7 @@
 <h3 id="introduction"><a class="link" href="#introduction">1.1. Introduction</a></h3>
 <div class="paragraph">
 <p>Welcome to JelphaBot!<br>
-If you are just starting out, this quick start section will help you get JelphaBot started right
+If you are just starting out, the quick start section below will help you get JelphaBot started right
 away! It will equip you with the basics so that you can quickly enjoy and master the features offered.</p>
 </div>
 <div class="paragraph">
@@ -51,10 +51,6 @@ away! It will equip you with the basics so that you can quickly enjoy and master
 <p>You can enter commands in JelphaBot through a <strong>Command Line Interface</strong> (CLI), which means that if you can <strong>type quickly</strong>,
 JelphaBot can help you get work done faster than a traditional mouse-controlled Graphical User Interface (GUI),
 <strong>while still retaining the benefits of a beautiful user interface</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.
-Enjoy!</p>
 </div>
 <div class="paragraph">
 <p>Upon running JelphaBot, you will see various components on it&#8217;s main display screen. The components of the main screen is labelled below.</p>
@@ -77,17 +73,21 @@ Enjoy!</p>
 <p><strong>Main Panel</strong>: This is the main display screen which corresponds to the tab it is under.</p>
 </li>
 <li>
-<p><strong>Results Display</strong>: This is where the results of your commands are displayed as JelphaBot interacts with you!</p>
+<p><strong>Results Display</strong>: This is where JelphaBot interacts with you by showing you the results of your commands!</p>
 </li>
 <li>
-<p><strong>Command Box</strong>: This is where you key in your own respective commands.</p>
+<p><strong>Command Box</strong>: This is where you key in your commands.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>As seen above, JelphaBot has four tabs, namely Summary, Task List, Calendar and Productivity.
+<p>As seen from above, JelphaBot has four tabs; Summary, Task List, Calendar and Productivity.
 You can switch between tabs anytime by pressing <kbd>Ctrl</kbd> + <kbd>Tab</kbd> on your keyboard to move to the tab on the right.
 If you are already on the rightmost tab, it wraps around to the leftmost tab.</p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.
+Enjoy!</p>
 </div>
 </div>
 <div class="sect2">
@@ -98,11 +98,11 @@ If you are already on the rightmost tab, it wraps around to the leftmost tab.</p
 <h3 id="using-the-user-guide"><a class="link" href="#using-the-user-guide">1.3. Using the User Guide</a></h3>
 <div class="paragraph">
 <p>This User Guide is filled with information to help you set up and make the best out of you very own customizable JelphaBot!
-You will be able to learn more about the commands are available for you, together with examples of how they are used.
+You will be able to learn more about the commands that are available for you, together with examples of how they are used.
 These commands are also consolidated under <a href="#command-summary">Section 5, &#8220;Command Summary&#8221;</a> for your convenience.</p>
 </div>
 <div class="paragraph">
-<p>To aid in your understanding throughout this User Guide, you may find it useful to refer to the following table below for the different symbols and
+<p>To aid in your understanding throughout this User Guide, you may find it useful to refer to the table below for the different symbols and
 formatting used throughout this guide.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -149,7 +149,7 @@ formatting used throughout this guide.</p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><span class="icon icon-important"><i class="fa fa-exclamation-circle fa-2x"></i></span></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note of</p></td>
 </tr>
 </tbody>
 </table>
@@ -180,11 +180,11 @@ The GUI should appear in a few seconds. You should see a list of tasks as shown 
 <div class="title">Figure 2. Expected result after running <code>JelphaBot</code></div>
 </div>
 <div class="paragraph">
-<p>If you do not see this, you can follow the instructons here (link to Troubleshooting) to reset Jelphabot</p>
+<p>If you do not see this, please try deleting JelphaBot and re-downloading JelphaBot.</p>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type a command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -192,23 +192,23 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all tasks</p>
-</li>
-<li>
 <p><strong><code>add</code></strong><code>d/Assignment 1 dt/10-Mar-2020 23 59 m/CS2103T</code> : adds a task with description <code>Assignment 1</code> to the task list.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd task shown in the current list</p>
+<p><strong><code>list</code></strong> : lists all tasks.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>delete</code></strong><code>1</code> : deletes the 1st task shown in the current list.</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.
-A full list of commands is available here (link to command list)</p>
+A full list of commands is available in <a href="#command-summary">Section 5, &#8220;Command Summary&#8221;</a></p>
 </li>
 </ol>
 </div>
@@ -219,7 +219,7 @@ A full list of commands is available here (link to command list)</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section, you can find details about the commands that JelphaBot supports.
-These details include the command function, format and example usage. The features would be depicted
+These details include the function of the command, its format, and example usage. The features would be depicted
 in the order of the tabs shown on the main User Interface as seen above for your ease of navigation!</p>
 </div>
 <div class="sect2">
@@ -234,7 +234,7 @@ Format: <code>help</code></p>
 <div class="content">
 <img src="images/ug_figures/help.png" alt="help" width=""600">
 </div>
-<div class="title">Figure 3. Example of an expected result after running <code>help</code></div>
+<div class="title">Figure 3. Expected result after running <code>help</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -271,12 +271,12 @@ Format: <code>exit</code></p>
 <h4 id="viewing-the-summary-tab-code-summary-code"><a class="link" href="#viewing-the-summary-tab-code-summary-code">3.2.1. Viewing the summary tab: <code>summary</code></a></h4>
 <div class="paragraph">
 <p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>summary</code> command
-or its shortcut <code>:s</code> to manually switch to the summary tab.
+or its shortcuts <code>:S</code> or <code>:s</code> to manually switch to the summary tab.
 The summary panel will then display a summary of your tasks due and completed today.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>summary</code><br>
-Shortcut: <code>:S</code></p>
+Shortcut: <code>:S</code> or <code>:s</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -306,12 +306,12 @@ You can view and sort all your tasks from the Task List page.</p>
 </div>
 <div class="paragraph">
 <p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>list</code> command
-or its shortcut <code>:t</code> to manually switch to the task list tab.
+or its shortcuts <code>:T</code> or <code>:t</code> to manually switch to the task list tab.
 The task list panel will then display your all tasks, sorted in various sections.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>list</code><br>
-Shortcut: <code>:T</code></p>
+Shortcut: <code>:T</code> or <code>:t</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -378,7 +378,7 @@ Go <a href="#add">here</a> to read more about adding tasks with priority and <a 
 <div class="sect3">
 <h4 id="adding-a-task-code-add-code"><a class="link" href="#adding-a-task-code-add-code">3.3.2. Adding a task: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Add a task to your task list.<br>
+<p>You can add a task to your task list.<br>
 Format: <code>d/DESCRIPTION dt/DATETIME m/MODULE_CODE [p/PRIORITY] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="imageblock text-center">
@@ -450,7 +450,7 @@ If the priority field is not specified, the default priority used is Normal Prio
 <div class="sect3">
 <h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">3.3.3. Listing all tasks : <code>list</code></a></h4>
 <div class="paragraph">
-<p>List all tasks in your task list. Optional arguments can be added to dictate sorting order for your tasks.<br>
+<p>You can list all tasks in your task list. Optional arguments can be added to dictate sorting order for your tasks.<br>
 Format: <code>list [SORTING_ORDER]</code></p>
 </div>
 <div class="sidebarblock">
@@ -525,7 +525,7 @@ Tasks which are due and completed will not be shown, as we assume you no longer 
 <div class="sect3">
 <h4 id="locating-tasks-by-name-code-find-code"><a class="link" href="#locating-tasks-by-name-code-find-code">3.3.4. Locating tasks by name: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Finds tasks in your task list whose description contain any of the given keywords.<br>
+<p>You can find tasks in your task list with description containing any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="imageblock text-center">
@@ -576,8 +576,7 @@ Returns any task having descriptions of <code>Tutorial</code>, <code>Project</co
 <div class="sect3">
 <h4 id="editing-a-task-code-edit-code"><a class="link" href="#editing-a-task-code-edit-code">3.3.5. Editing a task : <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edit an existing task in your task list.
-.<br>
+<p>You can edit an existing task in your task list.<br>
 Format: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORITY (-1, 0, or 1)]
 [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -687,6 +686,9 @@ Format: <code>delete INDEX</code></p>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
+<li>
+<p>Deleting a task deletes any reminders for it too.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -712,7 +714,7 @@ Deletes the 1st task in the results of the <code>find</code> command.</p>
 <div class="sect3">
 <h4 id="clearing-all-task-entries-code-clear-code"><a class="link" href="#clearing-all-task-entries-code-clear-code">3.3.8. Clearing all task entries : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from your task list.<br>
+<p>You can clear all tasks from your task list.<br>
 Format: <code>clear</code></p>
 </div>
 <div class="imageblock text-center">
@@ -720,6 +722,17 @@ Format: <code>clear</code></p>
 <img src="images/ug_figures/clear.png" alt="clear" width="600">
 </div>
 <div class="title">Figure 13. Example of an expected result after running <code>clear</code></div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>All reminders will be cleared together with the tasks.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -756,19 +769,19 @@ Format: <code>sort SORTING_ORDER</code></p>
 <div class="sect2">
 <h3 id="calendar-amanda"><a class="link" href="#calendar-amanda">3.4. Calendar (Amanda)</a></h3>
 <div class="paragraph">
-<p>JelphaBot also comes with a built in calendar view that allows you to view your overarching tasks due on a monthly basis.
+<p>JelphaBot also comes with a built-in calendar view that allows you to view your overarching tasks due on a monthly basis.
 You would also be able to navigate to specific dates to view your tasks due for that day of the month!</p>
 </div>
 <div class="sect3">
 <h4 id="view-calender-code-calendar-code"><a class="link" href="#view-calender-code-calendar-code">3.4.1. View calender : <code>calendar</code></a></h4>
 <div class="paragraph">
 <p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>calendar</code> command
-or its shortcut <code>:c</code> to manually switch to the calendar tab.
+or its shortcuts <code>:C</code> or <code>:c</code> to manually switch to the calendar tab.
 The calendar panel will then show you your schedule for the current month with today&#8217;s date highlighted.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>calendar</code><br>
-Shorcut: <code>:C</code></p>
+Shorcut: <code>:C</code> or <code>:c</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -892,12 +905,12 @@ Format: <code>calendar today</code></p>
 <h4 id="track-productivity-code-productivity-code"><a class="link" href="#track-productivity-code-productivity-code">3.5.1. Track productivity : <code>productivity</code></a></h4>
 <div class="paragraph">
 <p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>productivity</code> command
-or its shortcut <code>:p</code> to manually switch to the producivity tab.
+or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
 The productivity panel will then show you your productivity for the day.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>productivity</code><br>
-Shortcut: <code>:P</code></p>
+Shortcut: <code>:P</code> or <code>:p</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -909,7 +922,7 @@ Shortcut: <code>:P</code></p>
 <div class="sect3">
 <h4 id="starting-timer-for-a-task-code-start-code"><a class="link" href="#starting-timer-for-a-task-code-start-code">3.5.2. Starting timer for a task : <code>start</code></a></h4>
 <div class="paragraph">
-<p>Starts timer running for a task.<br>
+<p>You can start a timer running for a task.<br>
 Format: <code>start INDEX</code></p>
 </div>
 <div class="imageblock text-center">
@@ -923,7 +936,10 @@ Format: <code>start INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Starts the timer for the task at the specified <code>INDEX</code> if timer was not running.</p>
+<p>Each task can only have 1 running timer.</p>
+</li>
+<li>
+<p>Starts the timer for the task at the specified <code>INDEX</code> if timer was not already running.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the displayed task list.</p>
@@ -942,7 +958,7 @@ Format: <code>start INDEX</code></p>
 <div class="sect3">
 <h4 id="stopping-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-timer-for-a-task-code-stop-code">3.5.3. Stopping timer for a task : <code>stop</code></a></h4>
 <div class="paragraph">
-<p>Stops running timer for a task.<br>
+<p>You can stop a running timer for a task.<br>
 Format: <code>stop INDEX</code></p>
 </div>
 <div class="imageblock text-center">
@@ -956,6 +972,9 @@ Format: <code>stop INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
+<p>The task has to have a running timer.</p>
+</li>
+<li>
 <p>Stops the timer for the task at the specified <code>INDEX</code> if timer was running.</p>
 </li>
 <li>
@@ -963,9 +982,6 @@ Format: <code>stop INDEX</code></p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The task has to have a running timer.</p>
 </li>
 </ul>
 </div>
@@ -977,7 +993,7 @@ Format: <code>stop INDEX</code></p>
 <div class="paragraph">
 <p>JelphaBot automatically tracks the user&#8217;s productivity in a day and outputs the appropriate response to the user&#8217;s
 achievements and task completion rate.<br>
-There is no need to manually ask for compliments or criticism.</p>
+There is no need to manually request for compliments or criticism.</p>
 </div>
 </div>
 </div>
@@ -986,12 +1002,14 @@ There is no need to manually ask for compliments or criticism.</p>
 <div class="sect3">
 <h4 id="adding-reminder-code-reminder-code"><a class="link" href="#adding-reminder-code-reminder-code">3.6.1. Adding reminder : <code>reminder</code></a></h4>
 <div class="paragraph">
-<p>Adds a reminder to your specified task and reminds you of the task if the current time is within the time-frame specified
+<p>You can add a reminder to your specified task to remind yourself of the task if the current time is within the time-frame specified
 by you.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>reminder INDEX days/DAYS hours/HOURS</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -1010,6 +1028,8 @@ by you.<br></p>
 <p><code>HOURS</code> refers to the number of hours before the due date of the task when you want to be reminded of it.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1050,6 +1070,8 @@ by you.<br></p>
 <div class="paragraph">
 <p>Format: <code>delrem INDEX</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -1062,6 +1084,8 @@ by you.<br></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1084,8 +1108,8 @@ by you.<br></p>
 <div class="sect3">
 <h4 id="reminder-popup-notification"><a class="link" href="#reminder-popup-notification">3.6.3. Reminder popup notification</a></h4>
 <div class="paragraph">
-<p>Whenever you boot JelphaBot, if there is any tasks that will be reminded, JelphaBot will show
-a list of tasks that will expire soon, and tasks that have expired but not done.</p>
+<p>Whenever you boot JelphaBot, if there is any tasks that have to be reminded, JelphaBot will show
+a list of tasks that will expire soon, and tasks that have expired but have not been completed.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1096,7 +1120,7 @@ a list of tasks that will expire soon, and tasks that have expired but not done.
 </div>
 </div>
 <div class="sect2">
-<h3 id="colour-code-modules-and-font-style-for-prioritised-tasks-code-coming-in-v2-0-code"><a class="link" href="#colour-code-modules-and-font-style-for-prioritised-tasks-code-coming-in-v2-0-code">3.7. Colour-code modules and font style for prioritised tasks <code>[coming in v2.0]</code></a></h3>
+<h3 id="colour-code-module-codes-code-coming-in-v2-0-code"><a class="link" href="#colour-code-module-codes-code-coming-in-v2-0-code">3.7. Colour-code module codes <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
@@ -1105,12 +1129,12 @@ a list of tasks that will expire soon, and tasks that have expired but not done.
 <h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<p><strong>Q1</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
 </div>
 <div class="paragraph">
-<p>Q2: Saving the data
-A: JelphaBot automatically saves your data whenever you make a change. There is no need to save manually.</p>
+<p><strong>Q2</strong>: How do I save my data?<br>
+<strong>A</strong>: JelphaBot automatically saves your data whenever you make a change. There is no need to save manually.</p>
 </div>
 </div>
 </div>
@@ -1185,4 +1209,4 @@ e.g. <code>changeCalendar Apr-2020</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 01:39:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 02:51:13 UTC</div></div></div></body></html>
