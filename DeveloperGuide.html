@@ -589,7 +589,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Initializes each grouped list as each <code>ListCommand</code> is called and stores the latest list as <code>Model.lastShownList</code>.</p>
+<p><strong>Current solution</strong>: Initializes each grouped list as each <code>ListCommand</code> is called and stores the latest list as <code>Model.lastShownList</code>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -605,7 +605,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
+<p><strong>Alternative 1:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -625,7 +625,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="ulist">
 <ul>
 <li>
-<p>Current solution: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>. (Not Done Yet)</p>
+<p><strong>Current solution</strong>: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>. (Not Done Yet)</p>
 </li>
 </ul>
 </div>
@@ -639,7 +639,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: because these categories are meant to be reused when applicable tasks are added back to the list.</p>
+<p>Rationale: These categories are meant to be reused when applicable tasks are added back to the list.</p>
 </li>
 <li>
 <p>Pros: Provides good protection over unexpected changes on the displayed problem list.</p>
@@ -802,7 +802,77 @@ the command fails its execution so that it does not execute that start or stop o
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-1-rendering-sub-parts-of-productivity-panel"><a class="link" href="#aspect-1-rendering-sub-parts-of-productivity-panel">Aspect 1: Rendering sub-parts of productivity panel</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution</strong>: Render each sub-part (i.e. task completion rate, time spent and running timers) only when that part needs to
+be updated. All 3 parts are rendered on to the same card.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: No need to rerender all 3 parts when changes are made to only one part.</p>
+</li>
+<li>
+<p>Pros: Easy to implement and reduces waste of computational power.</p>
+</li>
+<li>
+<p>Cons: As all parts are displayed on the same card, if there happens to be problem in other parts of the card, all parts will be affected.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Abstract each part to a separate card and render all cards onto the same panel.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows other parts to be rendered even when there is error on one part. Additionally, it is easier to identify bugs when there is
+an error in displaying.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-2-allowing-tasks-to-be-added-deleted-and-edited-while-timer-is-running"><a class="link" href="#aspect-2-allowing-tasks-to-be-added-deleted-and-edited-while-timer-is-running">Aspect 2: Allowing tasks to be added, deleted and edited while timer is running</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution</strong>: Adding and deleting task is allowed. However, tasks cannot be edited.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: Adding and deleting tasks does not affect the task being timed.</p>
+</li>
+<li>
+<p>Pros: Other functionality are still available for use. Thus, user&#8217;s experience is not affected</p>
+</li>
+<li>
+<p>Cons: User is unable to edit changes in the task being timed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Allow users to edit task while timer is running.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User is able to use all features without restriction.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement as the Task model requires a new Task to replace the old Task when edit command is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2088,4 +2158,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 04:16:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 04:28:42 UTC</div></div></div></body></html>
