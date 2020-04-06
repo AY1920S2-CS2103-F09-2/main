@@ -622,40 +622,29 @@ Each <code>GroupedTaskList</code> is a container for <code>ObservableList&lt;Tas
 </ul>
 </div>
 <div class="paragraph">
-<p>Users can modify the <code>GroupTaskList</code> being displayed in the main panel by calling a <code>ListCommand</code>.
-Currently, the supported groupings for JelphaBot are group by date (<code>GroupedTaskList.Category.DATE</code> and <code>GroupedByDateTaskList</code>)
-and group by module (<code>GroupedTaskList.Category.MODULE</code> and <code>GroupedByModuleTaskList</code>).</p>
+<p>Users can modify the <code>GroupTaskList</code> being displayed in the main panel by executing a <code>ListCommand</code>.
+The operation for retrieving the corresponding <code>GroupedTaskLists</code> are exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
+Currently, the supported groupings for JelphaBot are group by date (<code>GroupedTaskList.Category.DATE</code> and <code>GroupedByDateTaskList</code>) and group by module (<code>GroupedTaskList.Category.MODULE</code> and <code>GroupedByModuleTaskList</code>).</p>
 </div>
 <div class="paragraph">
-<p>The operation for retrieving the corresponding GroupedTaskLists are exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
-The following diagram shows the sequence flow of a <code>ListCommand</code> which modifies the currently shown Task List:</p>
+<p>The following diagram shows the sequence flow of a <code>ListCommand</code> which modifies the currently shown Task List:</p>
 </div>
-<div class="imageblock">
+<div id="activity-swapping-groupedtasklist" class="imageblock">
 <div class="content">
 <img src="images/ListCommandActivityDiagram.png" alt="ListCommandActivityDiagram">
 </div>
 <div class="title">Figure 11. Activity Diagram showing the tab switch for ListCommand</div>
 </div>
 <div class="paragraph">
-<p>As <code>GroupedTaskList</code> has more than one underlying <code>ObservableList&lt;Task&gt;</code>, tasks cannot be retrieved the usual way.
-Thus, the <code>get()</code> function defined in the <code>ViewTaskList</code> interface must be implemented and used instead.<br>
-The following diagram shows the process of retrieving a <code>Task</code> from <code>ViewTaskList</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/GetTaskActivityDiagram.png" alt="GetTaskActivityDiagram">
-</div>
-<div class="title">Figure 12. Activity Diagram for <code>ViewTaskList.get()</code></div>
-</div>
-<div class="paragraph">
 <p>Given below is an example usage scenario and how the task category mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel</code> as a container for GroupedTaskList model objects.
+<p><strong>Step 1.</strong> The user launches the application for the first time.
+The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel</code> as a container for GroupedTaskList model objects.
 The panel is populated with sublists defined in <code>GroupedByDateTaskList</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>list model</code> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
+<p><strong>Step 2.</strong> The user executes <code>list model</code> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -664,16 +653,33 @@ The panel is populated with sublists defined in <code>GroupedByDateTaskList</cod
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the user tries to switch to a sublist type which is already set, the command fails its execution so that it does not execute the relatively expensive filter operations to make new sublists.
+If the user tries to switch to a <code>Cateory</code> which is already set, the command does not reinitialize the <code>GroupedTaskList</code> to prevent redundant filtering operations.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>As <code>GroupedTaskList</code> has more than one underlying <code>ObservableList&lt;Task&gt;</code>, tasks cannot be retrieved the usual way.
+Thus, the <code>get()</code> function defined in the <code>ViewTaskList</code> interface must be implemented and used instead.<br>
+The following diagram shows the process of retrieving a <code>Task</code> from <code>ViewTaskList</code> when it is an instance of <code>GroupedTaskList</code>:</p>
+</div>
+<div id="sequence-viewtasklist-get" class="imageblock">
+<div class="content">
+<img src="images/ViewTaskListGetSequenceDiagram.png" alt="ViewTaskListGetSequenceDiagram">
+</div>
+<div class="title">Figure 12. Sequence Diagram for <code>ViewTaskList.get()</code></div>
+</div>
+<div class="paragraph">
+<p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of ` get()` in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code"><a class="link" href="#aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code">Aspect 1: <code>ListCommand</code> swaps to a different <code>ViewTaskList</code></a></h5>
+<div class="paragraph">
+<p>Refer <a href="#activity-swapping-groupedtasklist">here</a> for the diagram describing this process.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -681,7 +687,8 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement. Scalable when more groupings are added.</p>
+<p>Pros: Easy to implement.
+Scalable when more groupings are added.</p>
 </li>
 <li>
 <p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
@@ -710,16 +717,53 @@ If the user tries to switch to a sublist type which is already set, the command 
 </div>
 <div class="sect4">
 <h5 id="aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks"><a class="link" href="#aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks">Aspect 2: <code>get()</code> Task from <code>ViewTaskList</code> and iterate between Tasks.</a></h5>
+<div class="paragraph">
+<p>Refer <a href="#activity-swapping-groupedtasklist">here</a> for the diagram describing this process.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current solution</strong>: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>. (Not Done Yet)</p>
+<p><strong>Current solution</strong>: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.
+Scalable when more groupings are added.</p>
+</li>
+<li>
+<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
+</li>
+<li>
+<p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As a workaround, only operations defined in the <code>ViewTaskList</code> interface should be used.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Consecutive <code>ListCommand</code> executions are less expensive.</p>
+</li>
+<li>
+<p>Cons: All other commands that update the underlying <code>UniqueTaskList</code> will result in multiple update calls to <code>ViewTaskList</code>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-3-remove-empty-categories-in-code-groupbydatetasklist-code"><a class="link" href="#aspect-3-remove-empty-categories-in-code-groupbydatetasklist-code">Aspect 3: Remove empty Categories in <code>GroupByDateTaskList</code></a></h5>
+<h5 id="aspect-3-hide-empty-categories-in-code-groupbydatetasklist-code"><a class="link" href="#aspect-3-hide-empty-categories-in-code-groupbydatetasklist-code">Aspect 3: Hide empty Categories in <code>GroupByDateTaskList</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -730,23 +774,33 @@ If the user tries to switch to a sublist type which is already set, the command 
 <p>Rationale: These categories are meant to be reused when applicable tasks are added back to the list.</p>
 </li>
 <li>
-<p>Pros: Provides good protection over unexpected changes on the displayed problem list.</p>
+<p>Pros: The list categories do not have to be reinitalized as tasks are removed or added.</p>
 </li>
 <li>
-<p>Cons: Additional load on the UI as the Filtering happens constantly.</p>
+<p>Cons: Additional load on the UI as the Filtering happens constantly.
+However, since there is a cap on five categories (so five <code>FilteredList</code> lists), it is unlikely to be significant.</p>
+</li>
+<li>
+<p>Cons: Inconsistent with the way filtering is done in <code>GroupByModuleTaskList</code>, which reduces control abstraction in <code>GroupedTaskList</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 1</strong>: Let UI displays problems in an <code>ObservableList&lt;Task&gt;</code> and update the list directly.</p>
+<p><strong>Alternative 1:</strong> Remove categories which are no longer used, and reinitialize them again when needed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This implementation is more straightforward as the logic updates the displayed list directly and all changes are reflected immediately.</p>
+<p>Pros: Consecutive changes to the underlying Task List are less expensive if less lists are currently active.</p>
 </li>
 <li>
-<p>Cons: <code>ObservableList</code> is able to be modified by the containing panel class. Empty <code>SubgroupTaskList</code> members have to be hidden manually which requires complex logic.</p>
+<p>Pros: Enforce consistency with <code>GroupByModuleTaskList</code> which might allow some methods to be abstracted to parent class.</p>
+</li>
+<li>
+<p>Cons: Empty <code>SubgroupTaskList</code> members have to be hidden manually which requires complex logic in <code>SubgroupTaskListPanel</code>.</p>
+</li>
+<li>
+<p>Cons: Additional listeners have to be added (one for each category) to reinitialize empty categories.</p>
 </li>
 </ul>
 </div>
@@ -758,6 +812,10 @@ If the user tries to switch to a sublist type which is already set, the command 
 <h5 id="aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code"><a class="link" href="#aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code">Aspect 4: Remove empty Categories in <code>GroupByModuleTaskList</code></a></h5>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>setPredicate</code> to hide empty categories without removing them.
+listeners n sets alternative: uniquemodulecodetasklist</p>
+</li>
 <li>
 <p>section does not exist as i have not solved this issue.</p>
 </li>
@@ -2334,4 +2392,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 10:22:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 12:04:40 UTC</div></div></div></body></html>
