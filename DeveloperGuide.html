@@ -519,7 +519,7 @@ each displaying a different set of panels that are relevant to the feature.</p>
 <div class="sect3">
 <h4 id="ChangeTab"><a class="link" href="#ChangeTab">4.1.1. Current Implementation</a></h4>
 <div class="sect4">
-<h5 id="ChangingTabs"><a class="link" href="#ChangingTabs">Changing tabs in general</a></h5>
+<h5 id="ChangingTabs"><a class="link" href="#ChangingTabs">Switching between Tabs in Main Window</a></h5>
 <div class="paragraph">
 <p>The tabs of the application are defined using a <span class="java">Tab</span> enum and the current mode of the application is stored as a private attribute <span class="java">mode</span> in <span class="java">LogicManager</span>. Users can switch between modes in JelphaBot using the lower case names of each tab as commands. For instance, `calendar. When the tab of the application is changed, we need to update the:</p>
 </div>
@@ -767,7 +767,7 @@ Scalable when more groupings are added.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>setPredicate</code> to hide empty categories without removing them.</p>
+<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>filtered()</code> to hide empty categories without removing them.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -813,11 +813,56 @@ However, since there is a cap on five categories (so five <code>FilteredList</co
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>setPredicate</code> to hide empty categories without removing them.
-listeners n sets alternative: uniquemodulecodetasklist</p>
+<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and uses a <code>ListChangeListener&lt;Task&gt;</code> to maintain a set of unique module codes when the underlying task list is changed.
+The <code>ObservableSet&lt;ModuleCode&gt;</code> has a further <code>SetChangeListener&lt;ModuleCode&gt;</code> bound to it to remove categories that no longer contain any Tasks.
+This second listener directly removes unused categories from <code>GroupedByModuleTaskList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Consecutive changes to the underlying Task List are automatically reflected with a change in <code>SubgroupTaskList</code> categories.</p>
 </li>
 <li>
-<p>section does not exist as i have not solved this issue.</p>
+<p>Pros: The delegation of responsibilities between each <code>Listener</code> allows Single Responsibility Principle to be mantained.</p>
+</li>
+<li>
+<p>Cons: Dependency between the two <code>Listener</code> classes has to be mantained.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Hide categories which are no longer used by adding a filter to the tasklist returned.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and understand.</p>
+</li>
+<li>
+<p>Pros: Enforce consistency with <code>GroupByDateTaskList</code> which might allow some methods to be abstracted to parent class.</p>
+</li>
+<li>
+<p>Cons: Not practical: as more Module Codes are added to the Task List, it might cause more and more hidden categories to be created which are expensive to filter through.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Abstract mantainence of the set of unique module codes to a <code>UniqueModuleCodeSet</code> class instanced in <code>UniqueTaskList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to understand.
+Logic is further abstracted to a higher level and the new class is instanced together with the list that affects it.</p>
+</li>
+<li>
+<p>Cons: Implementation is challenging and prone to bugs.
+Due to the time of writing this Deveoper guide, the release is nearing V1.4 and time is spent fixing bugs for release instead.</p>
+</li>
+<li>
+<p>This could be a proposed update in the future.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -2392,4 +2437,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 12:04:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 12:50:13 UTC</div></div></div></body></html>
