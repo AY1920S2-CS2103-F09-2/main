@@ -63,8 +63,12 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-task">F.2. Deleting a task</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#adding-a-task">F.2. Adding a task</a></li>
+<li><a href="#editing-a-task">F.3. Editing a task</a></li>
+<li><a href="#completing-a-task">F.4. Completing a task</a></li>
+<li><a href="#changing-the-list-category">F.5. Changing the list category</a></li>
+<li><a href="#deleting-a-task">F.6. Deleting a task</a></li>
+<li><a href="#saving-data">F.7. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -137,7 +141,7 @@ and explains the design considerations of these implementations.</p>
 <td class="tableblock halign-center valign-top"><div><div class="paragraph">
 <p><code>code</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Command that can be typed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Java method or class</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><div><div class="paragraph">
@@ -756,53 +760,7 @@ Scalable when more groupings are added.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-3-hide-empty-categories-in-code-groupbydatetasklist-code"><a class="link" href="#aspect-3-hide-empty-categories-in-code-groupbydatetasklist-code">Aspect 3: Hide empty Categories in <code>GroupByDateTaskList</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and use <code>filtered()</code> to hide empty categories without removing them.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Rationale: These categories are meant to be reused when applicable tasks are added back to the list.</p>
-</li>
-<li>
-<p>Pros: The list categories do not have to be reinitalized as tasks are removed or added.</p>
-</li>
-<li>
-<p>Cons: Additional load on the UI as the Filtering happens constantly.
-However, since there is a cap on five categories (so five <code>FilteredList</code> lists), it is unlikely to be significant.</p>
-</li>
-<li>
-<p>Cons: Inconsistent with the way filtering is done in <code>GroupByModuleTaskList</code>, which reduces control abstraction in <code>GroupedTaskList</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 1:</strong> Remove categories which are no longer used, and reinitialize them again when needed.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Consecutive changes to the underlying Task List are less expensive if less lists are currently active.</p>
-</li>
-<li>
-<p>Pros: Enforce consistency with <code>GroupByModuleTaskList</code> which might allow some methods to be abstracted to parent class.</p>
-</li>
-<li>
-<p>Cons: Empty <code>SubgroupTaskList</code> members have to be hidden manually which requires complex logic in <code>SubgroupTaskListPanel</code>.</p>
-</li>
-<li>
-<p>Cons: Additional listeners have to be added (one for each category) to reinitialize empty categories.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code"><a class="link" href="#aspect-4-remove-empty-categories-in-code-groupbymoduletasklist-code">Aspect 4: Remove empty Categories in <code>GroupByModuleTaskList</code></a></h5>
+<h5 id="aspect-3-remove-empty-categories-in-code-groupbymoduletasklist-code"><a class="link" href="#aspect-3-remove-empty-categories-in-code-groupbymoduletasklist-code">Aspect 3: Remove empty Categories in <code>GroupByModuleTaskList</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1653,9 +1611,6 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1733,7 +1688,8 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. JelphaBot detects an error in the entered command.</p>
+<p>1a.
+JelphaBot detects an error in the entered command.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1744,6 +1700,24 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </li>
 <li>
 <p>Steps 1a1-1a2 are repeated until the command entered is correct.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a.
+User specifies a category grouping for the list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. JelphaBot will switch to a list that matches the given category.</p>
 <div class="paragraph">
 <p>Use case resumes from step 2.</p>
 </div>
@@ -2317,7 +2291,8 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.<br>
+For this section, <code>markdown</code> will be used to denote commands that can be entered into JelphaBot.
 </td>
 </tr>
 </table>
@@ -2356,12 +2331,142 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="adding-a-task"><a class="link" href="#adding-a-task">F.2. Adding a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a new task to a cleared list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Clear the list with the <code>clear</code> command.</p>
+</li>
+<li>
+<p>For all test cases that successfully add a task, the respective totals for each category should increment as new tasks are added.</p>
+</li>
+<li>
+<p>Test case: <code>add d/test dt/Apr-06-2020 23 59 m/CS2103t</code><br>
+Expected: A new task is added with the description "test", and a module code of "CS2103T".</p>
+</li>
+<li>
+<p>Test case: <code>add d/test2 dt/Apr-06-2020 23 59 p/1 m/CS2103t</code><br>
+Expected: A new task is added with the description "test2", a module code of "CS2103T", and both the module code and descripton should be bolded.</p>
+</li>
+<li>
+<p>Test case: <code>add d/test3 dt/Apr-06-2020 23 59 p/-1 m/CS2103t</code><br>
+Expected: A new task is added with the description "test3", a module code of "CS2103T", and both the module code and descripton should be in italics.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a task with incomplete parameters</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add d/aa</code><br>
+Expected: No task is added. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+<li>
+<p>Other incorrect add commands to try: other parameters are missing.<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a task with incorrect parameters</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add d/aa dt/Joon-06-2020 23 59 p/-1 m/CS2103t</code><br>
+Expected: No task is added. Error message with correct format of date command. Status bar remains the same.<br></p>
+</li>
+<li>
+<p>Other incorrect add commands to try: other parameters are wrongly formatted.<br>
+Eg. non-alphanumeric characters in description or tag, invalid priority, module codes not complying to NUS format (2-3 Alphabets, 4 numbers, one optional letter)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-task"><a class="link" href="#deleting-a-task">F.2. Deleting a task</a></h3>
+<h3 id="editing-a-task"><a class="link" href="#editing-a-task">F.3. Editing a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a task that was previously added</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Execute the <code>add</code> commands in the previous section.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="completing-a-task"><a class="link" href="#completing-a-task">F.4. Completing a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Setting an existing task to Complete.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Execute the <code>add</code> commands in the previous section.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-the-list-category"><a class="link" href="#changing-the-list-category">F.5. Changing the list category</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Displaying tasks by a different category</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Execute the <code>add</code> commands above.</p>
+</li>
+<li>
+<p>Test case:<br>
+<code>
+list module<br>
+add d/test dt/Apr-06-2020 23 59 m/3230
+</code><br>
+Expected: A new module category should appear with a category title of "CS3230".</p>
+</li>
+<li>
+<p>Test case:<br>
+<code>
+list date<br>
+add d/test dt/TOMORROW 23 59 m/3230</code>, where <code>TOMORROW</code> refers to the date of the next day.<br>
+Expected: A new task should appear under the category header "Due This Week".</p>
+</li>
+<li>
+<p>Test case: <code>list invalid</code><br>
+Expected: List display does not change. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task"><a class="link" href="#deleting-a-task">F.6. Deleting a task</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2380,7 +2485,7 @@ Expected: First task is deleted from the list. Details of the deleted task shown
 Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -2393,7 +2498,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.7. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2430,4 +2535,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 15:32:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 15:47:06 UTC</div></div></div></body></html>
