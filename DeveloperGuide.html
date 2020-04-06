@@ -29,7 +29,7 @@
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#swap-between-different-tabs-in-code-mainwindow-code">4.1. Swap between different Tabs in <code>MainWindow</code></a></li>
+<li><a href="#tab-system">4.1. Tab System</a></li>
 <li><a href="#task-grouping-feature-in-task-list-tab">4.2. Task Grouping feature in Task List tab</a></li>
 <li><a href="#calendar-feature">4.3. Calendar feature</a></li>
 <li><a href="#productivity-feature">4.4. Productivity feature</a></li>
@@ -51,12 +51,11 @@
 <li><a href="#use-case-uc2-list-tasks">C.2. Use case: UC2 - List Tasks</a></li>
 <li><a href="#use-case-uc3-mark-task-as-done">C.3. Use case: UC3 - Mark Task as Done</a></li>
 <li><a href="#use-case-uc4-edit-task-details">C.4. Use case: UC4 - Edit Task Details</a></li>
-<li><a href="#use-case-uc5-find-task-s-by-keyword-s">C.5. Use case: UC5 - Find Task(s) by Keyword(s)</a></li>
-<li><a href="#use-case-uc6-delete-task">C.6. Use case: UC6 - Delete Task</a></li>
-<li><a href="#use-case-uc7-clear-all-tasks">C.7. Use case: UC7 - Clear all Tasks</a></li>
-<li><a href="#use-case-uc8-add-reminders">C.8. Use case: UC8 - Add Reminders</a></li>
-<li><a href="#use-case-uc9-start-timer">C.9. Use Case: UC9 - Start timer</a></li>
-<li><a href="#use-case-uc10-stop-timer">C.10. Use Case: UC10 - Stop timer</a></li>
+<li><a href="#use-case-uc5-delete-task">C.5. Use case: UC5 - Delete Task</a></li>
+<li><a href="#use-case-uc6-add-reminder">C.6. Use case: UC6 - Add Reminder</a></li>
+<li><a href="#use-case-uc7-delete-reminder">C.7. Use case: UC7 - Delete Reminder</a></li>
+<li><a href="#use-case-uc8-start-timer">C.8. Use Case: UC8 - Start Timer</a></li>
+<li><a href="#use-case-uc9-stop-timer">C.9. Use Case: UC9 - Stop Timer</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -490,9 +489,97 @@ This includes classes which implement utility functions which can be used by all
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="swap-between-different-tabs-in-code-mainwindow-code"><a class="link" href="#swap-between-different-tabs-in-code-mainwindow-code">4.1. Swap between different Tabs in <code>MainWindow</code></a></h3>
+<h3 id="tab-system"><a class="link" href="#tab-system">4.1. Tab System</a></h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>Users may find it complicated to handle the many features that JelphaBot offers. They might also be overwhelmed if all the information of their tasks were to be displayed together in one screen.</p>
+</div>
+<div class="paragraph">
+<p>As such, we have decided to implement a tab system for ROR to organise the available commands into their respective features. JelphaBot provides 4 different tabs for the users,
+each displaying a different set of panels that are relevant to the feature.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Summary Tab</strong> - <a href="#summary-feature">overall view</a> of the day&#8217;s tasks in the task list.</p>
+</li>
+<li>
+<p><strong>Task List Tab</strong> - <a href="#task-grouping-feature-in-task-list-tab">view all tasks</a> in the task list.</p>
+</li>
+<li>
+<p><strong>Calendar Tab</strong> - <a href="#calendar-feature">visualisation</a> of tasks in a specific day or month.</p>
+</li>
+<li>
+<p><strong>Productivity Tab</strong> - <a href="#productivity-feature">overarching view</a> of overall productivity such as task completion rate.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To use the different features, we have also implemented commands for users to switch between the 4 tabs.</p>
+</div>
+<div class="sect3">
+<h4 id="ChangeTab"><a class="link" href="#ChangeTab">4.1.1. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="ChangingTabs"><a class="link" href="#ChangingTabs">Changing tabs in general</a></h5>
+<div class="paragraph">
+<p>The tabs of the application are defined using a <span class="java">Tab</span> enum and the current mode of the application is stored as a private attribute <span class="java">mode</span> in <span class="java">LogicManager</span>. Users can switch between modes in JelphaBot using the lower case names of each tab as commands. For instance, `calendar. When the tab of the application is changed, we need to update the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="java">Logic</span> component so that the <span class="java">tab</span> attribute in <span class="java">LogicManager</span> reflects the new current tab, since this is used to check if a command can be executed,</p>
+</li>
+<li>
+<p><span class="java">UI</span> component so that the panels display the information that is relevant to the tab.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>task list</code> is not a valid command to switch to the Task List tab. Use <code>list</code> instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For all these commands, these updates are done using a new <span class="java">toTab</span> attribute added to the <span class="java">CommandResult</span> object. As an example, the figure below shows the sequence diagram for when a user executes the <code>:p</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/productivityTabSequenceDiagram.png" alt="productivityTabSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 9. Component interactions for <code>:p</code> command</div>
+</div>
+<div class="paragraph">
+<p>Upon execution of the <code>:p</code> command, <span class="java">ProductivityCommand#generateCommandResult()</span> will generate a <span class="java">CommandResult</span> whose <span class="java">toTab</span> attribute is set to <span class="java">PRODUCTIVITY</span> and return it to the <span class="java">LogicManager</span>. Now, the updates can be done for the respective components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="java">Logic</span> component: <span class="java">LogicManager</span> calls <span class="java">CommandResult#newModeStatus()</span> to retrieve the mode to be changed to and updates the current mode stored in its <span class="java">mode</span> attribute by calling <span class="java">LogicManager#changeMode()</span>. The <span class="java">CommandResult</span> is passed to <span class="java">MainWindow</span> in UI.</p>
+</li>
+<li>
+<p><span class="java">UI</span> component: <span class="java">MainWindow</span> calls <span class="java">CommandResult#newModeStatus()</span> to retrieve the mode to be changed to and updates the display panels by calling <span class="java">MainWindow#handleChangeMode()</span>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For commands that do not involve a change in mode, <span class="java">CommandResult#newModeStatus()</span> will return <span class="java">null</span> and no updates to the current mode or display will be done.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -509,7 +596,7 @@ The diagram below describes the class structure.</p>
 <div class="content">
 <img src="images/TaskListClassDiagram.png" alt="TaskListClassDiagram">
 </div>
-<div class="title">Figure 9. Class Diagram for Task List classes</div>
+<div class="title">Figure 10. Class Diagram for Task List classes</div>
 </div>
 <div class="paragraph">
 <p>Grouping tasks into sub-lists is done through the <code>GroupedTaskList</code> class.<br>
@@ -547,7 +634,7 @@ The following diagram shows the sequence flow of a <code>ListCommand</code> whic
 <div class="content">
 <img src="images/ListCommandActivityDiagram.png" alt="ListCommandActivityDiagram">
 </div>
-<div class="title">Figure 10. Activity Diagram showing the tab switch for ListCommand</div>
+<div class="title">Figure 11. Activity Diagram showing the tab switch for ListCommand</div>
 </div>
 <div class="paragraph">
 <p>As <code>GroupedTaskList</code> has more than one underlying <code>ObservableList&lt;Task&gt;</code>, tasks cannot be retrieved the usual way.
@@ -558,13 +645,14 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <div class="content">
 <img src="images/GetTaskActivityDiagram.png" alt="GetTaskActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity Diagram for <code>ViewTaskList.get()</code></div>
+<div class="title">Figure 12. Activity Diagram for <code>ViewTaskList.get()</code></div>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the task category mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel</code> as a container for GroupedTaskList model objects. The panel is populated with sublists defined in <code>GroupedByDateTaskList</code>.</p>
+<p>Step 1. The user launches the application for the first time. The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel</code> as a container for GroupedTaskList model objects.
+The panel is populated with sublists defined in <code>GroupedByDateTaskList</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>list model</code> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
@@ -721,7 +809,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="content">
 <img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
 </div>
-<div class="title">Figure 12. Sequence diagram after running <code>calendar Apr-2020</code></div>
+<div class="title">Figure 13. Sequence diagram after running <code>calendar Apr-2020</code></div>
 </div>
 <div class="paragraph">
 <p>Upon the completion of the execution of the command, the calendar  for April 2020 would be displayed, with the tasks due on 1st April 2020 listed.</p>
@@ -745,7 +833,7 @@ If the user tries to switch to a sublist type which is already set, the command 
 <div class="sect2">
 <h3 id="productivity-feature"><a class="link" href="#productivity-feature">4.4. Productivity feature</a></h3>
 <div class="paragraph">
-<p>JelphaBot has a productivity feature which provides an overarching view of user&#8217;s overall productivity.</p>
+<p>JelphaBot has a productivity panel of this feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
 <div class="paragraph">
 <p>This feature offers two main functions:</p>
@@ -771,6 +859,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
 </div>
+<div class="title">Figure 14. Sequence Diagram after running <code>start 1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timers header.</p>
@@ -784,6 +873,7 @@ In order to stop timing a task, the user enters <code>stop INDEX</code> command
 <div class="content">
 <img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
+<div class="title">Figure 15. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timers header.
@@ -906,6 +996,7 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="content">
 <img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
+<div class="title">Figure 16. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
@@ -921,6 +1012,7 @@ To delete a reminder associated to a certain task, the user enters the <code>del
 <div class="content">
 <img src="images/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
 </div>
+<div class="title">Figure 17. Sequence Diagram after running <code>delrem 2</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
@@ -980,7 +1072,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 18. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
@@ -1638,10 +1730,10 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to edit a task by specifying the task index and the field(s) they want to edit</p>
+<p>User requests to edit a task by specifying the task index and the field(s) they want to edit.</p>
 </li>
 <li>
-<p>JelphaBot edits the specified task in the task list with the specified details</p>
+<p>JelphaBot edits the specified task in the task list with the specified details.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1699,53 +1791,17 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-uc5-find-task-s-by-keyword-s"><a class="link" href="#use-case-uc5-find-task-s-by-keyword-s">C.5. Use case: UC5 - Find Task(s) by Keyword(s)</a></h3>
+<h3 id="use-case-uc5-delete-task"><a class="link" href="#use-case-uc5-delete-task">C.5. Use case: UC5 - Delete Task</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find task(s) by entering specified keyword(s)</p>
+<p>User requests to delete a specific task in the list by specified index.</p>
 </li>
 <li>
-<p>JelphaBot shows a list of task(s) that contain the specified keyword(s)</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. None of the tasks in the task list contain the specified keywords.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>Use case ends.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-uc6-delete-task"><a class="link" href="#use-case-uc6-delete-task">C.6. Use case: UC6 - Delete Task</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to delete a specific task in the list by specified index</p>
-</li>
-<li>
-<p>JelphaBot deletes the task</p>
+<p>JelphaBot deletes the task.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1793,26 +1849,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-uc7-clear-all-tasks"><a class="link" href="#use-case-uc7-clear-all-tasks">C.7. Use case: UC7 - Clear all Tasks</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters command to clear all tasks.</p>
-</li>
-<li>
-<p>JelphaBot removes all listed tasks and returns an empty list.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-uc8-add-reminders"><a class="link" href="#use-case-uc8-add-reminders">C.8. Use case: UC8 - Add Reminders</a></h3>
+<h3 id="use-case-uc6-add-reminder"><a class="link" href="#use-case-uc6-add-reminder">C.6. Use case: UC6 - Add Reminder</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1835,11 +1872,31 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. JelphaBot detects that the task the reminder is associated to does not exist.</p>
+<p>1a. The list is empty.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. User enters new task index to be reminded.</p>
+<p>1a1. JelphaBot displays to user that the task list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. JelphaBot detects that the task the reminder is associated to does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1 JelphaBot detects error and displays the correct input format to be expected.</p>
+</li>
+<li>
+<p>1b2. User enters new task index to be add reminder to.</p>
 </li>
 <li>
 <p>Steps 1a1-1a2 are repeated until the command entered is correct.</p>
@@ -1855,17 +1912,17 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. JelphaBot detects an error in the entered command.</p>
+<p>1c. JelphaBot detects an error in the entered command.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. JelphaBot detects error and displays the correct input format to be expected.</p>
+<p>1c1. JelphaBot detects error and displays the correct input format to be expected.</p>
 <div class="paragraph">
-<p>1b2. User enters new command.</p>
+<p>1c2. User enters new command.</p>
 </div>
 </li>
 <li>
-<p>Steps 1b1-1b2 are repeated until the command entered is correct.</p>
+<p>Steps 1c1-1c2 are repeated until the command entered is correct.</p>
 <div class="paragraph">
 <p>Use case resumes from step 2.</p>
 </div>
@@ -1877,7 +1934,88 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-uc9-start-timer"><a class="link" href="#use-case-uc9-start-timer">C.9. Use Case: UC9 - Start timer</a></h3>
+<h3 id="use-case-uc7-delete-reminder"><a class="link" href="#use-case-uc7-delete-reminder">C.7. Use case: UC7 - Delete Reminder</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete a reminder for a task in the list by specified index.</p>
+</li>
+<li>
+<p>JelphaBot deletes the reminder.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The list is empty.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. JelphaBot displays to user that there are no reminders.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. JelphaBot detects that the specified task does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. JelphaBot detects error and displays the correct input format to be expected.</p>
+</li>
+<li>
+<p>1b2. User enters new task index to be marked as done.</p>
+</li>
+<li>
+<p>Steps 1b1-1b2 are repeated until the command entered is correct.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. JelphaBot detects an error in the entered command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. JelphaBot detects error and displays the correct input format to be expected.</p>
+<div class="paragraph">
+<p>1c2. User enters new command.</p>
+</div>
+</li>
+<li>
+<p>Steps 1c1-1c2 are repeated until the command entered is correct.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc8-start-timer"><a class="link" href="#use-case-uc8-start-timer">C.8. Use Case: UC8 - Start Timer</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1887,7 +2025,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <p>User enters command to start timer for task to be timed.</p>
 </li>
 <li>
-<p>JelphaBot tracks the time taken.</p>
+<p>JelphaBot displays successful execution to user.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1900,11 +2038,28 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. JelphaBot detects the task has been mark as completed.</p>
+<p>1a. The list is empty.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. JelphaBot displays to user that the task has been marked as completed.</p>
+<p>1a1. JelphaBot displays to user that the task list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. JelphaBot detects the task has been mark as completed.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. JelphaBot displays to user that the task has been marked as completed.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1913,17 +2068,17 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </li>
 <li>
-<p>1b. JelphaBot detects that the specified task does not exist.</p>
+<p>1c. JelphaBot detects that the specified task does not exist.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. JelphaBot detects error and displays the correct input format to be expected.</p>
+<p>1c1. JelphaBot detects error and displays the correct input format to be expected.</p>
 </li>
 <li>
-<p>1b2. User enters new task index to start timing.</p>
+<p>1c2. User enters new task index to start timing.</p>
 </li>
 <li>
-<p>Steps 1b1-1b2 are repeated until the command entered is correct.</p>
+<p>Steps 1c1-1c2 are repeated until the command entered is correct.</p>
 <div class="paragraph">
 <p>Use case resumes from step 2.</p>
 </div>
@@ -1935,7 +2090,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-uc10-stop-timer"><a class="link" href="#use-case-uc10-stop-timer">C.10. Use Case: UC10 - Stop timer</a></h3>
+<h3 id="use-case-uc9-stop-timer"><a class="link" href="#use-case-uc9-stop-timer">C.9. Use Case: UC9 - Stop Timer</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1945,7 +2100,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <p>User enters command to stop timer for task being.</p>
 </li>
 <li>
-<p>JelphaBot stores time spent on the task.</p>
+<p>JelphaBot returns total time spent on that task and stores the information.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1958,11 +2113,28 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. JelphaBot detects the task does not have a running timer.</p>
+<p>1a. The list is empty.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. JelphaBot displays to user that the task does not have a running timer.</p>
+<p>1a1. JelphaBot displays to user that the task list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. JelphaBot detects the task does not have a running timer.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. JelphaBot displays to user that the task does not have a running timer.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1971,14 +2143,14 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </div>
 </li>
 <li>
-<p>1b. JelphaBot detects that the specified task does not exist.</p>
+<p>1c. JelphaBot detects that the specified task does not exist.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. JelphaBot detects error and displays the correct input format to be expected.</p>
+<p>1c1. JelphaBot detects error and displays the correct input format to be expected.</p>
 </li>
 <li>
-<p>1b2. User enters new task index to stop timing.</p>
+<p>1c2. User enters new task index to stop timing.</p>
 </li>
 <li>
 <p>Steps 1b1-1b2 are repeated until the command entered is correct.</p>
@@ -2030,7 +2202,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 </dd>
 <dt class="hdlist1"><a id="command-line-interface"></a> CLI (Command Line Interface)</dt>
 <dd>
-<p>??</p>
+<p>A type of user interface that allows for interaction between the user and electronic devices in the form of lines of text.</p>
 </dd>
 </dl>
 </div>
@@ -2162,4 +2334,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 09:25:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-06 10:22:17 UTC</div></div></div></body></html>
