@@ -56,6 +56,7 @@
 <li><a href="#use-case-uc7-delete-reminder">C.7. Use case: UC7 - Delete Reminder</a></li>
 <li><a href="#use-case-uc8-start-timer">C.8. Use Case: UC8 - Start Timer</a></li>
 <li><a href="#use-case-uc9-stop-timer">C.9. Use Case: UC9 - Stop Timer</a></li>
+<li><a href="#use-case-uc10-navigate-to-a-different-date-on-calendar">C.10. Use case: UC10 - Navigate to a different date on calendar</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -833,7 +834,7 @@ Due to the time of writing this Deveoper guide, the release is nearing V1.4 and 
 <div class="ulist">
 <ul>
 <li>
-<p>Displays an overview tasks in calendar for a selected month and year</p>
+<p>Displays an overview of tasks in calendar for a selected month and year</p>
 </li>
 <li>
 <p>Displays a list of tasks due for a specified date</p>
@@ -843,7 +844,42 @@ Due to the time of writing this Deveoper guide, the release is nearing V1.4 and 
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
 <div class="paragraph">
-<p><strong>Function 1: Displays an overview tasks in calendar for a selected month and year</strong></p>
+<p>The implementation of the main calendar panel is facilitated by the <code>CalendarMainPanel</code> class, which serves as the main
+container for this feature. This main container consists of a <code>SplitPane</code> comprising of a <code>CalendarPanel</code> on the right,
+which displays the calendar view in a month, and a <code>CalendarTaskListPanel</code> on the left to display specific tasks.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below describes the class structure of the calendar class structure.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarUiClassDiagram.png" alt="CalendarUiClassDiagram">
+</div>
+<div class="title">Figure 12. Class Diagram for Calendar classes</div>
+</div>
+<div class="paragraph">
+<p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar,
+with the dates filled up by <code>CalendarDayCards</code> by CalendarPanel#fillGridPane() with a <code>CalendarDate</code> starting from the first day of the current month.
+Today&#8217;s date would also be highlighted, with <code>CalendarTaskListPanel</code> set to display the tasks due today by running
+Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskList() with a predicate to filter by today&#8217;s date.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram depicts how each individual day cell of the calendar will look like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarDayCards.png" alt="CalendarDayCards">
+</div>
+</div>
+<div class="paragraph">
+<p>After every execution of command, MainWindow#updateTasksInCalendarDayCards() will be run such that any commands that updates
+the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code>, <code>EditCommand</code>) would be updated by the dot indicators in the calendar.</p>
+</div>
+<div class="paragraph">
+<p><strong>Function 1: Displays an overview of tasks in calendar for a selected month and year</strong></p>
+</div>
+<div class="paragraph">
+<p>This function mainly aids in navigating the calendar view.<br></p>
 </div>
 <div class="paragraph">
 <p>There are 2 commands that users can issue to perform function 1:</p>
@@ -851,39 +887,149 @@ Due to the time of writing this Deveoper guide, the release is nearing V1.4 and 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>calendar today</code>: Displays calendar for the current month with today&#8217;s date highlighted, and its corresponding tasks listed.<br></p>
+<p><code>calendar today</code>: Displays calendar for the current month with today&#8217;s date highlighted, and its corresponding tasks due listed.<br></p>
 </li>
 <li>
-<p><code>calendar MONTHYEAR</code>: Displays calendar for the month and year specified, with the first day of the month highlighted, and its corresponding tasks listed.</p>
+<p><code>calendar MONTHYEAR</code>: Displays calendar for the month and year specified, with the first day of the month highlighted,
+and its corresponding tasks due listed (e.g. calendar Apr-2020).</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
-</div>
-<div class="title">Figure 12. Sequence diagram after running <code>calendar Apr-2020</code></div>
-</div>
-<div class="paragraph">
-<p>Upon the completion of the execution of the command, the calendar  for April 2020 would be displayed, with the tasks due on 1st April 2020 listed.</p>
 </div>
 <div class="paragraph">
 <p><strong>Function 2: Display a list of tasks due for a selected date in the month</strong></p>
 </div>
 <div class="paragraph">
 <p>In order to display the task list for specific input dates, the user enters the <code>calendar DATE</code> command<br>
-(e.g. calendar jan-1-2020)</p>
+(e.g. calendar Jan-1-2020).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only a date belonging in the current displayed month on the <code>CalendarPanel</code> would be highlighted after
+processing the <code>calendar DATE</code> command. A date that falls in other month and years would just display its
+corresponding tasks due on the <code>CalendarTaskListPanel</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Upon the completion of the execution of the command, the tasks due on 1st January 2020 would be displayed to the user on the task list panel to the left.<br></p>
+<p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
+</div>
+<div class="title">Figure 13. Sequence diagram after running <code>calendar Apr-2020</code></div>
+</div>
+<div class="paragraph">
+<p>Upon execution of the <code>calendar MONTHYEAR</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
+filter the task list displaying the tasks due on the first day of the <code>MONTHYEAR</code> in the <code>CalendarTaskListPanel</code> and generate a CommandResult with the respective <code>MONTHYEAR</code>
+and return it to the <code>LogicManager</code>. The CommandResult is passed to the MainWindow in UI. Now, the updates can be done for the respective components:</p>
+</div>
+<div class="paragraph">
+<p>UI Component: Using the CommandResult, MainWindow calls MainWindow#updateCalendarMainPanel(), which is then passed to call CalendarMainPanel#updateCalendarPanel().
+This updates the <code>CalendarPanel</code> display with the respective <code>MONTHYEAR</code> view, and highlights the first day of the month.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The implementation of the other two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
+The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in CalendarPanel` is not
+altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-1-how-the-user-can-navigate-between-specific-dates-and-change-the-calendar-month-view"><a class="link" href="#aspect-1-how-the-user-can-navigate-between-specific-dates-and-change-the-calendar-month-view">Aspect 1: How the user can navigate between specific dates and change the calendar month view</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Solution:</strong> Use the same <code>calendar</code> command word for both viewing tasks in specific dates, and changing the calendar view.
+The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</code>, <code>today</code>) is then parsed separately to give different command results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier and more understandable for user interactions.</p>
+</li>
+<li>
+<p>Pros: More open and accessible to future implementations regarding the calendar feature.</p>
+</li>
+<li>
+<p>Cons: Implementation in the <code>CalendarCommand</code> class might seem a bit bulky.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Use completely separate commands for viewing tasks in specific dates and changing the calendar view.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less chance of a parse exception, with more precise error messages when invalid command formats are input by the user.</p>
+</li>
+<li>
+<p>Cons: Certain areas of the code might be repetitive.</p>
+</li>
+<li>
+<p>Cons: Less intuitive for users to use.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-3-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-dot-indicator"><a class="link" href="#aspect-3-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-dot-indicator">Aspect 3: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of Dot Indicator)</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Solution:</strong> Each <code>CalendarDayCard</code> stores a filtered list of tasks due on its specific date.
+This is done by obtaining all the tasks in the task list from Logic#getFilteredTaskList() and applying a filter function
+with the <code>TaskDueWithinDayPredicate</code>, specifically with the date of the day card. The list of tasks stored for each day card
+in the calendar panel would be re-filtered after the execution of each command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Do not have to manually update the tasks stored in each <code>CalendarDayCard</code> (e.g add and remove manually in the separately stored copy)</p>
+</li>
+<li>
+<p>Cons: Completely reliant on the main task list, possible errors might be carried over.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Use a static HashMap of Dates as keys and a list of tasks due in that date as values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Retrieving the tasks in a specific date and storing in the day card is fast - can be done in O(1) time.</p>
+</li>
+<li>
+<p>Cons: Implementation would be much more complex.</p>
+</li>
+<li>
+<p>Cons: Updating of this HashMap of the tasks as the main task list is being edited constantly can be very tedious.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -915,7 +1061,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence Diagram after running <code>start 1</code></div>
+<div class="title">Figure 14. Sequence Diagram after running <code>start 1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timers header.</p>
@@ -929,7 +1075,7 @@ In order to stop timing a task, the user enters <code>stop INDEX</code> command
 <div class="content">
 <img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence Diagram after running <code>stop 1</code></div>
+<div class="title">Figure 15. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timers header.
@@ -1052,7 +1198,7 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="content">
 <img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
-<div class="title">Figure 15. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+<div class="title">Figure 16. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
@@ -1068,7 +1214,7 @@ To delete a reminder associated to a certain task, the user enters the <code>del
 <div class="content">
 <img src="images/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
 </div>
-<div class="title">Figure 16. Sequence Diagram after running <code>delrem 2</code></div>
+<div class="title">Figure 17. Sequence Diagram after running <code>delrem 2</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
@@ -1128,7 +1274,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 18. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
@@ -2236,6 +2382,51 @@ User specifies a category grouping for the list.</p>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="use-case-uc10-navigate-to-a-different-date-on-calendar"><a class="link" href="#use-case-uc10-navigate-to-a-different-date-on-calendar">C.10. Use case: UC10 - Navigate to a different date on calendar</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User specifies date to jump to a specific month and year.</p>
+</li>
+<li>
+<p>JelphaBot displays updated calendar view with the corresponding tasks due on specified date.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. JelphaBot detects an error in the entered command.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. JelphaBot detects error in specified date and displays the correct input format to be expected.</p>
+</li>
+<li>
+<p>1a2. User enters new command.</p>
+</li>
+<li>
+<p>Steps 1a1-1a2 are repeated until the command entered is correct.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2690,4 +2881,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 10:41:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 12:02:40 UTC</div></div></div></body></html>
