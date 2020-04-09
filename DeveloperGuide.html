@@ -764,10 +764,10 @@ This second listener directly removes unused categories from <code>GroupedByModu
 <p>Pros: Consecutive changes to the underlying Task List are automatically reflected with a change in <code>SubgroupTaskList</code> categories.</p>
 </li>
 <li>
-<p>Pros: The delegation of responsibilities between each <code>Listener</code> allows Single Responsibility Principle to be mantained.</p>
+<p>Pros: The delegation of responsibilities between each <code>Listener</code> allows Single Responsibility Principle to be maintained.</p>
 </li>
 <li>
-<p>Cons: Dependency between the two <code>Listener</code> classes has to be mantained.</p>
+<p>Cons: Dependency between the two <code>Listener</code> classes has to be maintained.</p>
 </li>
 </ul>
 </div>
@@ -1108,7 +1108,7 @@ be updated. All 3 parts are rendered on to the same card.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: No need to rerender all 3 parts when changes are made to only one part.</p>
+<p>Rationale: No need to re-render all 3 parts when changes are made to only one part.</p>
 </li>
 <li>
 <p>Pros: Easy to implement and reduces waste of computational power.</p>
@@ -1236,7 +1236,83 @@ still warn the user.
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-1-implementing-code-reminder-code-object"><a class="link" href="#aspect-1-implementing-code-reminder-code-object">Aspect 1: Implementing <code>Reminder</code> object</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution:</strong> Implement <code>Reminder</code> as a standalone class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: A <code>Reminder</code> is an object, with the same hierarchy to the <code>Task</code> class, with similar attributes.</p>
+</li>
+<li>
+<p>Pros: Fully capture the idea of an object-oriented design and robust in handling future changes.</p>
+</li>
+<li>
+<p>Cons: An additional storage is required to store the <code>Reminder</code> objects, which causes overhead while reading from and writing to
+json files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Design <code>Reminder</code> as one of the attributes of a <code>Task</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: A <code>Reminder</code> can also be see as one of a <code>Task</code> 's properties, analogous with <code>Description</code> and
+other properties.</p>
+</li>
+<li>
+<p>Pros: Easy to implement. Concurrent fetching and storing from the json files while reading and writing <code>Task</code> s.</p>
+</li>
+<li>
+<p>Cons: A <code>Reminder</code> has to reminder users the moment when Jelphabot is booted. At that instance, <code>Storage</code> has not
+started to read <code>Task</code> s from the json files yet, therefore the <code>Reminder</code> could not be read beforehand.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-2-rendering-code-reminder-code-on-code-reminderlistpanel-code"><a class="link" href="#aspect-2-rendering-code-reminder-code-on-code-reminderlistpanel-code">Aspect 2: Rendering <code>Reminder</code> on <code>ReminderListPanel</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution:</strong> Shows the <code>Index</code> of the <code>Task</code> that is being reminded, the respective <code>ReminderDay</code> and <code>ReminderHour</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Clean and simple to understand.</p>
+</li>
+<li>
+<p>Cons: Users may need to refer to the <code>GroupedTaskListPanel</code> to check which <code>Task</code> the <code>Reminder</code> is associated to.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Shows the <code>Reminder</code> similar to how the <code>Task</code> is displayed, and includes information such as <code>Task</code>
+associated.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Comprehensive, users need not to switch panels to find out which <code>Task</code> is being reminded.</p>
+</li>
+<li>
+<p>Cons: Overcomplicated and may confuse users. Users may be confused by the <code>Index</code> s shown since <code>Reminder</code> and <code>Task</code>
+both has <code>Index</code> respectively.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2883,4 +2959,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 08:02:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 08:26:30 UTC</div></div></div></body></html>
