@@ -398,7 +398,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>DeleteCommandParser</code> and <code>Model</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -566,18 +566,6 @@ each displaying a different set of panels that are relevant to the feature.</p>
 The display panel is updated by calling [.java]#MainWindow#handle{XXX} where XXX is the tab to switch to.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-For commands that do not involve a change in mode, <span class="java">CommandResult#newModeStatus()</span> will return <span class="java">null</span> and no updates to the current mode or display will be done.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -1057,28 +1045,34 @@ in the calendar panel would be re-filtered after the execution of each command.<
 In order to start timing a task, the user enters <code>start INDEX</code> command
 (e.g. start 1)</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
-</div>
-<div class="title">Figure 14. Sequence Diagram after running <code>start 1</code></div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timer(s) header.</p>
 </div>
 <div class="paragraph">
-<p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timers header.</p>
+<p>The following diagram shows the sequence flow of <code>start</code> which modifies the current Productivity List:</p>
+</div>
+<div id="activity-settingProductivitylist" class="imageblock">
+<div class="content">
+<img src="images/StartActivityDiagram.png" alt="StartActivityDiagram">
+</div>
+<div class="title">Figure 14. Activity Diagram showing the setting of Productivity in the Productivity List</div>
+</div>
+<div class="paragraph">
+<p>Update productivity panel:</p>
+</div>
+<div id="activity-updatingProductivityPanel" class="imageblock">
+<div class="content">
+<img src="images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
+</div>
+<div class="title">Figure 15. Activity Diagram showing the updating of the productivity panel</div>
 </div>
 <div class="paragraph">
 <p><strong>Function 2: Stops timer for a specified task</strong><br>
 In order to stop timing a task, the user enters <code>stop INDEX</code> command
 (e.g. stop 1)</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
-</div>
-<div class="title">Figure 15. Sequence Diagram after running <code>stop 1</code></div>
-</div>
 <div class="paragraph">
-<p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timers header.
+<p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timer(s) header.
 If the timed task is due today or in the next 6 days, the time spent on the timed task will be added to either the Due today: label
 or the Due in the next 6 days: label under the Time Spent on Tasks header.</p>
 </div>
@@ -1094,6 +1088,12 @@ the command fails its execution so that it does not execute that start or stop o
 </td>
 </tr>
 </table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
+</div>
+<div class="title">Figure 16. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1198,7 +1198,7 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="content">
 <img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
-<div class="title">Figure 16. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+<div class="title">Figure 17. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
@@ -1214,7 +1214,7 @@ To delete a reminder associated to a certain task, the user enters the <code>del
 <div class="content">
 <img src="images/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence Diagram after running <code>delrem 2</code></div>
+<div class="title">Figure 18. Sequence Diagram after running <code>delrem 2</code></div>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
@@ -1274,7 +1274,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 18. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 19. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
@@ -1323,7 +1323,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new task. The <code>add</code> command also calls <code>Model#commitJelphaBot()</code>, causing another modified JelphaBot state to be saved into the <code>jelphaBotStateList</code>.</p>
+<p>Step 3. The user executes <code>add d/Assignment &#8230;&#8203;</code> to add a new task. The <code>add</code> command also calls <code>Model#commitJelphaBot()</code>, causing another modified JelphaBot state to be saved into the <code>jelphaBotStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1406,7 +1406,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitJelphaBot()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>jelphaBotStateList</code>, all JelphaBot states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitJelphaBot()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>jelphaBotStateList</code>, all JelphaBot states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/Assignment &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1766,6 +1766,12 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>JelphaBot</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UseCaseDiagram.png" alt="UseCaseDiagram">
+</div>
+<div class="title">Figure 20. Use case diagram for the below use cases</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-uc1-add-task"><a class="link" href="#use-case-uc1-add-task">C.1. Use case: UC1 - Add Task</a></h3>
@@ -2881,4 +2887,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 01:06:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 03:33:02 UTC</div></div></div></body></html>
