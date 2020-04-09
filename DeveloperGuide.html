@@ -1231,11 +1231,11 @@ This feature offers two main functions:</p>
 <div class="sect3">
 <h4 id="classes-for-reminder-feature-in-model"><a class="link" href="#classes-for-reminder-feature-in-model">4.6.1. Classes for Reminder feature in Model</a></h4>
 <div class="paragraph">
-<p>The Reminder feature was implemented by implementing a new set of classes to model. A new Reminder class is stored in
-Jelphabot&#8217;s UniqueReminderList, which consists of a list of Reminders. Each Reminder consists of 3 objects:
-<strong> Index: the Task&#8217;s index of which the user wants to be reminded for.
-</strong> ReminderDay: the number of days before the Task&#8217;s deadline that the user wants to be reminded for.
-** ReminderHour: the number of hours before the Tasks&#8217;s deadline that the user wants to be reminded for.</p>
+<p>The <code>Reminder</code> feature was implemented by implementing a new set of classes to model. A new <code>Reminder</code> class is stored in
+Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <code>Reminder</code> s. Each <code>Reminder</code> consists of 3 objects:<br>
+<strong> <code>Index</code></strong>: the <code>Task</code> 's index of which the user wants to be reminded for.<br>
+<strong> <code>ReminderDay</code></strong>: the number of days before the <code>Task</code> 's deadline that the user wants to be reminded for.<br>
+<strong> <code>ReminderHour</code></strong>: the number of hours before the <code>Tasks</code> 's deadline that the user wants to be reminded for.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1249,7 +1249,10 @@ Jelphabot&#8217;s UniqueReminderList, which consists of a list of Reminders. Eac
 <div class="paragraph">
 <p><strong>Function 1: Creates a reminder for a specified task</strong><br>
 To add a reminder to a certain task, the user enters the <code>reminder INDEX days/DAYS hours/HOURS</code> command.
-(e.g, reminder 2 days/2 hours/1)</p>
+(e.g, reminder 2 days/2 hours/1)<br></p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the <code>Logic</code>, <code>Model</code>, and <code>Storage</code> is shown below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1258,23 +1261,21 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="title">Figure 19. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
+<p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according
+to the command word and several other attributes. Next, the input string is converted into <code>Index</code>,
+<code>ReminderDay</code>, <code>ReminderHour</code>, and a <code>Reminder</code> object with these properties are forwarded to <code>Model</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> first check the validity of the attributes respectively. The valid <code>Reminder</code> is then added to
+the <code>UniqueReminderList</code> after checking that there are no other <code>Reminder</code> with the same <code>Index</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>After the above actions are correctly performed, the <code>Logic</code> fires the <code>Storage</code> to save the <code>Reminder</code>.</p>
+</div>
+<div class="paragraph">
 <p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
 the reminder will be saved. By the next time the users starts JelphaBot, it will remind the user should the task&#8217;s due date fall
 within the period set by the user from the current date.</p>
-</div>
-<div class="paragraph">
-<p><strong>Function 2: Deletes a reminder for a specified task</strong><br>
-To delete a reminder associated to a certain task, the user enters the <code>delrem INDEX</code> command.
-(e.g. delrem 2)</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
-</div>
-<div class="title">Figure 20. Sequence Diagram after running <code>delrem 2</code></div>
-</div>
-<div class="paragraph">
-<p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1289,6 +1290,19 @@ still warn the user.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p><strong>Function 2: Deletes a reminder for a specified task</strong><br>
+To delete a reminder associated to a certain task, the user enters the <code>delrem INDEX</code> command.
+(e.g. delrem 2)</p>
+</div>
+<div class="paragraph">
+<p>The interaction between components is similar to adding a <code>Reminder</code>. A key difference that this command
+removes the <code>Reminder</code> that reminds the <code>Task</code> at <code>INDEX</code> from the <code>UniqueReminderList</code>. Moreover, <code>delrem</code> command
+requires that the <code>Reminder</code> with <code>INDEX</code> is in the list.</p>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1319,15 +1333,15 @@ json files.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: A <code>Reminder</code> can also be see as one of a <code>Task</code> 's properties, analogous with <code>Description</code> and
+<p>Rationale: A <code>Reminder</code> can also be seen as one of <code>Task</code> 's properties, analogous with <code>Description</code> and
 other properties.</p>
 </li>
 <li>
-<p>Pros: Easy to implement. Concurrent fetching and storing from the json files while reading and writing <code>Task</code> s.</p>
+<p>Pros: Easy to implement. Concurrent fetching and storing from the json files while reading and writing <code>Task</code>.</p>
 </li>
 <li>
-<p>Cons: A <code>Reminder</code> has to reminder users the moment when Jelphabot is booted. At that instance, <code>Storage</code> has not
-started to read <code>Task</code> s from the json files yet, therefore the <code>Reminder</code> could not be read beforehand.</p>
+<p>Cons: A <code>Reminder</code> has to remind users the moment when Jelphabot is booted. At that instance, <code>Storage</code> has not
+started to read <code>Task</code> from the json files yet, therefore the <code>Reminder</code> could not be read beforehand.</p>
 </li>
 </ul>
 </div>
@@ -1347,7 +1361,7 @@ started to read <code>Task</code> s from the json files yet, therefore the <code
 <p>Pros: Clean and simple to understand.</p>
 </li>
 <li>
-<p>Cons: Users may need to refer to the <code>GroupedTaskListPanel</code> to check which <code>Task</code> the <code>Reminder</code> is associated to.</p>
+<p>Cons: Users may need to refer to the <code>GroupedTaskListPanel</code> tab to check which <code>Task</code> the <code>Reminder</code> is associated to.</p>
 </li>
 </ul>
 </div>
@@ -1363,6 +1377,41 @@ associated.</p>
 <li>
 <p>Cons: Overcomplicated and may confuse users. Users may be confused by the <code>Index</code> s shown since <code>Reminder</code> and <code>Task</code>
 both has <code>Index</code> respectively.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-3-saving-jelphabot-s-code-reminder-code"><a class="link" href="#aspect-3-saving-jelphabot-s-code-reminder-code">Aspect 3: Saving JelphaBot&#8217;s <code>Reminder</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution:</strong> Uses a <code>boolean</code> to indicate whether jelphaBot is saving <code>Task</code> or saving <code>Reminder</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: jelphaBot&#8217;s <code>Storage</code> takes identical parameters, which is the <code>Path</code> to the json file to write its contents.
+Since the <code>Path</code> are different but the parameters are identical, the function could not decide between to save as a
+<code>JsonSerializableJelphaBot</code> or a <code>JsonSerializableReminderJelphaBot</code>.</p>
+</li>
+<li>
+<p>Pros: Simple to implement.</p>
+</li>
+<li>
+<p>Cons: Does not strictly follow the Object-Oriented paradigm.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Re-implement the <code>JelphaBot</code> component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Adaptable to future changes and follows the OOP paradigm.</p>
 </li>
 </ul>
 </div>
@@ -1407,7 +1456,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 20. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
@@ -1900,7 +1949,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="content">
 <img src="images/UseCaseDiagram.png" alt="UseCaseDiagram">
 </div>
-<div class="title">Figure 22. Use case diagram for the below use cases</div>
+<div class="title">Figure 21. Use case diagram for the below use cases</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-uc1-add-task"><a class="link" href="#use-case-uc1-add-task">C.1. Use case: UC1 - Add Task</a></h3>
@@ -3066,4 +3115,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 09:01:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 12:07:25 UTC</div></div></div></body></html>
