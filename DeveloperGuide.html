@@ -533,11 +533,11 @@ each displaying a different set of panels that are relevant to the feature.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <code>task list</code> is not a valid command to switch to the Task List tab. Use <code>list</code> instead.
@@ -884,7 +884,7 @@ the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code
 </li>
 <li>
 <p><code>calendar MONTHYEAR</code>: Displays calendar for the month and year specified, with the first day of the month highlighted,
-and its corresponding tasks due listed (e.g. calendar Apr-2020).</p>
+and its corresponding tasks due listed (e.g. calendar Apr-2020). Refer <a href="#Calendar-MonthYear-SequenceDiagram">here</a>, for the diagram describing this process.</p>
 </li>
 </ol>
 </div>
@@ -912,7 +912,7 @@ corresponding tasks due on the <code>CalendarTaskListPanel</code>.
 <div class="paragraph">
 <p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
 </div>
-<div class="imageblock">
+<div id="Calendar-MonthYear-SequenceDiagram" class="imageblock">
 <div class="content">
 <img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
 </div>
@@ -935,7 +935,7 @@ This updates the <code>CalendarPanel</code> display with the respective <code>MO
 </td>
 <td class="content">
 The implementation of the other two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
-The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in CalendarPanel` is not
+The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in <code>CalendarPanel</code> is not
 altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.
 </td>
 </tr>
@@ -985,7 +985,7 @@ The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</c
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-dot-indicator"><a class="link" href="#aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-dot-indicator">Aspect 2: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of Dot Indicator)</a></h5>
+<h5 id="aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator"><a class="link" href="#aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator">Aspect 2: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of the Dot Indicator)</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1445,9 +1445,9 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="paragraph">
 <p>To view the respective tasks, the user enters the <code>summary</code> command.</p>
 </div>
-<div class="imageblock">
+<div id="Summary-SwitchTab-Sequence-Diagram" class="imageblock">
 <div class="content">
-<img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
+<img src="images/SummarySwitchTabSequenceDiagram.png" alt="SummarySwitchTabSequenceDiagram">
 </div>
 <div class="title">Figure 20. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
@@ -3048,7 +3048,7 @@ Expected: Similar to previous.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Input a date belonging to the calendar month to view tasks due</p>
+<p>Input a date belonging to the current calendar month to view tasks due</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3059,11 +3059,15 @@ Expected: Similar to previous.</p>
 Expected: Task(s) due on the input date will be displayed with results message displaying the number of tasks listed.
 If there are no tasks due on the input date, no tasks would be displayed. The input date would also be highlighted on the calendar.</p>
 </li>
+<li>
+<p>Test case: <code>calendar Apri-20-2020</code><br>
+Expected: Error message due to the invalid format for the input date would be displayed in the results message.</p>
+</li>
 </ol>
 </div>
 </li>
 <li>
-<p>Input a date not belonging to the calendar month to view tasks due</p>
+<p>Input a date not belonging to the current calendar month to view tasks due</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3073,6 +3077,10 @@ If there are no tasks due on the input date, no tasks would be displayed. The in
 <p>Test case: <code>calendar Oct-20-2020</code><br>
 Expected: Task(s) due on the input date will be displayed with results message displaying the number of tasks listed.
 If there are no tasks due on the input date, no tasks would be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>calendar Joon-20-2020</code><br>
+Expected: Expected: Error message due to the invalid format for the input date would be displayed in the results message.</p>
 </li>
 </ol>
 </div>
@@ -3085,10 +3093,40 @@ If there are no tasks due on the input date, no tasks would be displayed.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to different month and year on Calendar</p>
+<p>Navigate to Today&#8217;s Date on Calendar</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Navigate to the calendar with the <code>calendar</code> command (or other variants as listed above).</p>
 </li>
 <li>
-<p>Navigate to Today&#8217;s Date on Calendar</p>
+<p>Test case: <code>calendar today</code><br>
+Expected: Calendar will change to be the current month and year, with today&#8217;s date also highlighted.
+Task(s) due today will be displayed with results message displaying the number of tasks listed.
+If there are no tasks due today, no tasks would be displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Navigate to different month and year on Calendar</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Navigate to the calendar with the <code>calendar</code> command (or other variants as listed above).</p>
+</li>
+<li>
+<p>Test case: <code>calendar May-2020</code><br>
+Expected: Calendar will change to be for May 2020, with the first day of the May highlighted.
+Task(s) due on the first day of May will be displayed with results message displaying the number of tasks listed.
+If there are no tasks due, no tasks would be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>calendar MAy-2020</code><br>
+Expected: Error message due to the invalid format for the input month and year would be displayed in the results message.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -3131,4 +3169,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 16:23:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 22:14:28 UTC</div></div></div></body></html>
