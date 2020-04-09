@@ -30,13 +30,13 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#tab-system">4.1. Tab System</a></li>
-<li><a href="#summary-feature">4.2. Summary feature</a></li>
-<li><a href="#task-grouping-feature-in-task-list-tab">4.3. Task Grouping feature in Task List tab</a></li>
-<li><a href="#calendar-feature">4.4. Calendar feature</a></li>
-<li><a href="#productivity-feature">4.5. Productivity feature</a></li>
-<li><a href="#reminder-feature">4.6. Reminder feature</a></li>
-<li><a href="#summary-feature-2">4.7. Summary feature</a></li>
-<li><a href="#undo-redo-feature-proposed-to-v2-0">4.8. Undo/Redo feature [Proposed to v2.0]</a></li>
+<li><a href="#summary-feature-eden">4.2. Summary feature (Eden)</a></li>
+<li><a href="#task-grouping-feature-in-task-list-tab-yao-jie">4.3. Task Grouping feature in Task List tab (Yao Jie)</a></li>
+<li><a href="#calendar-feature-amanda">4.4. Calendar feature (Amanda)</a></li>
+<li><a href="#productivity-feature-jel">4.5. Productivity feature (Jel)</a></li>
+<li><a href="#reminder-feature-dian-hao">4.6. Reminder feature (Dian Hao)</a></li>
+<li><a href="#summary-feature">4.7. Summary feature</a></li>
+<li><a href="#undo-redo-feature-proposed-to-implement-in-v2-0">4.8. Undo/Redo feature [Proposed to implement in v2.0]</a></li>
 <li><a href="#logging">4.9. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
 </ul>
@@ -71,7 +71,7 @@
 <li><a href="#changing-the-list-category">F.5. Changing the list category</a></li>
 <li><a href="#deleting-a-task">F.6. Deleting a Task</a></li>
 <li><a href="#changing-tabs">F.7. Changing Tabs</a></li>
-<li><a href="#productivity-feature-2">F.8. Productivity Feature</a></li>
+<li><a href="#productivity-feature">F.8. Productivity Feature</a></li>
 <li><a href="#view-tasks-due-on-a-specific-date">F.9. View Tasks due on a specific Date</a></li>
 <li><a href="#navigating-the-calendar">F.10. Navigating the Calendar</a></li>
 <li><a href="#data-storage">F.11. Data Storage</a></li>
@@ -440,20 +440,6 @@ The lifeline for <code>DeleteCommandParser</code> and <code>Model</code> should 
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>JelphaBot</code>, which <code>Task</code> can reference. This would allow <code>JelphaBot</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Task</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/ModelMoreOOP.png" alt="ModelMoreOOP"></span>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
@@ -513,13 +499,13 @@ each displaying a different set of panels that are relevant to the feature.</p>
 <p><strong>Summary Tab</strong> - <a href="#summary-feature">overall view</a> of the day&#8217;s tasks in the task list.</p>
 </li>
 <li>
-<p><strong>Task List Tab</strong> - <a href="#task-grouping-feature-in-task-list-tab">view all tasks</a> in the task list.</p>
+<p><strong>Task List Tab</strong> - <a href="#Task Grouping feature in Task List tab">view all tasks</a> in the task list.</p>
 </li>
 <li>
-<p><strong>Calendar Tab</strong> - <a href="#calendar-feature">visualisation</a> of tasks in a specific day or month.</p>
+<p><strong>Calendar Tab</strong> - <a href="#Calendar feature">visualisation</a> of tasks in a specific day or month.</p>
 </li>
 <li>
-<p><strong>Productivity Tab</strong> - <a href="#productivity-feature">overarching view</a> of overall productivity such as task completion rate.</p>
+<p><strong>Productivity Tab</strong> - <a href="#Productivity feature">overarching view</a> of overall productivity such as task completion rate.</p>
 </li>
 </ul>
 </div>
@@ -576,7 +562,7 @@ The display panel is updated by calling [.java]#MainWindow#handle{XXX} where XXX
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-feature"><a class="link" href="#summary-feature">4.2. Summary feature</a></h3>
+<h3 id="summary-feature-eden"><a class="link" href="#summary-feature-eden">4.2. Summary feature (Eden)</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a Summary feature which provides an overview of the tasks due within the day as well as all tasks that have been complete within the day.</p>
 </div>
@@ -615,7 +601,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 </div>
 </div>
 <div class="sect2">
-<h3 id="task-grouping-feature-in-task-list-tab"><a class="link" href="#task-grouping-feature-in-task-list-tab">4.3. Task Grouping feature in Task List tab</a></h3>
+<h3 id="task-grouping-feature-in-task-list-tab-yao-jie"><a class="link" href="#task-grouping-feature-in-task-list-tab-yao-jie">4.3. Task Grouping feature in Task List tab (Yao Jie)</a></h3>
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
 <div class="paragraph">
@@ -702,7 +688,23 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <div class="title">Figure 12. Sequence Diagram for <code>ViewTaskList.get()</code></div>
 </div>
 <div class="paragraph">
-<p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of ` get()` in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
+<p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of <code>get()</code> in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
+</div>
+<div class="paragraph">
+<p>Tasks are organized via a two-dimensional list. In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>. A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
+<code>SubgroupTaskListCell</code> and <code>GroupedTaskListCell</code> implement the <code>ListViewCell&lt;T&gt;</code> interface of the <code>ListView&lt;T&gt;</code> class provided by JavaFX.</p>
+</div>
+<div id="class-tasklistpanel" class="imageblock">
+<div class="content">
+<img src="images/TaskListPanelClassDiagram.png" alt="]">
+</div>
+<div class="title">Figure 13. Class Diagram for UI classes displaying <code>GroupedTaskList</code></div>
+</div>
+<div class="paragraph">
+<p>The detailed interactions are described in the diagram shown above. As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes. Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list. The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists. The sum of both numbers gives the index for the current element.</p>
 </div>
 </div>
 <div class="sect3">
@@ -817,14 +819,11 @@ This second listener directly removes unused categories from <code>GroupedByModu
 </div>
 </li>
 <li>
-<p><strong>Alternative 1:</strong> Hide categories which are no longer used by adding a filter to the tasklist returned.</p>
+<p><strong>Alternative 1:</strong> Hide categories which are no longer used by adding a filter to the Task List returned.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to implement and understand.</p>
-</li>
-<li>
-<p>Pros: Enforce consistency with <code>GroupByDateTaskList</code> which might allow some methods to be abstracted to parent class.</p>
 </li>
 <li>
 <p>Cons: Not practical: as more Module Codes are added to the Task List, it might cause more and more hidden categories to be created which are expensive to filter through.</p>
@@ -856,7 +855,7 @@ Due to the time of writing this Developer guide, the release is nearing V1.4 and
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.4. Calendar feature</a></h3>
+<h3 id="calendar-feature-amanda"><a class="link" href="#calendar-feature-amanda">4.4. Calendar feature (Amanda)</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a calendar feature which provides an overarching view of their schedules and to allow users to view their tasks due.</p>
 </div>
@@ -887,7 +886,7 @@ which displays the calendar view in a month, and a <code>CalendarTaskListPanel</
 <div class="content">
 <img src="images/CalendarUiClassDiagram.png" alt="CalendarUiClassDiagram">
 </div>
-<div class="title">Figure 13. Class Diagram for Calendar classes</div>
+<div class="title">Figure 14. Class Diagram for Calendar classes</div>
 </div>
 <div class="paragraph">
 <p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar,
@@ -952,7 +951,7 @@ corresponding tasks due on the <code>CalendarTaskListPanel</code>.
 <div class="content">
 <img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence diagram after running <code>calendar Apr-2020</code></div>
+<div class="title">Figure 15. Sequence diagram after running <code>calendar Apr-2020</code></div>
 </div>
 <div class="paragraph">
 <p>Upon execution of the <code>calendar MONTHYEAR</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
@@ -1062,7 +1061,7 @@ in the calendar panel would be re-filtered after the execution of each command.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="productivity-feature"><a class="link" href="#productivity-feature">4.5. Productivity feature</a></h3>
+<h3 id="productivity-feature-jel"><a class="link" href="#productivity-feature-jel">4.5. Productivity feature (Jel)</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a productivity panel of this feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
@@ -1096,7 +1095,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/StartActivityDiagram.png" alt="StartActivityDiagram">
 </div>
-<div class="title">Figure 15. Activity Diagram showing the setting of Productivity in the Productivity List</div>
+<div class="title">Figure 16. Activity Diagram showing the setting of Productivity in the Productivity List</div>
 </div>
 <div class="paragraph">
 <p>Update productivity panel:</p>
@@ -1105,7 +1104,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity Diagram showing the updating of the productivity panel</div>
+<div class="title">Figure 17. Activity Diagram showing the updating of the productivity panel</div>
 </div>
 <div class="paragraph">
 <p><strong>Function 2: Stops timer for a specified task</strong><br>
@@ -1134,7 +1133,7 @@ the command fails its execution so that it does not execute that start or stop o
 <div class="content">
 <img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence Diagram after running <code>stop 1</code></div>
+<div class="title">Figure 18. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1213,7 +1212,7 @@ an error in displaying.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-feature"><a class="link" href="#reminder-feature">4.6. Reminder feature</a></h3>
+<h3 id="reminder-feature-dian-hao"><a class="link" href="#reminder-feature-dian-hao">4.6. Reminder feature (Dian Hao)</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a reminder feature that reminds users whenever they have tasks that are about to overdue.
 This feature offers two main functions:</p>
@@ -1241,7 +1240,7 @@ Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <
 <div class="content">
 <img src="images/Reminderclass.png" alt="Reminderclass">
 </div>
-<div class="title">Figure 18. Reminder Class Diagram in the Model component</div>
+<div class="title">Figure 19. Reminder Class Diagram in the Model component</div>
 </div>
 </div>
 <div class="sect3">
@@ -1258,7 +1257,7 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="content">
 <img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
-<div class="title">Figure 19. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+<div class="title">Figure 20. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
 <p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according
@@ -1422,7 +1421,7 @@ Since the <code>Path</code> are different but the parameters are identical, the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-feature-2"><a class="link" href="#summary-feature-2">4.7. Summary feature</a></h3>
+<h3 id="summary-feature"><a class="link" href="#summary-feature">4.7. Summary feature</a></h3>
 <div class="paragraph">
 <p>JelphaBot has a Summary feature which provides an overview of the tasks due within the day as well as all tasks that have been complete within the day.</p>
 </div>
@@ -1456,12 +1455,12 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySequenceDiagram.png" alt="SummarySequenceDiagram">
 </div>
-<div class="title">Figure 20. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 21. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature-proposed-to-v2-0"><a class="link" href="#undo-redo-feature-proposed-to-v2-0">4.8. Undo/Redo feature [Proposed to v2.0]</a></h3>
+<h3 id="undo-redo-feature-proposed-to-implement-in-v2-0"><a class="link" href="#undo-redo-feature-proposed-to-implement-in-v2-0">4.8. Undo/Redo feature [Proposed to implement in v2.0]</a></h3>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.8.1. Proposed Implementation</a></h4>
 <div class="paragraph">
@@ -1949,7 +1948,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="content">
 <img src="images/UseCaseDiagram.png" alt="UseCaseDiagram">
 </div>
-<div class="title">Figure 21. Use case diagram for the below use cases</div>
+<div class="title">Figure 22. Use case diagram for the below use cases</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-uc1-add-task"><a class="link" href="#use-case-uc1-add-task">C.1. Use case: UC1 - Add Task</a></h3>
@@ -2951,7 +2950,7 @@ Expected: Success message is shown in the Results Display.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="productivity-feature-2"><a class="link" href="#productivity-feature-2">F.8. Productivity Feature</a></h3>
+<h3 id="productivity-feature"><a class="link" href="#productivity-feature">F.8. Productivity Feature</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3115,4 +3114,4 @@ Expected Outcome: JelphaBot starts up with sample data in the GUI.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 12:07:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-09 14:13:43 UTC</div></div></div></body></html>
