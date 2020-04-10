@@ -1,57 +1,49 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Jel Lim – Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Jel Lim – Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p>My team of 4 software engineering students and I were tasked with enhancing a basic command line interface desktop address book application for our Software Engineering project.
-We chose to morph it into a task management system called JelphaBot.
-This enhanced application enables university students to file and recall task data, manage task scheduling and view productivity levels all in one place.</p>
+<p>JelphaBot is a desktop Task Manager. The user interacts with it using a CLI, but it has a GUI created with JavaFX. It is written in Java, and has about 15 kLoC.</p>
 </div>
 <div class="sect2">
 <h3 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h3>
-<div class="paragraph">
-<p>This section shows a summary of my coding, documentation, and other helpful contributions to the team project.</p>
-</div>
-<div class="sect3">
-<h4 id="enhancement-added"><a class="link" href="#enhancement-added">Enhancement added:</a></h4>
-<div class="paragraph">
-<p>I added the start and stop a timer feature for tasks as well as a viewing panel for the user’s overall productivity for the day.
-I also incorporated the command line history.</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: The <code>start &lt;index&gt;</code> command allows the user to start a timer for the task specified by the index provided.
-The user may stop this timer with the <code>stop &lt;index&gt;</code> command. If the task timed is due today or in the next seven days, the productivity panel would show the total time spent on that task.
-The panel also shows the completion rate of tasks due today.
-To retrieve the command history, the UP-arrow key retrieves the command entered right before the one entered. The DOWN-arrow key does the opposite, meaning that it retrieves the command entered after the one entered if any.</p>
+<p>Code contributed: <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=clouddoggo&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">[View on RepoSense</a>]</p>
 </li>
 <li>
-<p>Justification: In the event the user wants to gauge the amount of time they have spent on their tasks and how many tasks they have completed or an overview of their productivity in that day, it is easy to view all this information in one tab.
-To reduce the hassle of having to key in similar commands repeatedly, users can easily retrieve past commands and enter it.</p>
+<p>Major enhancement:
+Added the start and stop a timer feature for tasks as well as a viewing panel for the user’s overall productivity for the day.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: <code>start &lt;index&gt;</code> command allows the user to start a timer for the task specified by the index provided.
+The user may stop this timer with <code>stop &lt;index&gt;</code> command. The productivity panel will show the total time spent on as well as the number of tasks completed that are due today.</p>
 </li>
 <li>
-<p>Highlights: This enhancement works with existing as well as future commands. An in-depth analysis of design alternatives was necessary to decide the layout of the productivity panel and how effective it was in improving overall user experience of the application.
-The implementation was also challenging because it was difficult to decide how much data to present to users. Out of all the data stored, I had to decide which calculations are the most beneficial for the user and would boost their productivity and efficiency in their tasks.</p>
+<p>Justification: If the user wants to gauge the amount of time spent on their tasks and how many tasks they have completed or an overview of their productivity in that day, it is easy to view all this information in one tab.</p>
 </li>
 <li>
-<p>Credits: Stop and Start command classes were adapted from existing commands such as Edit command. Command line history was adapted from existing implementations.
-Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/resources/view/ProductivityCard.fxml">[Productivity UI</a>] <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/tree/master/src/main/java/seedu/jelphabot/model/productivity">[Productivity model</a>]
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/logic/commands/StartTimerCommand.java">[Start Timer</a>] <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/logic/commands/StopTimerCommand.java">[Stop Timer</a>]
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/test/java/seedu/jelphabot/model/productivity/ProductivityListTest.java">[Productivity Test Code</a>] <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/test/java/seedu/jelphabot/storage/JsonAdaptedTaskTest.java">[Json Test</a>]</p>
+<p>Highlights: This enhancement works with existing as well as future commands. An in-depth analysis of design alternatives was necessary to decide the layout of the productivity panel and how effective it was in improving overall user experience.
+The implementation was also challenging as it was difficult to decide how much data to present to users.</p>
+</li>
+<li>
+<p>Credits: Stop and Start command classes were adapted from existing commands such as Edit command. Command line history was adapted from existing implementations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Minor enhancement:
+Added a command history that allows the user to navigate to previous commands using up/down keys.</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="other-contributions"><a class="link" href="#other-contributions">Other contributions:</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions:</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -59,7 +51,7 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 <div class="ulist">
 <ul>
 <li>
-<p>There was a total of 94 issues, from versions 1.0 to 1.4. I managed 42 of them on GitHub (examples: #163 #144 #263).</p>
+<p>Out of a total of 95 issues from versions 1.0 to 1.4. I managed 42 of them on GitHub (examples: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/issues/163">#163</a> <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/issues/263">#263</a>).</p>
 </li>
 </ul>
 </div>
@@ -69,17 +61,7 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 <div class="ulist">
 <ul>
 <li>
-<p>There was a total of 29 user stories, for versions 1.0 to 1.4. I managed 10 of them.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements made to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Wrote additional tests for existing features such as to increase coverage from …. (link to PR)</p>
+<p>There was a total of 30 user stories, for versions 1.0 to 1.4. I managed 10 of them.</p>
 </li>
 </ul>
 </div>
@@ -89,10 +71,23 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 <div class="ulist">
 <ul>
 <li>
-<p>Made language improvements to the existing User Guide to make it more user-centric: PR #300, #283, #316</p>
+<p>Developer Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Section 3.1, Delete Sequence diagram, whole section of 3.3, 4.1, 4.4, 4.7<br></p>
 </li>
 <li>
-<p>Replaced existing Architecture Sequence diagram with one that corresponds to our final product: PR #198</p>
+<p>Appendix C, Use Case diagram, whole section of appendix C8, C9, D, E, F7, F8, F9, F10</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Language improvements to User Guide : PR <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/283">#283</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/300">#300</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/316">#316</a></p>
+</li>
+<li>
+<p>Replaced existing UML diagrams to ones that corresponds with our final product: PR <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/198">#198</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/326">#326</a></p>
 </li>
 <li>
 <p>Added Use Case diagram and Activity diagrams for start command: PR <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/326">#326</a></p>
@@ -104,14 +99,30 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 </div>
 </li>
 <li>
+<p>Enhancement to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added DateTime model to Task model to integrate deadlines.</p>
+</li>
+<li>
+<p>Added</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Reviewed Pull Requests: #19</p>
+<p>Reviewed Pull Request: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/19">#19</a></p>
 </li>
 <li>
-<p>Reported bugs and offered suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/25/files#r398983142">1</a>,
+<p>Reported 13 bugs and offered suggestions during PE dry run: <a href="https://github.com/Clouddoggo/ped/issues">issues</a></p>
+</li>
+<li>
+<p>Reviewed other team&#8217;s DG: (examples: <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/25/files#r398983142">1</a>,
 <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/25/files#r398989484">2</a>, <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/25/files#r398987630">3</a>)</p>
 </li>
 </ul>
@@ -122,7 +133,7 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated CI/CD tools (Appveyor and Coveralls) to the team repo.</p>
+<p>Integrated CI/CD tools (Appveyor and Coveralls) to the team repository.</p>
 </li>
 </ul>
 </div>
@@ -132,10 +143,10 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 <div style="page-break-after: always;"></div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="contributions-to-user-guide"><a class="link" href="#contributions-to-user-guide">Contributions to User Guide</a></h2>
+<h2 id="contributions-to-user-guide-extracts"><a class="link" href="#contributions-to-user-guide-extracts">Contributions to User Guide (Extracts)</a></h2>
 <div class="sectionbody">
-<hr>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -146,22 +157,135 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="productivity-tracking-jel"><a class="link" href="#productivity-tracking-jel">Productivity Tracking (Jel)</a></h3>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::UserGuide.adoc[tag=productivitytracker]</p>
+<p>JelphaBot also comes with a productivity tracking that allows you track the progress of your tasks in that week.
+You would be able to see the progress bar as you complete more tasks!</p>
+</div>
+<div class="sect3">
+<h4 id="track-productivity-code-productivity-code"><a class="link" href="#track-productivity-code-productivity-code">Track productivity : <code>productivity</code></a></h4>
+<div class="paragraph">
+<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>productivity</code> command
+or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
+The productivity panel will then show you your productivity for the day.<br></p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::UserGuide.adoc[tag=feedback]</p>
+<p>Format: <code>productivity</code><br>
+Shortcut: <code>:P</code> or <code>:p</code></p>
 </div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/ug_figures/ProductivityTab.png" alt="ProductivityTab" width="600">
+</div>
+<div class="title">Figure 1. Example of expected result after running <code>productivity</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The progress bar and the text following it only shows tasks that are due on the day JelphaBot is running.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="starting-timer-for-a-task-code-start-code"><a class="link" href="#starting-timer-for-a-task-code-start-code">Starting timer for a task : <code>start</code></a></h4>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::UserGuide.adoc[tag=faq]</p>
+<p>You can start a timer running for a task.<br>
+Format: <code>start INDEX</code></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/ug_figures/startCommand.png" alt="startCommand" width="600">
+</div>
+<div class="title">Figure 2. Example of expected result after running <code>start 1</code></div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Each task can only have 1 running timer.</p>
+</li>
+<li>
+<p>Starts the timer for the task at the specified <code>INDEX</code> if timer was not already running.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed task list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The task to be timed cannot be a completed task.</p>
+</li>
+<li>
+<p>New timer entry under "Running Timer(s)" in the productivity tab will be added if execution is successful.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stopping-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-timer-for-a-task-code-stop-code">Stopping timer for a task : <code>stop</code></a></h4>
+<div class="paragraph">
+<p>You can stop a running timer for a task.<br>
+Format: <code>stop INDEX</code></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/ug_figures/stopCommand.png" alt="stopCommand" width="600">
+</div>
+<div class="title">Figure 3. Expected result after running <code>stop 1</code></div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The task has to have a running timer.</p>
+</li>
+<li>
+<p>Stops the timer for the task at the specified <code>INDEX</code> if timer was running.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed task list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Timer entry under "Running Timer(s)" in the productivity tab will be removed if execution is successful.</p>
+</li>
+<li>
+<p>Time spent on timed task will be added to the respected time spent section in the productivity tab.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="receiving-encouragement-and-criticism"><a class="link" href="#receiving-encouragement-and-criticism">Receiving encouragement and criticism</a></h4>
+<div class="paragraph">
+<p>JelphaBot automatically tracks the user&#8217;s productivity in a day and outputs the appropriate response to the user&#8217;s
+achievements and task completion rate.<br>
+There is no need to manually request for compliments or criticism.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="contributions-to-developer-guide"><a class="link" href="#contributions-to-developer-guide">Contributions to Developer Guide</a></h2>
+<h2 id="contributions-to-developer-guide-extracts"><a class="link" href="#contributions-to-developer-guide-extracts">Contributions to Developer Guide (Extracts)</a></h2>
 <div class="sectionbody">
-<hr>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -172,14 +296,223 @@ Code contributed: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/m
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="productivity-feature-jel"><a class="link" href="#productivity-feature-jel">Productivity feature (Jel)</a></h3>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::DeveloperGuide.adoc[tag=productivity]</p>
+<p>JelphaBot has a productivity panel of this feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::DeveloperGuide.adoc[tag=timerUseCase]</p>
+<p>This feature offers two main functions and one panel for visualisation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Start timer for a task.</p>
+</li>
+<li>
+<p>Stop running timer for a task.</p>
+</li>
+<li>
+<p>Productivity panel under Productivity tab.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p><strong>Function 1: Starts timer for a specified task</strong><br>
+In order to start timing a task, the user enters <code>start INDEX</code> command
+(e.g. start 1)</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in clouddoggo.adoc - include::DeveloperGuide.adoc[tag=glossary]</p>
+<p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timer(s) header.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the sequence flow of <code>start</code> which modifies the current Productivity List:</p>
+</div>
+<div id="activity-settingProductivitylist" class="imageblock">
+<div class="content">
+<img src="../images/StartActivityDiagram.png" alt="StartActivityDiagram">
+</div>
+<div class="title">Figure 4. Activity Diagram showing the setting of Productivity in the Productivity List</div>
+</div>
+<div class="paragraph">
+<p>Update productivity panel:</p>
+</div>
+<div id="activity-updatingProductivityPanel" class="imageblock">
+<div class="content">
+<img src="../images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
+</div>
+<div class="title">Figure 5. Activity Diagram showing the updating of the productivity panel</div>
+</div>
+<div class="paragraph">
+<p><strong>Function 2: Stops timer for a specified task</strong><br>
+In order to stop timing a task, the user enters <code>stop INDEX</code> command
+(e.g. stop 1)</p>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timer(s) header.
+Under the Time Spent header, the total time spent will be increased depending on the date that the task is due.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user attempts to start timer for a task marked as completed or stop a task that does not have a running timer,
+the command fails its execution so that it does not execute that start or stop operation to start or stop the timer for that task.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
+</div>
+<div class="title">Figure 6. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:31:31 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-1-rendering-sub-parts-of-productivity-panel"><a class="link" href="#aspect-1-rendering-sub-parts-of-productivity-panel">Aspect 1: Rendering sub-parts of productivity panel</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution</strong>: Render each sub-part (i.e. task completion rate, time spent and running timers) only when that part needs to
+be updated. All 3 parts are rendered on to the same card.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: No need to re-render all 3 parts when changes are made to only one part.</p>
+</li>
+<li>
+<p>Pros: Easy to implement and reduces waste of computational power.</p>
+</li>
+<li>
+<p>Cons: As all parts are displayed on the same card, if there happens to be problem in other parts of the card, all parts will be affected.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Abstract each part to a separate card and render all cards onto the same panel.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows other parts to be rendered even when there is error on one part. Additionally, it is easier to identify bugs when there is
+an error in displaying.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement as current view is generated from a ListView but with a single card. Thus, abstracting and refactoring will be costly and hard to debug.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Employ multi-threading for rendering each sub-part.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to use 3 different booleans when updating view. Code base will be cleaner and more readable.</p>
+</li>
+<li>
+<p>Cons: Unsure if cost of multi-threading less then of constructing 3 instances for rendering the productivity panel view.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-2-allowing-tasks-to-be-added-deleted-or-edited-while-timer-is-running"><a class="link" href="#aspect-2-allowing-tasks-to-be-added-deleted-or-edited-while-timer-is-running">Aspect 2: Allowing tasks to be added, deleted or edited while timer is running</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution</strong>: Adding and deleting of tasks are allowed. However, tasks cannot be edited.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: Adding and deleting tasks does not affect the task being timed.</p>
+</li>
+<li>
+<p>Pros: Other functionality are still available for use. Thus, user&#8217;s experience is not affected.</p>
+</li>
+<li>
+<p>Cons: User is unable to make changes to the task being timed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Allow users to edit task while timer is running.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User is able to use all features without restriction.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement as the Task model requires a new Task to replace the old Task when edit command is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-3-productivity-panel-visualisation"><a class="link" href="#aspect-3-productivity-panel-visualisation">Aspect 3: Productivity panel visualisation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current solution</strong>: Separating sub-parts by paragraphs and including progress bar for tasks completed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rationale: Paragraphing increases readability and the progress bar provides visual aid.</p>
+</li>
+<li>
+<p>Pros: Easy to see at a glance which parts are which.</p>
+</li>
+<li>
+<p>Cons: Text under Running Timer(s) can appear wordy. As number of running timers increase, more text is added under Running Timer(s).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1</strong>: Highlight displayed module code and deadline in alternating colours</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Visually more appealing and looks less like a long list is tasks thus motivating the user to complete his/her tasks.</p>
+</li>
+<li>
+<p>Cons: Does not resolve the issue of having too many words under the sections.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Only show 3 tasks whose timers were started in order of priority and time when timers were started.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows user to focus on tasks at hand.</p>
+</li>
+<li>
+<p>Cons: User might forget about other tasks whose timers were started and not complete them on time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:57:29 UTC</div></div></div></body></html>
