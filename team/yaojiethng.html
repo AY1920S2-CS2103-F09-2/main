@@ -13,7 +13,7 @@
 <p>JelphaBot is a desktop application to help NUS students manage tasks.
 JelphaBot allows students to track and manage tasks conveniently.
 Users enter commands in JelphaBot through a CLI. However, a GUI is implemented with JavaFX for a smoother user experience.
-It is written in Java, and has about 15 kLoC.</p>
+It is written in Java, and has about 12 kLoC.</p>
 </div>
 </div>
 </div>
@@ -21,7 +21,7 @@ It is written in Java, and has about 15 kLoC.</p>
 <h2 id="about-this-portfolio"><a class="link" href="#about-this-portfolio">About this portfolio</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This portfolio lists my individual contributions to the AlgoBase project.
+<p>This portfolio lists my individual contributions to the JelphaBot.
 It includes a summary of the feature enhancements implemented and contribution to the User Guide and Developer Guide.
 It also details other contributions I made throughout the duration of the project to team-based tasks.</p>
 </div>
@@ -33,7 +33,7 @@ It also details other contributions I made throughout the duration of the projec
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability for users to group their tasks by time or module code</strong>, as well as <strong>provided interfaces for other developers to implement new grouping categories</strong>.</p>
+<p><strong>Major enhancement</strong>: added the ability for users to <strong>group their tasks by time or module code</strong>, as well as <strong>provided interfaces for other developers to implement new grouping categories</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -84,6 +84,11 @@ This feature improves the task management process significantly because it allow
 </ul>
 </div>
 </li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Minor enhancement</strong>: Updated the Ui layout for each Task to allow tasks to be distinguished by priority.</p>
 <div class="ulist">
@@ -160,6 +165,7 @@ This feature improves the task management process significantly because it allow
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
@@ -244,6 +250,7 @@ Tasks are tagged according to their importance:</p>
 <p>The start of every task will be labelled with a module code so that you can visually categorize them.<br>
 Go <a href="#add">here</a> to read more about adding tasks with priority and <a href="#edit">here</a> for editing task priority.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">Listing all Tasks : <code>list</code></a></h4>
@@ -319,24 +326,7 @@ Format: <code>list module</code></p>
 </div>
 <div class="title">Figure 3. Example of an expected result after running <code>list module</code></div>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="pin"><a class="link" href="#pin">Pin Important Tasks  : <code>pin</code> [Coming in V2.0]</a></h4>
-<div class="paragraph">
-<p>You can pin important tasks to the top of the task list with the <code>pin</code> command.<br>
-Pinned tasks will always be displayed in the Pinned Tasks group in the task list.<br>
-Trying to <code>pin</code> a task that is already pinned will unpin it.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sort-tasks-code-sort-code-coming-in-v2-0"><a class="link" href="#sort-tasks-code-sort-code-coming-in-v2-0">Sort Tasks : <code>sort</code>  [Coming in v2.0]</a></h4>
-<div class="paragraph">
-<p>You can change how tasks are sorted with the <code>sort</code> command.
-Format: <code>sort SORTING_ORDER</code></p>
-</div>
-<div class="paragraph">
-<p>Valid <code>SORTING_ORDER</code> values include <code>date</code>, <code>module</code>, and <code>priority</code>.</p>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -609,259 +599,5 @@ Due to the time of writing this Developer guide, the release is nearing V1.4 and
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="task-grouping-feature-in-task-list-tab-yao-jie-2"><a class="link" href="#task-grouping-feature-in-task-list-tab-yao-jie-2">Task Grouping feature in Task List tab (Yao Jie)</a></h3>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
-<div class="paragraph">
-<p>The task category mechanism is facilitated by the <code>ViewTaskList</code> interface, which serves as a wrapper for any list of tasks.<br>
-The ViewTaskList interface supports methods that facilitate getting and iterating through the tasks contained within the list.
-This is to accommodate a common access for Tasks in <code>GroupedTaskList</code>, which contains multiple sub-lists.<br>
-The diagram below describes the class structure.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TaskListClassDiagram.png" alt="TaskListClassDiagram">
-</div>
-<div class="title">Figure 8. Class Diagram for Task List classes</div>
-</div>
-<div class="paragraph">
-<p>Grouping tasks into sub-lists is done through the <code>GroupedTaskList</code> class.<br>
-Each <code>GroupedTaskList</code> is a container for <code>ObservableList&lt;Task&gt;</code> objects, each containing a unique filter over the full task list.</p>
-</div>
-<div class="paragraph">
-<p>Each <code>GroupedTaskList</code> implements the following operations on top of those in <code>ViewTaskList</code>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A enum class which describes the valid <code>Category</code> groupings, and the corresponding methods of getting these groupings from a <code>String</code>.<br></p>
-</li>
-<li>
-<p>An <code>ObservableList</code> of <code>SubgroupTaskList</code> that represents the sub-groupings of each corresponding <code>Category</code>.</p>
-</li>
-<li>
-<p>A public method for instantiating a <code>GroupedTaskList</code> called <code>getGroupedList</code> with the return from <code>getFilteredTaskList()</code> as argument.</p>
-</li>
-<li>
-<p>An iterator method which iterates through a list of <code>SubgroupTaskList</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Users can modify the <code>GroupTaskList</code> being displayed in the main panel by executing a <code>ListCommand</code>.
-The operation for retrieving the corresponding <code>GroupedTaskLists</code> are exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
-Currently, the supported groupings for JelphaBot are group by date (<code>GroupedTaskList.Category.DATE</code> and <code>GroupedByDateTaskList</code>) and group by module (<code>GroupedTaskList.Category.MODULE</code> and <code>GroupedByModuleTaskList</code>).</p>
-</div>
-<div class="paragraph">
-<p>The following diagram shows the sequence flow of a <code>ListCommand</code> which modifies the currently shown Task List:</p>
-</div>
-<div id="activity-swapping-groupedtasklist" class="imageblock">
-<div class="content">
-<img src="../images/ListCommandActivityDiagram.png" alt="ListCommandActivityDiagram">
-</div>
-<div class="title">Figure 9. Activity Diagram showing the tab switch for ListCommand</div>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the task category mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 1.</strong> The user launches the application for the first time.
-The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel</code> as a container for GroupedTaskList model objects.
-The panel is populated with sublists defined in <code>GroupedByDateTaskList</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2.</strong> The user executes <code>list model</code> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the user tries to switch to a <code>Cateory</code> which is already set, the command does not reinitialize the <code>GroupedTaskList</code> to prevent redundant filtering operations.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>As <code>GroupedTaskList</code> has more than one underlying <code>ObservableList&lt;Task&gt;</code>, tasks cannot be retrieved the usual way.
-Thus, the <code>get()</code> function defined in the <code>ViewTaskList</code> interface must be implemented and used instead.<br>
-The following diagram shows the process of retrieving a <code>Task</code> from <code>ViewTaskList</code> when it is an instance of <code>GroupedTaskList</code>:</p>
-</div>
-<div id="sequence-viewtasklist-get" class="imageblock">
-<div class="content">
-<img src="../images/ViewTaskListGetSequenceDiagram.png" alt="ViewTaskListGetSequenceDiagram">
-</div>
-<div class="title">Figure 10. Sequence Diagram for <code>ViewTaskList.get()</code></div>
-</div>
-<div class="paragraph">
-<p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of <code>get()</code> in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
-</div>
-<div class="paragraph">
-<p>Tasks are organized via a two-dimensional list. In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>. A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
-<code>SubgroupTaskListCell</code> and <code>GroupedTaskListCell</code> implement the <code>ListViewCell&lt;T&gt;</code> interface of the <code>ListView&lt;T&gt;</code> class provided by JavaFX.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TaskListPanelClassDiagram.png" alt="TaskListPanelClassDiagram">
-</div>
-<div class="title">Figure 11. Class Diagram for UI classes displaying <code>GroupedTaskList</code></div>
-</div>
-<div class="paragraph">
-<p>The detailed interactions are described in the diagram shown above. As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes. Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>.</p>
-</div>
-<div class="paragraph">
-<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list. The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists. The sum of both numbers gives the index for the current element.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code-2"><a class="link" href="#aspect-1-code-listcommand-code-swaps-to-a-different-code-viewtasklist-code-2">Aspect 1: <code>ListCommand</code> swaps to a different <code>ViewTaskList</code></a></h5>
-<div class="paragraph">
-<p>Refer to <a href="#activity-swapping-groupedtasklist">Activity Diagram showing the tab switch for ListCommand</a> for the diagram describing this process.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current solution</strong>: Initializes each grouped list as each <code>ListCommand</code> is called and stores the latest list as <code>Model.lastShownList</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.
-Scalable when more groupings are added.</p>
-</li>
-<li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
-</li>
-<li>
-<p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 1:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Consecutive <code>ListCommand</code> executions are less expensive.</p>
-</li>
-<li>
-<p>Cons: All other commands that update the underlying list now have additional checks as each grouped list is updated.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks-2"><a class="link" href="#aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks-2">Aspect 2: <code>get()</code> Task from <code>ViewTaskList</code> and iterate between Tasks.</a></h5>
-<div class="paragraph">
-<p>Refer to <a href="#sequence-viewtasklist-get">Sequence Diagram for <code>ViewTaskList.get()</code></a> for the diagram describing this process.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current solution</strong>: Implement <code>get()</code> and <code>Iterator&lt;Task&gt;</code> in <code>ViewTaskList</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.
-Scalable when more groupings are added.</p>
-</li>
-<li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
-</li>
-<li>
-<p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>As a workaround, only operations defined in the <code>ViewTaskList</code> interface should be used.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 1:</strong> Keep instances of all <code>GroupedTaskList</code> objects and update them as underlying Task List changes.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Consecutive <code>ListCommand</code> executions are less expensive.</p>
-</li>
-<li>
-<p>Cons: All other commands that update the underlying <code>UniqueTaskList</code> will result in multiple update calls to <code>ViewTaskList</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-3-remove-empty-categories-in-code-groupbymoduletasklist-code-2"><a class="link" href="#aspect-3-remove-empty-categories-in-code-groupbymoduletasklist-code-2">Aspect 3: Remove empty Categories in <code>GroupByModuleTaskList</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current Solution</strong>: UI displays problems from a <code>FilteredList&lt;SubgroupTaskList&gt;</code> and uses a <code>ListChangeListener&lt;Task&gt;</code> to maintain a set of unique module codes when the underlying task list is changed.
-The <code>ObservableSet&lt;ModuleCode&gt;</code> has a further <code>SetChangeListener&lt;ModuleCode&gt;</code> bound to it to remove categories that no longer contain any Tasks.
-This second listener directly removes unused categories from <code>GroupedByModuleTaskList</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Consecutive changes to the underlying Task List are automatically reflected with a change in <code>SubgroupTaskList</code> categories.</p>
-</li>
-<li>
-<p>Pros: The delegation of responsibilities between each <code>Listener</code> allows Single Responsibility Principle to be maintained.</p>
-</li>
-<li>
-<p>Cons: Dependency between the two <code>Listener</code> classes has to be maintained.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 1:</strong> Hide categories which are no longer used by adding a filter to the Task List returned.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement and understand.</p>
-</li>
-<li>
-<p>Cons: Not practical: as more Module Codes are added to the Task List, it might cause more and more hidden categories to be created which are expensive to filter through.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Abstract maintenance of the set of unique module codes to a <code>UniqueModuleCodeSet</code> class instanced in <code>UniqueTaskList</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to understand.
-Logic is further abstracted to a higher level and the new class is instanced together with the list that affects it.</p>
-</li>
-<li>
-<p>Cons: Implementation is challenging and prone to bugs.
-Due to the time of writing this Developer guide, the release is nearing V1.4 and time is spent fixing bugs for release instead.</p>
-</li>
-<li>
-<p>This could be a proposed update in the future.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:11:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:31:31 UTC</div></div></div></body></html>
