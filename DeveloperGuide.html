@@ -1006,6 +1006,15 @@ altered by running CalendarPanel#fillGridPane() unlike the other two commands fu
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The following diagram shows the sequence flow for variants of the <code>calendar XXX</code> command (XXX is an optional argument) which modifies the <code>CalendarMainPanel</code>:</p>
+</div>
+<div id="Calendar-ActivityDiagram" class="imageblock">
+<div class="content">
+<img src="images/CalendarCommandActivityDiagram.png" alt="CalendarCommandActivityDiagram">
+</div>
+<div class="title">Figure 15. Activity Diagram showing the updating of <code>CalendarMainPanel</code></div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
@@ -1128,7 +1137,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/StartActivityDiagram.png" alt="StartActivityDiagram">
 </div>
-<div class="title">Figure 15. Activity Diagram showing the setting of Productivity in the Productivity List</div>
+<div class="title">Figure 16. Activity Diagram showing the setting of Productivity in the Productivity List</div>
 </div>
 <div class="paragraph">
 <p>Update productivity panel:</p>
@@ -1137,7 +1146,7 @@ In order to start timing a task, the user enters <code>start INDEX</code> comman
 <div class="content">
 <img src="images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity Diagram showing the updating of the productivity panel</div>
+<div class="title">Figure 17. Activity Diagram showing the updating of the productivity panel</div>
 </div>
 <div class="paragraph">
 <p><strong>Function 2: Stops timer for a specified task</strong><br>
@@ -1166,7 +1175,7 @@ the command fails its execution so that it does not execute that start or stop o
 <div class="content">
 <img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence Diagram after running <code>stop 1</code></div>
+<div class="title">Figure 18. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1299,7 +1308,7 @@ Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <
 <div class="content">
 <img src="images/Reminderclass.png" alt="Reminderclass">
 </div>
-<div class="title">Figure 18. Reminder Class Diagram in the Model component</div>
+<div class="title">Figure 19. Reminder Class Diagram in the Model component</div>
 </div>
 </div>
 <div class="sect3">
@@ -1316,7 +1325,7 @@ To add a reminder to a certain task, the user enters the <code>reminder INDEX da
 <div class="content">
 <img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
-<div class="title">Figure 19. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+<div class="title">Figure 20. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
 </div>
 <div class="paragraph">
 <p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according
@@ -1478,7 +1487,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummarySwitchTabSequenceDiagram.png" alt="SummarySwitchTabSequenceDiagram">
 </div>
-<div class="title">Figure 20. Sequence diagram of execution of the <code>summary</code> command</div>
+<div class="title">Figure 21. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram details the execution of the creation of the SummaryCommand.</p>
@@ -1487,7 +1496,7 @@ If the user marks a task as completed, and immediately deletes the task from the
 <div class="content">
 <img src="images/SummaryCommandSequenceDiagram.png" alt="SummaryCommandSequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence diagram of the creation of SummaryCommand.</div>
+<div class="title">Figure 22. Sequence diagram of the creation of SummaryCommand.</div>
 </div>
 </div>
 </div>
@@ -1980,7 +1989,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="content">
 <img src="images/UseCaseDiagram.png" alt="UseCaseDiagram">
 </div>
-<div class="title">Figure 22. Use case diagram for the below use cases</div>
+<div class="title">Figure 23. Use case diagram for the below use cases</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-uc1-add-task"><a class="link" href="#use-case-uc1-add-task">C.1. Use case: UC1 - Add Task</a></h3>
@@ -3223,4 +3232,4 @@ Sample data should be configured such that there are dates due within the curren
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:34:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:11:55 UTC</div></div></div></body></html>
