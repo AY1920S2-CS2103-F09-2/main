@@ -402,14 +402,14 @@ This includes input fields where commands are entered as well as translations of
 <div class="title">Figure 4. Class Diagram of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>CalendarDayCard</code>, <code>ResultDisplay</code>, <code>TaskListPanel</code>, <code>StatusBarFooter</code> etc.
 All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -438,7 +438,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -481,7 +481,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -515,7 +515,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -605,7 +605,7 @@ When the tab of the application is changed, we need to update the:</p>
 <td class="content">
 <code>task list</code> is not a valid command to switch to the Task List tab.
 Use <code>list</code> instead.
-Similarly, <code>:l</code> is rhe corresponding shortcut.
+Similarly, <code>:l</code> is the corresponding shortcut.
 </td>
 </tr>
 </table>
@@ -614,7 +614,7 @@ Similarly, <code>:l</code> is rhe corresponding shortcut.
 <p>For all these commands, updates are done by updating the <code>SwitchTab</code> attribute added in the <code>CommandResult</code> object.</p>
 </div>
 <div class="paragraph">
-<p>To view an example, the figure here shows the sequence diagram for when a user executes the <code>:s</code> or <code>summary</code> command.</p>
+<p>As an example, the figure below shows the sequence diagram of when a user executes the <code>:s</code> or <code>summary</code> command.</p>
 </div>
 <div id="Summary-SwitchTab-Sequence-Diagram" class="imageblock">
 <div class="content">
@@ -623,7 +623,7 @@ Similarly, <code>:l</code> is rhe corresponding shortcut.
 <div class="title">Figure 9. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 <div class="paragraph">
-<p>Upon execution of the <code>:s</code> command, <code>SummaryCommand#generateCommandResult()</code> will generate a `CommandResult<code><mark></code> whose `SwitchTab<code></mark></code> attribute is set to `SUMMARY<code><mark></code> and return it to the `LogicManager<code></mark></code>.
+<p>Upon execution of the <code>:s</code> command, <code>SummaryCommand#generateCommandResult()</code> will generate a <code>CommandResult</code> whose <code>SwitchTab</code> attribute is set to <code>SUMMARY</code> and return it to the <code>LogicManager</code>.
 Now, the updates can be done for the respective components:</p>
 </div>
 <div class="ulist">
@@ -1988,7 +1988,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire JelphaBot.</p>
+<p><strong>Alternative 1:</strong> Saves the entire JelphaBot.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3633,4 +3633,4 @@ Sample data should be configured such that there are dates due within the curren
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 06:19:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 06:27:07 UTC</div></div></div></body></html>
