@@ -303,14 +303,14 @@ There is no need to manually request for compliments or criticism.</p>
 <p>JelphaBot has a productivity panel of this feature which provides an overarching view of user&#8217;s overall productivity.</p>
 </div>
 <div class="paragraph">
-<p>The view of this panel is facilitated by the productivity package that extracts the relevant data and displays them in as cohesive view.
+<p>The view of this panel is facilitated by the productivity package that extracts the relevant data and displays them as a cohesive view.
 The productivity package supports the creation of <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code> instances.
 Each of these classes iterate through the tasks contained within the task list.<br>
 Below is a class diagram of the related productivity classes:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ProductivityClassDiagram.png" alt="ProductivityClassDiagram">
+<img src="../images/ProductivityClassDiagram.png" alt="ProductivityClassDiagram" width="540">
 </div>
 <div class="title">Figure 4. Class diagram showing the structure and relations of <code>Productivity</code>, <code>ProductivityPanel</code> and their components.</div>
 </div>
@@ -330,10 +330,11 @@ Below is a class diagram of the related productivity classes:</p>
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
-<p>Text rendered onto the productivity panel is gotten from the <code>Productivity</code> class.<br>
+<p>Text rendered onto the productivity panel is retrieved from the <code>Productivity</code> class.<br>
 A <code>Productivity</code> object is a container for the objects responsible for the sub-parts of the panel, namely <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code>.
 Each of these have their respective String representations which will be used in rendering the panel.</p>
 </div>
@@ -354,6 +355,9 @@ Each of these have their respective String representations which will be used in
 </li>
 <li>
 <p>A <code>toString()</code> method which returns the sum of duration (i.e. time spent) of tasks under 3 different categories: "due today", "due in next 6 days" and "due after 6 days".</p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -361,13 +365,10 @@ Each of these have their respective String representations which will be used in
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each time <code>TimeSpentToday</code> is instantiated, <code>getTimeSpent()</code> is called thrice; once each for the 3 categories.
+Each time <code>toString()</code> is called, <code>getTimeSpent()</code> is called thrice; once each for the 3 categories.
 </td>
 </tr>
 </table>
-</div>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p><code>RunningTimers</code> implements the following operations:</p>
@@ -424,15 +425,16 @@ Each time <code>TimeSpentToday</code> is instantiated, <code>getTimeSpent()</cod
 </div>
 <div class="paragraph">
 <p>Information from all three objects are subsequently rendered onto the panel through <code>ProductivityCard</code> and <code>ProductivityPanel</code>.
-Assuming that the task list is not empty, the following describe the flow of <code>start 1</code> and <code>stop 1</code> which modify the currently shown productivity panel:</p>
+Assuming that the task list is not empty, the following describe the flow of <em>start 1</em> and <em>stop 1</em> which modify the currently shown productivity panel:</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>Function 1: Starts timer for a specified task</strong><br>
-In order to start timing a task, the user enters <code>start INDEX</code> command (e.g. <code>start 1</code>).</p>
+In order to start timing a task, the user enters <strong><em>start INDEX</em></strong> command (e.g. <em>start 1</em>).</p>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timer(s) header.
-The following diagram shows the flow of <code>start 1</code> which modifies the current view of the productivity panel:</p>
+The following diagram shows the flow of <em>start 1</em> which modifies the current view of the productivity panel:</p>
 </div>
 <div id="activity-settingProductivitylist" class="imageblock">
 <div class="content">
@@ -443,9 +445,11 @@ The following diagram shows the flow of <code>start 1</code> which modifies the 
 <div class="paragraph">
 <p>To update the productivity panel to reflect the changes, a new <code>Productivity</code> object will first be created, replacing the existing <code>Productivity</code> object in the <code>ProductivityList</code>.
 Each time a new <code>Productivity</code> object is created, its corresponding booleans will dictate whether the sub-parts (i.e. <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code>) are to be replaced with new objects.
-As the command executed is <code>start</code>, a new <code>RunningTimers</code> object is created. As detailed above, the iterator method in <code>RunningTimers</code> will be called and a new String representation to be displayed onto the productivity panel will be created.
-This String is subsequently rendered onto the panel under the Running Timer(s) header.</p>
+As the command executed is <strong><em>start</em></strong>, a new <code>RunningTimers</code> object is created.
+As detailed above, the iterator method in <code>RunningTimers</code> will be called and a new <code>String</code> representation to be displayed onto the productivity panel will be created.
+This <code>String</code> is subsequently rendered onto the panel under the Running Timer(s) header.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>The following diagram shows the flow which updates the Running Timer(s) section in the productivity panel:</p>
 </div>
@@ -455,15 +459,15 @@ This String is subsequently rendered onto the panel under the Running Timer(s) h
 </div>
 <div class="title">Figure 6. Activity Diagram showing the updating of Running Timer(s) in the productivity panel</div>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>Function 2: Stops timer for a specified task</strong><br>
-In order to stop timing a task, the user enters <code>stop INDEX</code> command
-(e.g. <code>stop 1</code>)</p>
+In order to stop timing a task, the user enters <strong><em>stop INDEX</em></strong> command (e.g. <em>stop 1</em>)</p>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timer(s) header.
 Removing a task from the Running Timer(s) header is similar to adding it, as illustrated by the Activity Diagram <a href="#activity-updatingProductivityPanel">above</a>.
-Under the Time Spent header, the total time spent will be increased depending on the date that the task is due.</p>
+Under the Time Spent header, the total time spent will be increased in the respective subheaders depending on the date that the task is due.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -472,8 +476,7 @@ Under the Time Spent header, the total time spent will be increased depending on
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Attempting to start timer for a task marked as completed or <code>stop</code> a task that does not have a running timer,
-the command fails its execution so that it does not execute that <code>start</code> or <code>stop</code> operation to <code>start</code> or <code>stop</code> the timer for that task.
+Attempting to start a timer for a task which is marked as completed or stop a task with no active timer results in the command execution failing and an exception thrown.
 </td>
 </tr>
 </table>
@@ -482,9 +485,9 @@ the command fails its execution so that it does not execute that <code>start</co
 <div class="content">
 <img src="../images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
-<div class="title">Figure 7. Sequence Diagram after running <code>stop 1</code></div>
+<div class="title">Figure 7. Sequence Diagram after running <em>stop 1</em></div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:55:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:28:56 UTC</div></div></div></body></html>

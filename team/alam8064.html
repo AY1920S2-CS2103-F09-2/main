@@ -371,7 +371,8 @@ The full Developer Guide can be found <a href="https://ay1920s2-cs2103t-f09-2.gi
 <div class="sect2">
 <h3 id="calendar-feature-amanda"><a class="link" href="#calendar-feature-amanda">Calendar feature (Amanda)</a></h3>
 <div class="paragraph">
-<p>JelphaBot has a calendar feature which provides an overarching view of their schedules and to allow users to view their tasks due.</p>
+<p>JelphaBot has a calendar feature which provides an overarching view of users' schedules and to allow them to keep track of their due tasks.
+It is meant to provide a more fine-grained visualization than what is shown in the task list.</p>
 </div>
 <div class="paragraph">
 <p>This feature offers two main functions:</p>
@@ -389,9 +390,8 @@ The full Developer Guide can be found <a href="https://ay1920s2-cs2103t-f09-2.gi
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
-<p>The implementation of the main calendar panel is facilitated by the <code>CalendarMainPanel</code> class, which serves as the main
-container for this feature. This main container consists of a <code>SplitPane</code> comprising of a <code>CalendarPanel</code> on the right,
-which displays the calendar view in a month, and a <code>CalendarTaskListPanel</code> on the left to display specific tasks.</p>
+<p>The implementation of the main calendar panel is facilitated by the <code>CalendarMainPanel</code> class, which serves as the main container for this feature.
+This main container consists of a <code>SplitPane</code> comprising of a <code>CalendarPanel</code> on the right, which displays the calendar view in a month, and a <code>CalendarTaskListPanel</code> on the left to display specific tasks.</p>
 </div>
 <div class="paragraph">
 <p>The diagram below describes the class structure of the calendar class structure.</p>
@@ -402,11 +402,10 @@ which displays the calendar view in a month, and a <code>CalendarTaskListPanel</
 </div>
 <div class="title">Figure 5. Class Diagram for Calendar classes</div>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar,
-with the dates filled up by <code>CalendarDayCards</code> by CalendarPanel#fillGridPane() with a <code>CalendarDate</code> starting from the first day of the current month.
-Today&#8217;s date would also be highlighted, with <code>CalendarTaskListPanel</code> set to display the tasks due today by running
-Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskList() with a predicate to filter by today&#8217;s date.</p>
+<p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar, with the dates filled up by <code>CalendarDayCard</code> by CalendarPanel#fillGridPane() with a <code>CalendarDate</code> starting from the first day of the current month.
+Today&#8217;s date would also be highlighted, with <code>CalendarTaskListPanel</code> set to display the tasks due today by running Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskList() with a predicate to filter by today&#8217;s date.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram depicts how each individual day cell of the calendar will look like:</p>
@@ -418,8 +417,7 @@ Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskLis
 <div class="title">Figure 6. Expected display of dates on calendar</div>
 </div>
 <div class="paragraph">
-<p>After every execution of command, MainWindow#updateTasksInCalendarDayCards() will be run such that any commands that updates
-the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code>, <code>EditCommand</code>) would be updated by the dot indicators in the calendar.</p>
+<p>After every execution of command, MainWindow#updateTasksInCalendarDayCards() will be run such that any commands that updates the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code>, <code>EditCommand</code>) would be updated by the dot indicators in the calendar.</p>
 </div>
 <div class="paragraph">
 <p><strong>Function 1: Displays an overview of tasks in calendar for a selected month and year</strong></p>
@@ -430,27 +428,28 @@ the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>calendar today</code>: Displays calendar for the current month with today&#8217;s date highlighted, and its corresponding tasks due listed.<br></p>
+<p><strong><em>calendar today</em></strong>: Displays calendar for the current month with today&#8217;s date highlighted, and its corresponding tasks due listed.<br></p>
 </li>
 <li>
-<p><code>calendar MONTHYEAR</code>: Displays calendar for the month and year specified, with the first day of the month highlighted,
-and its corresponding tasks due listed (e.g. calendar Apr-2020). Refer <a href="#Calendar-MonthYear-SequenceDiagram">here</a>, for the diagram describing this process.</p>
+<p><strong><em>calendar MONTHYEAR</em></strong>: Displays calendar for the month and year specified, with the first day of the month highlighted, and its corresponding tasks due listed (e.g. calendar Apr-2020).
+Refer <a href="#Calendar-MonthYear-SequenceDiagram">here</a>, for the diagram describing this process.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Upon execution of the <code>calendar MONTHYEAR</code> or the <code>calendar today</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
-filter the task list to display the tasks on the <code>CalendarTaskListPanel</code> according to the first day of the <code>MONTHYEAR</code> or the tasks due <code>today</code> respectively.
-The filtering of the tasks according to date is done using the <code>TaskDueWithinDayPredicate</code>. A distinct <code>CommandResult</code> would then be generated according to
-the input command and is returned to the <code>LogicManager</code>. Finally, the  <code>CommandResult</code> is passed to the <code>MainWindow</code> in UI. Now, the updates can be done for the respective components:</p>
+<p>Upon execution of the <strong><em>calendar MONTHYEAR</em></strong> or the <strong><em>calendar today</em></strong> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to filter the task list to display the tasks on the <code>CalendarTaskListPanel</code> according to the first day of the <strong><em>MONTHYEAR</em></strong> or the tasks due <strong><em>today</em></strong> respectively.
+The filtering of the tasks according to date is done using the <code>TaskDueWithinDayPredicate</code>.
+A distinct <code>CommandResult</code> would then be generated according to the input command and is returned to the <code>LogicManager</code>.
+Finally, the  <code>CommandResult</code> is passed to the <code>MainWindow</code> in UI. Now, the updates can be done for the respective components:</p>
 </div>
 <div class="paragraph">
-<p>UI Component: Using the CommandResult, MainWindow calls MainWindow#updateCalendarMainPanel(), which is then passed to call CalendarMainPanel#updateCalendarPanel().
-For the <code>calendar MONTHYEAR</code> command, this updates the <code>CalendarPanel</code> display with the respective <code>MONTHYEAR</code> view, and highlights the first day of the month.
-For the <code>calendar today</code> command, this updates the <code>CalendarPanel</code> display to the current month and year, with today&#8217;s date highlighted.</p>
+<p><code>UI</code> Component: Using the CommandResult, <code>MainWindow</code> calls <code>MainWindow#updateCalendarMainPanel()</code>, which is then passed to call <code>CalendarMainPanel#updateCalendarPanel()</code>.
+For the <strong><em>calendar MONTHYEAR</em></strong> command, this updates the <code>CalendarPanel</code> display with the respective <strong><em>MONTHYEAR</em></strong> view, and highlights the first day of the month.
+For the <strong><em>calendar today</em></strong> command, this updates the <code>CalendarPanel</code> display to the current month and year, with today&#8217;s date highlighted.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
+<p>The following example sequence diagram shows you how the <strong><em>calendar MONTHYEAR</em></strong> (e.g. <em>calendar Apr-2020</em>) command works.</p>
 </div>
 <div id="Calendar-MonthYear-SequenceDiagram" class="imageblock">
 <div class="content">
@@ -462,7 +461,7 @@ For the <code>calendar today</code> command, this updates the <code>CalendarPane
 <p><strong>Function 2: Display a list of tasks due for a selected date in the month</strong></p>
 </div>
 <div class="paragraph">
-<p>In order to display the task list for specific input dates, the user enters the <code>calendar DATE</code> command<br>
+<p>In order to display the task list for specific input dates, the user enters the <strong><em>calendar DATE</em></strong> command<br>
 (e.g. calendar Jan-1-2020).</p>
 </div>
 <div class="admonitionblock note">
@@ -472,18 +471,18 @@ For the <code>calendar today</code> command, this updates the <code>CalendarPane
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Only a date belonging in the current displayed month on the <code>CalendarPanel</code> would be highlighted after
-processing the <code>calendar DATE</code> command. A date that falls in other month and years would just display its
-corresponding tasks due on the <code>CalendarTaskListPanel</code>.
+Only a date belonging in the current displayed month on the <code>CalendarPanel</code> would be highlighted after processing the <code>calendar DATE</code> command.
+A date that falls in other month and years would just display its corresponding tasks due on the <code>CalendarTaskListPanel</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The implementation of the previous two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
-The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in <code>CalendarPanel</code> is not
-altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.</p>
+<p>The implementation of the previous two calendar commands (<strong><em>calendar DATE</em></strong> and <strong><em>calendar today</em></strong>) are largely similar and run in the same process.
+The only exception is regarding the <strong><em>calendar DATE</em></strong> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in <code>CalendarPanel</code> is not altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>.
+Only <code>CalendarTaskListPanel</code> is updated.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>The following diagram shows the sequence flow for variants of these three calendar commands which modifies the <code>CalendarMainPanel</code>:</p>
 </div>
@@ -493,6 +492,7 @@ altered by running CalendarPanel#fillGridPane() unlike the other two commands fu
 </div>
 <div class="title">Figure 8. Activity Diagram showing the updating of <code>CalendarMainPanel</code></div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -502,7 +502,7 @@ altered by running CalendarPanel#fillGridPane() unlike the other two commands fu
 <ul>
 <li>
 <p><strong>Current Solution:</strong> Use the same <code>calendar</code> command word for both viewing tasks in specific dates, and changing the calendar view.
-The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</code>, <code>today</code>) is then parsed separately to give different command results.</p>
+The next input following the command word (<strong><em>DATE</em></strong>, <strong><em>MONTHYEAR</em></strong>, <strong><em>today</em></strong>) is then parsed separately to give different command results.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -537,10 +537,10 @@ The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</c
 </div>
 <div class="paragraph">
 <p><strong>Reason for chosen implementation:</strong><br>
-The current solution is more user-friendly as it reduces the number of varying commands that users have to remember in order to
-access the respective information. Additionally, upcoming changes and future implementations can be easily integrated into the
-existing code base as well.</p>
+The current solution is more user-friendly as it reduces the number of varying commands that users have to remember in order to access the respective information.
+Additionally, upcoming changes and future implementations can be easily integrated into the existing code base as well.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect4">
 <h5 id="aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator"><a class="link" href="#aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator">Aspect 2: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of the Dot Indicator)</a></h5>
@@ -548,9 +548,8 @@ existing code base as well.</p>
 <ul>
 <li>
 <p><strong>Current Solution:</strong> Each <code>CalendarDayCard</code> stores a filtered list of tasks due on its specific date.
-This is done by obtaining all the tasks in the task list from Logic#getFilteredTaskList() and applying a filter function
-with the <code>TaskDueWithinDayPredicate</code>, specifically with the date of the day card. The list of tasks stored for each day card
-in the calendar panel would be re-filtered after the execution of each command.</p>
+This is done by obtaining all the tasks in the task list from Logic#getFilteredTaskList() and applying a filter function with the <code>TaskDueWithinDayPredicate</code>, specifically with the date of the day card.
+The list of tasks stored for each day card in the calendar panel would be re-filtered after the execution of each command.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -583,11 +582,11 @@ in the calendar panel would be re-filtered after the execution of each command.<
 <div class="paragraph">
 <p><strong>Reason for chosen implementation:</strong><br>
 The current solution is easier to implement since we are filtering the tasks we want to see directly from the main task list.
-This reduces the amount of methods to implement over various class and components as constant updates of the tasks
-in each day card of the calendar is done. The ease of implementation is crucial given the tight deadlines we have to meet for the project.</p>
+This reduces the amount of methods to implement over various class and components as constant updates of the tasks in each day card of the calendar is done.
+The ease of implementation is crucial given the tight deadlines we have to meet for the project.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:55:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:28:56 UTC</div></div></div></body></html>

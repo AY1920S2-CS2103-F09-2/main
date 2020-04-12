@@ -320,7 +320,7 @@ JelphaBot&#8217;s reminder window will popup.</p>
 <div class="sect2">
 <h3 id="reminder-feature-dian-hao"><a class="link" href="#reminder-feature-dian-hao">Reminder feature (Dian Hao)</a></h3>
 <div class="paragraph">
-<p>JelphaBot has a reminder feature that reminds users whenever they have tasks that are about to overdue.
+<p>JelphaBot has a reminder feature that reminds users whenever they have tasks that will be overdue soon.
 This feature offers two main functions:</p>
 </div>
 <div class="ulist">
@@ -336,8 +336,9 @@ This feature offers two main functions:</p>
 <div class="sect3">
 <h4 id="classes-for-reminder-feature-in-model"><a class="link" href="#classes-for-reminder-feature-in-model">Classes for Reminder feature in Model</a></h4>
 <div class="paragraph">
-<p>The <code>Reminder</code> feature was implemented by a new set of classes to <code>Model</code>. A new <code>Reminder</code> class is stored in
-Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <code>Reminder</code> s. Each <code>Reminder</code> consists of 3 objects:<br>
+<p>The <code>Reminder</code> feature was implemented by a new set of classes to <code>Model</code>.
+A new <code>Reminder</code> class is stored in Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <code>Reminder</code> s.
+Each <code>Reminder</code> consists of 3 objects:<br>
 <strong> <code>Index</code></strong>: the <code>Task</code> 's index of which the user wants to be reminded for.<br>
 <strong> <code>ReminderDay</code></strong>: the number of days before the <code>Task</code> 's deadline that the user wants to be reminded for.<br>
 <strong> <code>ReminderHour</code></strong>: the number of hours before the <code>Tasks</code> 's deadline that the user wants to be reminded for.<br></p>
@@ -351,30 +352,31 @@ Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <
 </div>
 <div class="title">Figure 5. Reminder Class Diagram in the Model component</div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
 <p><strong>Function 1: Creates a reminder for a specified task</strong><br>
-To add a reminder to a certain task, the user enters the <code>reminder INDEX days/DAYS hours/HOURS</code> command.
+To add a reminder to a certain task, the user enters the <em>reminder INDEX days/DAYS hours/HOURS</em> command.
 (e.g, reminder 2 days/2 hours/1)<br></p>
 </div>
 <div class="paragraph">
-<p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according
-to the command word and several other attributes. Next, the input string is converted into <code>Index</code>,
+<p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according to the command word and several other attributes.
+Next, the input string is converted into <code>Index</code>,
 <code>ReminderDay</code>, <code>ReminderHour</code>, and a <code>Reminder</code> object with these properties are forwarded to <code>Model</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code> first check the validity of the attributes respectively. The valid <code>Reminder</code> is then added to
-the <code>UniqueReminderList</code> after checking that there are no other <code>Reminder</code> with the same <code>Index</code>.<br></p>
+<p>The <code>Model</code> first checks the validity of the attributes respectively.
+The valid <code>Reminder</code> is then added to the <code>UniqueReminderList</code> after checking that there are no other <code>Reminder</code> with the same <code>Index</code>.<br></p>
 </div>
 <div class="paragraph">
 <p>After the above actions are correctly performed, the <code>Logic</code> fires the <code>Storage</code> to save the <code>Reminder</code>.</p>
 </div>
 <div class="paragraph">
-<p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
-the reminder will be saved. By the next time the users starts JelphaBot, it will remind the user should the task&#8217;s due date fall
-within the period set by the user from the current date.<br></p>
+<p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>.
+Upon exiting JelphaBot, the reminder will be saved.
+By the next time the users starts JelphaBot, it will remind the user should the task&#8217;s due date fall within the period set by the user from the current date.<br></p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram for interactions between the <code>Logic</code>, <code>Model</code>, and <code>Storage</code> is shown below.</p>
@@ -383,7 +385,7 @@ within the period set by the user from the current date.<br></p>
 <div class="content">
 <img src="../images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
 </div>
-<div class="title">Figure 6. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+<div class="title">Figure 6. Sequence Diagram after running <em>reminder 2 days/2 hours/1</em></div>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -410,9 +412,9 @@ within the period set by the user from the current date.<br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the user attempts to add a reminder to tasks that have reminders, the command will fail to execute. The user also need not
-to set reminders to tasks that are complete. However, if tasks that has reminders are not completed, JelphaBot will
-still warn the user.
+If the user attempts to add a reminder to tasks that have reminders, the command will fail to execute.
+The user also will not need to set reminders to tasks that are complete.
+However, if tasks that has reminders are not completed, JelphaBot will still warn the user.
 </td>
 </tr>
 </table>
@@ -423,13 +425,14 @@ To delete a reminder associated to a certain task, the user enters the <code>del
 (e.g. delrem 2)</p>
 </div>
 <div class="paragraph">
-<p>The interaction between components is similar to adding a <code>Reminder</code>. A key difference that this command
-removes the <code>Reminder</code> that reminds the <code>Task</code> at <code>INDEX</code> from the <code>UniqueReminderList</code>. Moreover, <code>delrem</code> command
-requires that the <code>Reminder</code> with <code>INDEX</code> is in the list.</p>
+<p>The interaction between components is similar to adding a <code>Reminder</code>.
+A key difference that this command removes the <code>Reminder</code> that reminds the <code>Task</code> at <code>INDEX</code> from the <code>UniqueReminderList</code>.
+Moreover, <code>delrem</code> command requires that the <code>Reminder</code> with <code>INDEX</code> is in the list.</p>
 </div>
 <div class="paragraph">
 <p>Upon successful execution of the command, the reminder of the task at <code>INDEX</code> is removed.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -442,14 +445,13 @@ requires that the <code>Reminder</code> with <code>INDEX</code> is in the list.<
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: A <code>Reminder</code> is an object, with the same hierarchy to the <code>Task</code> class, with similar attributes.</p>
+<p>Rationale: A <code>Reminder</code> is an object, with the same hierarchy as the <code>Task</code> class, with similar attributes.</p>
 </li>
 <li>
 <p>Pros: Fully capture the idea of an object-oriented design and robust in handling future changes.</p>
 </li>
 <li>
-<p>Cons: An additional storage is required to store the <code>Reminder</code> objects, which causes overhead while reading from and writing to
-json files.</p>
+<p>Cons: An additional storage is required to store the <code>Reminder</code> objects, which causes overhead while reading from and writing to json files.</p>
 </li>
 </ul>
 </div>
@@ -459,15 +461,15 @@ json files.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: A <code>Reminder</code> can also be seen as one of <code>Task</code> 's properties, analogous with <code>Description</code> and
-other properties.</p>
+<p>Rationale: A <code>Reminder</code> can also be seen as one of <code>Task</code> 's properties, analogous to <code>Description</code> and other properties.</p>
 </li>
 <li>
-<p>Pros: Easy to implement. Concurrent fetching and storing from the json files while reading and writing <code>Task</code>.</p>
+<p>Pros: Easy to implement.
+Concurrent fetching and storing from the json files while reading and writing <code>Task</code>.</p>
 </li>
 <li>
-<p>Cons: A <code>Reminder</code> has to remind users the moment when Jelphabot is booted. At that instance, <code>Storage</code> has not
-started to read <code>Task</code> from the json files yet, therefore the <code>Reminder</code> could not be read beforehand.</p>
+<p>Cons: A <code>Reminder</code> has to remind users the moment when Jelphabot is booted.
+At that instance, <code>Storage</code> has not started to read <code>Task</code> from the json files yet, therefore the <code>Reminder</code> could not be read beforehand.</p>
 </li>
 </ul>
 </div>
@@ -476,8 +478,8 @@ started to read <code>Task</code> from the json files yet, therefore the <code>R
 </div>
 <div class="paragraph">
 <p><strong>Reason for chosen implementation:</strong><br>
-We decided to choose the current solution due to the dynamic nature of tasks and users' needs. For upcoming changes in the
-future, it is easier to implement by adding similar classes or attributes to the existing design.</p>
+We decided to choose the current solution due to the dynamic nature of tasks and users' needs.
+For upcoming changes in the future, it is easier to implement by adding similar classes or attributes to the existing design.</p>
 </div>
 </div>
 <div class="sect4">
@@ -489,7 +491,8 @@ future, it is easier to implement by adding similar classes or attributes to the
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: convenient and simple to understand. Users only need to refer to the <code>TaskListPanel</code> to look at the details of the <code>Task</code>.</p>
+<p>Pros: convenient and simple to understand.
+Users only need to refer to the <code>TaskListPanel</code> to look at the details of the <code>Task</code>.</p>
 </li>
 <li>
 <p>Cons: FXML styling will be squeezy.</p>
@@ -505,7 +508,8 @@ future, it is easier to implement by adding similar classes or attributes to the
 <p>Pros: Simple, as it only shows the details of the <code>Reminder</code>.</p>
 </li>
 <li>
-<p>Cons: Users need to constantly refer to the <code>TaskListPanel</code> for details. Both has <code>Index</code> respectively, which may cause confusion.</p>
+<p>Cons: Users need to constantly refer to the <code>TaskListPanel</code> for details.
+Both panels have an <code>Index</code> listed, which may cause confusion.</p>
 </li>
 </ul>
 </div>
@@ -515,11 +519,10 @@ future, it is easier to implement by adding similar classes or attributes to the
 <div class="paragraph">
 <p><strong>Reason for chosen implementation:</strong><br>
 We decided to choose the current solution after considering users' needs and convenience of fully using the <code>Reminder</code> s.
-Users do not need to switch back and forth between tabs to refer between <code>Task</code> s and <code>Reminder</code> s, which saves time that can
-be better spent by completing the <code>Task</code> s.</p>
+Users do not need to switch back and forth between tabs to refer between <code>Task</code> s and <code>Reminder</code> s, which saves time that can be better spent by completing the <code>Task</code> s.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:55:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:28:56 UTC</div></div></div></body></html>

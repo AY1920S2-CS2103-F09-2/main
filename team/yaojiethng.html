@@ -400,7 +400,7 @@ Each <code>GroupedTaskList</code> is a container for <code>ObservableList&lt;Tas
 </div>
 <div class="paragraph">
 <p>Users can modify the <code>GroupTaskList</code> being displayed in the main panel by executing a <code>ListCommand</code>.
-The operation for retrieving the corresponding <code>GroupedTaskLists</code> are exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
+The operation for retrieving the corresponding <code>GroupedTaskList</code> is exposed in the <code>Model</code> interface as <code>Model#getGroupedTaskList(Category category)</code>.<br>
 Currently, the supported groupings for JelphaBot are group by date (<code>GroupedTaskList.Category.DATE</code> and <code>GroupedByDateTaskList</code>) and group by module (<code>GroupedTaskList.Category.MODULE</code> and <code>GroupedByModuleTaskList</code>).</p>
 </div>
 <div class="paragraph">
@@ -412,6 +412,7 @@ Currently, the supported groupings for JelphaBot are group by date (<code>Groupe
 </div>
 <div class="title">Figure 5. Activity Diagram showing the tab switch for ListCommand</div>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the task category mechanism behaves at each step.</p>
 </div>
@@ -421,7 +422,7 @@ The <code>MainWindow</code> will be initialized with <code>GroupedTaskListPanel<
 The panel is populated with sublists defined in <code>GroupedByDateTaskList</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 2.</strong> The user executes <code>list model</code> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
+<p><strong>Step 2.</strong> The user executes <strong><em>list model</em></strong> to switch to category tasks by module code instead. <code>GroupedTaskListPanel</code> is repopulated with sublists defined in <code>GroupedByModuleTaskList</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -449,6 +450,7 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <div class="paragraph">
 <p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of <code>get()</code> in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Tasks are organized via a two-dimensional list.
 In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>.
@@ -464,13 +466,14 @@ A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>Gr
 <div class="paragraph">
 <p>The detailed interactions are described in the diagram shown above.
 As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes.
-Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>, which firther contains a list of <code>Task</code> entities.</p>
+Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>, which further contains a list of <code>Task</code> entities.</p>
 </div>
 <div class="paragraph">
 <p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list.
-The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists.
+The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceding sublists.
 The sum of both numbers gives the index for the current element, which is set using <code>setId()</code>. <code>TaskCard</code> elements are updated with <code>populateTaskElements()</code>.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p>Each <code>TaskCard</code> will also have a different visual presentation depending on the value of the <code>Priority</code> of the task.
 The method which adjusts the visual presentation of a <code>Task</code> is <code>applyPriorityMarkdown()</code>.</p>
@@ -484,6 +487,7 @@ The method which adjusts the visual presentation of a <code>Task</code> is <code
 </div>
 <div class="title">Figure 8. Markdown for Tasks of different priority. (Top to bottom: Normal, High, Low.)</div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -530,7 +534,7 @@ Scalable when more groupings are added.</p>
 <p><strong>Reason for chosen implementation:</strong><br>
 The current solution was chosen in order to accomodate more <code>Category</code> implementations in the future.
 With only two classes inheriting <code>GroupedTaskList</code>, it is entirely feasible to implement both.
-However, since only one <code>GroupedTaskList</code> will be used at any time, and to take account possible performance savings, only one <code>GroupedTaskList</code> implementation will exist at any one time.</p>
+However, since only one <code>GroupedTaskList</code> will be used at any time, and to take into account possible performance savings, only one <code>GroupedTaskList</code> implementation will exist at any one time.</p>
 </div>
 </div>
 <div class="sect4">
@@ -579,11 +583,12 @@ Scalable when more groupings are added.</p>
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>Reason for chosen implementation:</strong><br>
 The current solution was chosen with integration with other tabs in mind.
 This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
-This allows <code>add</code>, <code>edit</code>, <code>delete</code> and <code>done</code> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
+This allows <strong><em>add</em></strong>, <strong><em>edit</em></strong>, <em>delete and <strong>_done</em></strong> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -656,4 +661,4 @@ This means that a returned <code>UnmodifiableObservableSet</code> from <code>Uni
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:55:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:28:56 UTC</div></div></div></body></html>
