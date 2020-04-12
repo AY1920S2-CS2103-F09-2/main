@@ -357,6 +357,12 @@ and the presence of many listeners may affect the performance of the application
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Reason for chosen implementation:</strong>
+The current implementation is more straightforward and simpler to implement, as the <code>SummaryList</code> and <code>SummaryPanel</code> which are used to display the contents of the summary
+panel simply need to extract and display the contents of the <code>Summary</code> object that was given, instead of requiring underlying listeners to keep track of whatever is happening within
+the application.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -366,8 +372,8 @@ and the presence of many listeners may affect the performance of the application
 <ul>
 <li>
 <p><strong>Current solution</strong>: The Welcome header, tasks due today and tasks completed subsections have the same font and styling. The distinction between them
-is by the bigger font for the Welcome header, and the space separation between the subsections. Everything shown on the panel is shown as plain text, with no
-additional styling.</p>
+is by the bigger font for the Welcome header, and the space separation between the subsections. This is done by having each section in their own separate <code>Vbox</code>.
+Everything shown on the panel is shown as plain text, with no additional styling.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -393,10 +399,16 @@ are not enough tasks to fill in the space. This can be seen as a waste of space.
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Reason for chosen implementation:</strong>
+The current implementation is easier to implement and keeps the summary panel simple and easy to look at as it avoids the cluttering of the summary panel with too many different design elements.
+This makes it very user-friendly, and it also easily scalable in the future as each section is already partitioned accordingly, so future changes to the summary panel simply have to change the elements
+within each section.</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 07:18:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 07:36:54 UTC</div></div></div></body></html>
