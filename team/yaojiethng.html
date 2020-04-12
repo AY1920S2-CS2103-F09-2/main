@@ -527,7 +527,8 @@ Scalable when more groupings are added.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The current solution was chosen in order to accomodate more <code>Category</code> implementations in the future.
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution was chosen in order to accomodate more <code>Category</code> implementations in the future.
 With only two classes inheriting <code>GroupedTaskList</code>, it is entirely feasible to implement both.
 However, since only one <code>GroupedTaskList</code> will be used at any time, and to take account possible performance savings, only one <code>GroupedTaskList</code> implementation will exist at any one time.</p>
 </div>
@@ -579,7 +580,8 @@ Scalable when more groupings are added.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The current solution was chosen with integration with other tabs in mind.
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution was chosen with integration with other tabs in mind.
 This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
 This allows <code>add</code>, <code>edit</code>, <code>delete</code> and <code>done</code> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
@@ -643,7 +645,8 @@ Due to the time of writing this Developer guide, the release is nearing V1.4 and
 </ul>
 </div>
 <div class="paragraph">
-<p>The best solution would be to create a <code>UniqueModuleCodeSet</code> instanced in <code>UniqueTaskList</code>, which would have the best scalability and abstraction.
+<p><strong>Reason for chosen implementation:</strong><br>
+The best solution would be to create a <code>UniqueModuleCodeSet</code> instanced in <code>UniqueTaskList</code>, which would have the best scalability and abstraction.
 In addition, since such a set would be updated regularly, less mantainence is needed inside classes that require a list of unique <code>ModuleCode</code> entities.
 However, due to time constraints, such an implementation was not chosen.
 However, the current solution mimics the best solution as closely as possible by using <code>SetChangeListener</code> to update the <code>SubgroupTaskList</code> list.
@@ -653,4 +656,4 @@ This means that a returned <code>UnmodifiableObservableSet</code> from <code>Uni
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 02:33:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 04:21:21 UTC</div></div></div></body></html>
