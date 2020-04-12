@@ -61,7 +61,6 @@ public class LogicManager implements Logic {
 
         try {
             storage.saveJelphaBot(model.getJelphaBot());
-            //storage.saveJelphaBot(model.getJelphaBot(), true);
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -110,11 +109,9 @@ public class LogicManager implements Logic {
     }
 
     public ObservableList<Task> getFilteredByReminder() {
-        //logger.info("reached filtered by reminder");
         ViewTaskList taskList = model.getLastShownList();
         List<Reminder> reminderList = model.getReminderListFromJelphaBot();
         ReminderPredicate reminderPredicate = new ReminderPredicate(taskList, reminderList);
-        //logger.info("" + filteredList.size());
         return model.getFilteredTaskList().filtered(reminderPredicate);
     }
 
@@ -125,7 +122,6 @@ public class LogicManager implements Logic {
         return new FilteredList<>(filteredTasks, taskIncompletePredicate);
     }
 
-    //@@author eedenong
     public ObservableList<Task> getFilteredByIncompleteDueTodayTaskList() {
         ObservableList<Task> filteredTasks = model.getFilteredTaskList();
         TaskIsIncompletePredicate taskIncompletePredicate = new TaskIsIncompletePredicate();

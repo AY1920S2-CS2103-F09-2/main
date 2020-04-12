@@ -46,7 +46,7 @@ public class TasksCompleted {
             }
         }
 
-        String message = "There are no tasks to complete today!";
+        String message = "There are no tasks to complete this week!";
 
         if (size > 0) {
             double percentage = completed / size;
@@ -62,7 +62,7 @@ public class TasksCompleted {
             return String.format("%.0f out of %.0f done.\n%s", completed,
                 size, message);
         } else {
-            return String.format("No tasks due today!\n%s", message);
+            return String.format("No tasks due this week!\n%s", message);
         }
     }
 

@@ -49,7 +49,6 @@ public class ReminderCommand extends Command {
         requireNonNull(model);
         ViewTaskList lastShownList = model.getLastShownList();
         if (model.hasReminder(reminder)) {
-            //model.setReminder(reminder, reminder);
             throw new CommandException(MESSAGE_DUPLICATE_REMINDER);
         }
         if (index.getZeroBased() >= lastShownList.size()) {

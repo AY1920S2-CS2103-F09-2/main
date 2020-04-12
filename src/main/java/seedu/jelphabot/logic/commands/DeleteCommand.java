@@ -7,9 +7,12 @@ import seedu.jelphabot.commons.core.index.Index;
 import seedu.jelphabot.logic.commands.exceptions.CommandException;
 import seedu.jelphabot.model.Model;
 import seedu.jelphabot.model.productivity.Productivity;
+import seedu.jelphabot.model.reminder.Reminder;
 import seedu.jelphabot.model.summary.Summary;
 import seedu.jelphabot.model.task.Task;
 import seedu.jelphabot.model.task.tasklist.ViewTaskList;
+
+import java.util.List;
 
 /**
  * Deletes a task identified using it's displayed index from the task list.
@@ -38,13 +41,22 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
 
         ViewTaskList lastShownList = model.getLastShownList();
-
         if (targetIndex.getZeroBased() >= lastShownList.size() || targetIndex.getZeroBased() < 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
+        Reminder toDelete = null;
+        List<Reminder> reminderList = model.getFilteredReminderList();
+        for (Reminder reminder : reminderList) {
+            if (reminder.getIndex().equals(targetIndex)) {
+                toDelete = reminder;
+            }
+        }
+        if (toDelete != null) {
+            model.deleteReminder(toDelete);
+        }
+
         Task taskToDelete = lastShownList.get(targetIndex.getZeroBased());
-        CommandResult fromDeleteReminderCommand = new DeleteReminderCommand(targetIndex).execute(model);
         model.deleteTask(taskToDelete);
         model.setProductivity(new Productivity(model.getFilteredTaskList(), true, true, true));
         model.setSummary(new Summary(model.getFilteredTaskList()));
