@@ -78,7 +78,7 @@
 <li><a href="#design-considerations-4">4.5.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-1-rendering-sub-parts-of-productivity-panel">Aspect 1: Rendering sub-parts of productivity panel</a></li>
-<li><a href="#aspect-2-allowing-tasks-to-be-added-deleted-or-edited-while-timer-is-running">Aspect 2: Allowing tasks to be added, deleted or edited while timer is running</a></li>
+<li><a href="#aspect-2-restriction-of-functionality-while-timer-is-running">Aspect 2: Restriction of functionality while timer is running</a></li>
 <li><a href="#aspect-3-productivity-panel-visualisation">Aspect 3: Productivity panel visualisation</a></li>
 </ul>
 </li>
@@ -211,6 +211,7 @@ and explains the design considerations of these implementations.</p>
 <div class="sect2">
 <h3 id="notation-used-in-this-guide"><a class="link" href="#notation-used-in-this-guide">1.3. Notation used in this Guide</a></h3>
 <table class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Table 1. Common symbols used throughout this guide.</caption>
 <colgroup>
 <col style="width: 15%;">
 <col style="width: 85%;">
@@ -300,8 +301,8 @@ The data in JelphaBot is stored as .json files in the <code>data</code> subdirec
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.drawio</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/docs/diagrams/">diagrams</a> folder.
-To update a diagram, import the <code>.drawio</code> file to the webapp <a href="{https://draw.io}">here</a>.
+The <code>.drawio</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/tree/master/docs/diagrams/">diagrams</a> folder.
+To update a diagram, import the <code>.drawio</code> file to the <a href="https://draw.io">webapp</a>.
 </td>
 </tr>
 </table>
@@ -310,7 +311,7 @@ To update a diagram, import the <code>.drawio</code> file to the webapp <a href=
 <p>Given below is a quick overview of each component.</p>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.gitsrc/main/java/seedu/JelphaBot/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/src/main/java/seedu/jelphabot/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master//src/main/java/seedu/jelphabot/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -401,14 +402,14 @@ This includes input fields where commands are entered as well as translations of
 <div class="title">Figure 4. Class Diagram of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>CalendarDayCard</code>, <code>ResultDisplay</code>, <code>TaskListPanel</code>, <code>StatusBarFooter</code> etc.
 All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -437,7 +438,7 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -467,18 +468,6 @@ All these, including the <code>MainWindow</code>, inherit from the abstract <cod
 </div>
 <div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>DeleteCommandParser</code> and <code>Model</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
@@ -492,7 +481,7 @@ The lifeline for <code>DeleteCommandParser</code> and <code>Model</code> should 
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -526,7 +515,7 @@ The lifeline for <code>DeleteCommandParser</code> and <code>Model</code> should 
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main.git/src/main/java/seedu/JelphaBot/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/src/main/java/seedu/JelphaBot/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -593,15 +582,17 @@ each displaying a different set of panels that are relevant to the feature.</p>
 <div class="sect4">
 <h5 id="ChangingTabs"><a class="link" href="#ChangingTabs">Switching between Tabs in Main Window</a></h5>
 <div class="paragraph">
-<p>The tabs of the application are defined using a <span class="java">SwitchTab</span> enum and the current tab of the application is stored as a private attribute <span class="java">mode</span> in <span class="java">LogicManager</span>. Users can switch between tabs in JelphaBot using the lower case names of each tab as commands (e.g. <code>calendar</code>). When the tab of the application is changed, we need to update the:</p>
+<p>The tabs of the application are defined using a <code>SwitchTab</code> enum and the current tab of the application is stored as a private attribute <code>mode</code> in <code>LogicManager</code>.
+Users can switch between tabs in JelphaBot using the lower case names of each tab as commands (e.g. <code>calendar</code>).<br>
+When the tab of the application is changed, we need to update the:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><span class="java">MainWindow</span> component so that the <span class="java">SwitchTab</span> attribute in <span class="java">MainWindow</span> reflects the new current tab, since this is used to check if a command can be executed,</p>
+<p><code>MainWindow</code> component so that the <code>SwitchTab</code> attribute in <code>MainWindow</code> reflects the new current tab, since this is used to check if a command can be executed,</p>
 </li>
 <li>
-<p><span class="java">UI</span> component so that the panels display the information that is relevant to the tab.</p>
+<p><code>UI</code> component so that the panels display the information that is relevant to the tab.</p>
 </li>
 </ul>
 </div>
@@ -612,25 +603,34 @@ each displaying a different set of panels that are relevant to the feature.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-<code>task list</code> is not a valid command to switch to the Task List tab. Use <code>list</code> instead.
+<code>task list</code> is not a valid command to switch to the Task List tab.
+Use <code>list</code> instead.
+Similarly, <code>:l</code> is rhe corresponding shortcut.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For all these commands, updates are done by updating the <span class="java">SwitchTab</span> attribute added in the <span class="java">CommandResult</span> object.</p>
+<p>For all these commands, updates are done by updating the <code>SwitchTab</code> attribute added in the <code>CommandResult</code> object.</p>
 </div>
 <div class="paragraph">
-<p>To view an example, the figure <a href="#Summary-SwitchTab-Sequence-Diagram">here</a> shows the sequence diagram for when a user executes the <code>:s</code> or <code>summary</code> command.</p>
+<p>To view an example, the figure here shows the sequence diagram for when a user executes the <code>:s</code> or <code>summary</code> command.</p>
+</div>
+<div id="Summary-SwitchTab-Sequence-Diagram" class="imageblock">
+<div class="content">
+<img src="images/SummarySwitchTabSequenceDiagram.png" alt="SummarySwitchTabSequenceDiagram">
+</div>
+<div class="title">Figure 9. Sequence diagram of execution of the <code>summary</code> command</div>
 </div>
 <div class="paragraph">
-<p>Upon execution of the <code>:s</code> command, <span class="java">SummaryCommand#generateCommandResult()</span> will generate a <span class="java">CommandResult</span> whose <span class="java">SwitchTab</span> attribute is set to <span class="java">SUMMARY</span> and return it to the <span class="java">LogicManager</span>. Now, the updates can be done for the respective components:</p>
+<p>Upon execution of the <code>:s</code> command, <code>SummaryCommand#generateCommandResult()</code> will generate a `CommandResult<code><mark></code> whose `SwitchTab<code></mark></code> attribute is set to `SUMMARY<code><mark></code> and return it to the `LogicManager<code></mark></code>.
+Now, the updates can be done for the respective components:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><span class="java">UI</span> component: <span class="java">MainWindow</span> calls <span class="java">MainWindow#executeCommand()</span>, to retrieve the tab to be changed to and updates the current tab stored in its <span class="java">SwitchTab</span> attribute by calling <span class="java">CommandResult#isShow{XXX}()</span> where XXX is the tab to switch to.
-The display panel is updated by calling [.java]#MainWindow#handle{XXX} where XXX is the tab to switch to.</p>
+<p><code>UI</code> component: <code>MainWindow</code> calls <code>MainWindow#executeCommand()</code>, to retrieve the tab to be changed to and updates the current tab stored in its <code>SwitchTab</code> attribute by calling <code>CommandResult#isShowXXX()</code> where <code>XXX</code> is the tab to switch to.
+The display panel is updated by calling <code>MainWindow#handleXXX</code> where <code>XXX</code> is the tab to switch to.</p>
 </li>
 </ul>
 </div>
@@ -658,7 +658,7 @@ The display panel is updated by calling [.java]#MainWindow#handle{XXX} where XXX
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the user marks a task as completed, and immediately deletes the task from the tasklist, it will not appear in the summary screen.
+If the user marks a task as completed, and immediately deletes the task from the task list, it will not appear in the summary screen.
 </td>
 </tr>
 </table>
@@ -673,31 +673,29 @@ If the user marks a task as completed, and immediately deletes the task from the
 The task list is then filtered with the help of <code>TaskDueWithinDayAndIncompletePredicate</code> and <code>TaskCompletedWithinDayPredicate</code> to obtain two lists with the desired tasks.</p>
 </div>
 <div class="paragraph">
-<p>These lists  are stored as fields in the <code>Summary</code> class and are used to display the relevant information in the summary panel.</p>
+<p>These lists are stored as fields in the <code>Summary</code> class and are used to display the relevant information in the summary panel.</p>
+</div>
+<div class="paragraph">
+<p>The following class diagram shows the structure of the classes in the <code>summary</code> package, in relation with their <code>Ui</code> counterparts.</p>
 </div>
 <div id="SummaryPanelClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/SummaryPanelClassDiagram.png" alt="SummaryPanelClassDiagram">
 </div>
-<div class="title">Figure 9. Class diagram of structure and relations of <code>Summary</code>, <code>SummaryPanel</code> and their components.</div>
+<div class="title">Figure 10. Class diagram of structure and relations of <code>Summary</code>, <code>SummaryPanel</code> and their components.</div>
 </div>
 <div class="paragraph">
-<p>To view the respective tasks, the user enters the <code>summary</code> command.</p>
-</div>
-<div id="Summary-SwitchTab-Sequence-Diagram" class="imageblock">
-<div class="content">
-<img src="images/SummarySwitchTabSequenceDiagram.png" alt="SummarySwitchTabSequenceDiagram">
-</div>
-<div class="title">Figure 10. Sequence diagram of execution of the <code>summary</code> command</div>
+<p>To view the respective tasks, the user enters the <code>summary</code> command. Upon entry of the <code>summary</code> command, a <code>SummaryCommand</code> object will be created and <code>SummaryCommand#execute()</code>
+will be called.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram details the execution of the creation of the <code>Summary</code> object when SummaryCommand is executed.</p>
+<p>The following sequence diagram details the execution when <code>SummaryCommand#execute()</code> is called.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SummaryCommandSequenceDiagram.png" alt="SummaryCommandSequenceDiagram">
 </div>
-<div class="title">Figure 11. Sequence diagram of the creation of the <code>Summary</code> object when SummaryCommand is executed.</div>
+<div class="title">Figure 11. Sequence diagram of the creation of the <code>Summary</code> object when <code>SummaryCommand#execute()</code> is executed.</div>
 </div>
 </div>
 <div class="sect3">
@@ -867,7 +865,9 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of <code>get()</code> in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
 </div>
 <div class="paragraph">
-<p>Tasks are organized via a two-dimensional list. In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>. A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
+<p>Tasks are organized via a two-dimensional list.
+In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>.
+A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
 <code>SubgroupTaskListCell</code> and <code>GroupedTaskListCell</code> implement the <code>ListViewCell&lt;T&gt;</code> interface of the <code>ListView&lt;T&gt;</code> class provided by JavaFX.</p>
 </div>
 <div class="imageblock">
@@ -877,10 +877,27 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <div class="title">Figure 15. Class Diagram for UI classes displaying <code>GroupedTaskList</code></div>
 </div>
 <div class="paragraph">
-<p>The detailed interactions are described in the diagram shown above. As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes. Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>.</p>
+<p>The detailed interactions are described in the diagram shown above.
+As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes.
+Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>, which firther contains a list of <code>Task</code> entities.</p>
 </div>
 <div class="paragraph">
-<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list. The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists. The sum of both numbers gives the index for the current element.</p>
+<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list.
+The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists.
+The sum of both numbers gives the index for the current element, which is set using <code>setId()</code>. <code>TaskCard</code> elements are updated with <code>populateTaskElements()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>TaskCard</code> will also have a different visual presentation depending on the value of the <code>Priority</code> of the task.
+The method which adjusts the visual presentation of a <code>Task</code> is <code>applyPriorityMarkdown()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following images show how <code>Task</code> entities of different priorities are displayed:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PriorityMarkupForTaskCards.png" alt="PriorityMarkupForTaskCards">
+</div>
+<div class="title">Figure 16. Markdown for Tasks of different priority. (Top to bottom: Normal, High, Low.)</div>
 </div>
 </div>
 <div class="sect3">
@@ -901,7 +918,7 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 Scalable when more groupings are added.</p>
 </li>
 <li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
+<p>Cons: Consecutive <code>ListCommand</code> operations which swap between different categories are expensive as the list is reinitalized each time.</p>
 </li>
 <li>
 <p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
@@ -924,6 +941,11 @@ Scalable when more groupings are added.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The current solution was chosen in order to accomodate more <code>Category</code> implementations in the future.
+With only two classes inheriting <code>GroupedTaskList</code>, it is entirely feasible to implement both.
+However, since only one <code>GroupedTaskList</code> will be used at any time, and to take account possible performance savings, only one <code>GroupedTaskList</code> implementation will exist at any one time.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks"><a class="link" href="#aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks">Aspect 2: <code>get()</code> Task from <code>ViewTaskList</code> and iterate between Tasks.</a></h5>
@@ -941,7 +963,7 @@ Scalable when more groupings are added.</p>
 Scalable when more groupings are added.</p>
 </li>
 <li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
+<p>Cons: Consecutive <code>ListCommand</code> operations are expensive as the list is reinitalized each time.</p>
 </li>
 <li>
 <p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
@@ -970,6 +992,11 @@ Scalable when more groupings are added.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The current solution was chosen with integration with other tabs in mind.
+This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
+This allows <code>add</code>, <code>edit</code>, <code>delete</code> and <code>done</code> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1016,7 +1043,10 @@ This second listener directly removes unused categories from <code>GroupedByModu
 Logic is further abstracted to a higher level and the new class is instanced together with the list that affects it.</p>
 </li>
 <li>
-<p>Cons: Implementation is challenging and prone to bugs.
+<p>Pros: The returned <code>ObservableSet&lt;ModuleCode&gt;</code> from <code>UniqueModuleCodeSet</code> can be made unmodifiable which would prevent unauthorized changes to the <code>ObservableSet</code> from other classes.</p>
+</li>
+<li>
+<p>Cons: Implementation is challenging and prone to bugs, requiring significant testing.
 Due to the time of writing this Developer guide, the release is nearing V1.4 and time is spent fixing bugs for release instead.</p>
 </li>
 <li>
@@ -1026,6 +1056,13 @@ Due to the time of writing this Developer guide, the release is nearing V1.4 and
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The best solution would be to create a <code>UniqueModuleCodeSet</code> instanced in <code>UniqueTaskList</code>, which would have the best scalability and abstraction.
+In addition, since such a set would be updated regularly, less mantainence is needed inside classes that require a list of unique <code>ModuleCode</code> entities.
+However, due to time constraints, such an implementation was not chosen.
+However, the current solution mimics the best solution as closely as possible by using <code>SetChangeListener</code> to update the <code>SubgroupTaskList</code> list.
+This means that a returned <code>UnmodifiableObservableSet</code> from <code>UniqueModuleCodeSet</code> can be substituted easily whenever such a refactoring is done.</p>
 </div>
 </div>
 </div>
@@ -1062,7 +1099,7 @@ which displays the calendar view in a month, and a <code>CalendarTaskListPanel</
 <div class="content">
 <img src="images/CalendarUiClassDiagram.png" alt="CalendarUiClassDiagram">
 </div>
-<div class="title">Figure 16. Class Diagram for Calendar classes</div>
+<div class="title">Figure 17. Class Diagram for Calendar classes</div>
 </div>
 <div class="paragraph">
 <p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar,
@@ -1077,6 +1114,7 @@ Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskLis
 <div class="content">
 <img src="images/CalendarDayCards.png" alt="CalendarDayCards">
 </div>
+<div class="title">Figure 18. Expected display of dates on calendar</div>
 </div>
 <div class="paragraph">
 <p>After every execution of command, MainWindow#updateTasksInCalendarDayCards() will be run such that any commands that updates
@@ -1100,6 +1138,26 @@ and its corresponding tasks due listed (e.g. calendar Apr-2020). Refer <a href="
 </ol>
 </div>
 <div class="paragraph">
+<p>Upon execution of the <code>calendar MONTHYEAR</code> or the <code>calendar today</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
+filter the task list to display the tasks on the <code>CalendarTaskListPanel</code> according to the first day of the <code>MONTHYEAR</code> or the tasks due <code>today</code> respectively.
+The filtering of the tasks according to date is done using the <code>TaskDueWithinDayPredicate</code>. A distinct <code>CommandResult</code> would then be generated according to
+the input command and is returned to the <code>LogicManager</code>. Finally, the  <code>CommandResult</code> is passed to the <code>MainWindow</code> in UI. Now, the updates can be done for the respective components:</p>
+</div>
+<div class="paragraph">
+<p>UI Component: Using the CommandResult, MainWindow calls MainWindow#updateCalendarMainPanel(), which is then passed to call CalendarMainPanel#updateCalendarPanel().
+For the <code>calendar MONTHYEAR</code> command, this updates the <code>CalendarPanel</code> display with the respective <code>MONTHYEAR</code> view, and highlights the first day of the month.
+For the <code>calendar today</code> command, this updates the <code>CalendarPanel</code> display to the current month and year, with today&#8217;s date highlighted.</p>
+</div>
+<div class="paragraph">
+<p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
+</div>
+<div id="Calendar-MonthYear-SequenceDiagram" class="imageblock">
+<div class="content">
+<img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
+</div>
+<div class="title">Figure 19. Sequence diagram after running <code>calendar Apr-2020</code></div>
+</div>
+<div class="paragraph">
 <p><strong>Function 2: Display a list of tasks due for a selected date in the month</strong></p>
 </div>
 <div class="paragraph">
@@ -1121,45 +1179,18 @@ corresponding tasks due on the <code>CalendarTaskListPanel</code>.
 </table>
 </div>
 <div class="paragraph">
-<p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
-</div>
-<div id="Calendar-MonthYear-SequenceDiagram" class="imageblock">
-<div class="content">
-<img src="images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
-</div>
-<div class="title">Figure 17. Sequence diagram after running <code>calendar Apr-2020</code></div>
-</div>
-<div class="paragraph">
-<p>Upon execution of the <code>calendar MONTHYEAR</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
-filter the task list displaying the tasks due on the first day of the <code>MONTHYEAR</code> in the <code>CalendarTaskListPanel</code> and generate a CommandResult with the respective <code>MONTHYEAR</code>
-and return it to the <code>LogicManager</code>. The CommandResult is passed to the MainWindow in UI. Now, the updates can be done for the respective components:</p>
-</div>
-<div class="paragraph">
-<p>UI Component: Using the CommandResult, MainWindow calls MainWindow#updateCalendarMainPanel(), which is then passed to call CalendarMainPanel#updateCalendarPanel().
-This updates the <code>CalendarPanel</code> display with the respective <code>MONTHYEAR</code> view, and highlights the first day of the month.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The implementation of the other two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
+<p>The implementation of the previous two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
 The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in <code>CalendarPanel</code> is not
-altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.
-</td>
-</tr>
-</table>
+altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows the sequence flow for variants of the <code>calendar XXX</code> command (XXX is an optional argument) which modifies the <code>CalendarMainPanel</code>:</p>
+<p>The following diagram shows the sequence flow for variants of these three calendar commands which modifies the <code>CalendarMainPanel</code>:</p>
 </div>
 <div id="Calendar-ActivityDiagram" class="imageblock">
 <div class="content">
 <img src="images/CalendarCommandActivityDiagram.png" alt="CalendarCommandActivityDiagram">
 </div>
-<div class="title">Figure 18. Activity Diagram showing the updating of <code>CalendarMainPanel</code></div>
+<div class="title">Figure 20. Activity Diagram showing the updating of <code>CalendarMainPanel</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1203,6 +1234,12 @@ The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</c
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution is more user-friendly as it reduces the number of varying commands that users have to remember in order to
+access the respective information. Additionally, upcoming changes and future implementations can be easily integrated into the
+existing code base as well.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator"><a class="link" href="#aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator">Aspect 2: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of the Dot Indicator)</a></h5>
@@ -1242,6 +1279,12 @@ in the calendar panel would be re-filtered after the execution of each command.<
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution is easier to implement since we are filtering the tasks we want to see directly from the main task list.
+This reduces the amount of methods to implement over various class and components as constant updates of the tasks
+in each day card of the calendar is done. The ease of implementation is crucial given the tight deadlines we have to meet for the project.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1252,8 +1295,15 @@ in the calendar panel would be re-filtered after the execution of each command.<
 </div>
 <div class="paragraph">
 <p>The view of this panel is facilitated by the productivity package that extracts the relevant data and displays them in as cohesive view.
-The productivity package supports the creation of TimeSpentToday, RunningTimers as well as TasksCompleted instances.
-Each of these classes iterate through the tasks contained within the task list.</p>
+The productivity package supports the creation of <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code> instances.
+Each of these classes iterate through the tasks contained within the task list.<br>
+Below is a class diagram of the related productivity classes:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ProductivityClassDiagram.png" alt="ProductivityClassDiagram">
+</div>
+<div class="title">Figure 21. Class diagram showing the structure and relations of <code>Productivity</code>, <code>ProductivityPanel</code> and their components.</div>
 </div>
 <div class="paragraph">
 <p>This feature offers two main functions and one panel for visualisation:</p>
@@ -1274,40 +1324,27 @@ Each of these classes iterate through the tasks contained within the task list.<
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">4.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p><strong>Function 1: Starts timer for a specified task</strong><br>
-In order to start timing a task, the user enters <code>start INDEX</code> command
-(e.g. start 1)</p>
+<p>Text rendered onto the productivity panel is gotten from the <code>Productivity</code> class.<br>
+A <code>Productivity</code> object is a container for the objects responsible for the sub-parts of the panel, namely <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code>.
+Each of these have their respective String representations which will be used in rendering the panel.</p>
 </div>
 <div class="paragraph">
-<p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timer(s) header.</p>
+<p><code>TimeSpentToday</code> implements the following operations:</p>
 </div>
-<div class="paragraph">
-<p>The following diagram shows the sequence flow of <code>start</code> which modifies the current Productivity List:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>An iterator method <code>getTimeSpent()</code> which iterates through a list of <code>ObservableList&lt;Task&gt;</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This iterator will extract the duration field of each task.</p>
+</li>
+</ul>
 </div>
-<div id="activity-settingProductivitylist" class="imageblock">
-<div class="content">
-<img src="images/StartActivityDiagram.png" alt="StartActivityDiagram">
-</div>
-<div class="title">Figure 19. Activity Diagram showing the setting of Productivity in the Productivity List</div>
-</div>
-<div class="paragraph">
-<p>Update productivity panel:</p>
-</div>
-<div id="activity-updatingProductivityPanel" class="imageblock">
-<div class="content">
-<img src="images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
-</div>
-<div class="title">Figure 20. Activity Diagram showing the updating of the productivity panel</div>
-</div>
-<div class="paragraph">
-<p><strong>Function 2: Stops timer for a specified task</strong><br>
-In order to stop timing a task, the user enters <code>stop INDEX</code> command
-(e.g. stop 1)</p>
-</div>
-<div class="paragraph">
-<p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timer(s) header.
-Under the Time Spent header, the total time spent will be increased depending on the date that the task is due.</p>
-</div>
+</li>
+<li>
+<p>A <code>toString()</code> method which returns the sum of duration (i.e. time spent) of tasks under 3 different categories: "due today", "due in next 6 days" and "due after 6 days".</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1315,8 +1352,121 @@ Under the Time Spent header, the total time spent will be increased depending on
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the user attempts to start timer for a task marked as completed or stop a task that does not have a running timer,
-the command fails its execution so that it does not execute that start or stop operation to start or stop the timer for that task.
+Each time <code>TimeSpentToday</code> is instantiated, <code>getTimeSpent()</code> is called thrice; once each for the 3 categories.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>RunningTimers</code> implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An iterator method <code>getTasksWithTimers()</code> which iterates through a list of <code>ObservableList&lt;Task&gt;</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This iterator will extract the description and deadline of tasks with timers that have been started.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>toString()</code> method which returns the tasks with running timers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>TasksCompleted</code> implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An iterator method <code>getCompletionStatus()</code> which iterates through a list of <code>ObservableList&lt;Task&gt;</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This iterator will extract the number of tasks completed under the "due today" category.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>An iterator method <code>getOverdueStatus()</code> which iterates through a list of <code>ObservableList&lt;Task&gt;</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This iterator will extract the number of tasks that are incomplete and past their due date.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A getter method which returns the percentage of tasks completed that are under the "due today" category.</p>
+</li>
+<li>
+<p>A <code>toStringArray()</code> method which returns the task completion status, JelphaBot&#8217;s response to the user&#8217;s productivity, as well as number of overdue tasks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Information from all three objects are subsequently rendered onto the panel through <code>ProductivityCard</code> and <code>ProductivityPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Assuming that the task list is not empty, the following describe the flow of <code>start 1</code> and <code>stop 1</code> which modify the currently shown productivity panel:</p>
+</div>
+<div class="paragraph">
+<p><strong>Function 1: Starts timer for a specified task</strong><br>
+In order to start timing a task, the user enters <code>start INDEX</code> command (e.g. <code>start 1</code>).</p>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the productivity tab displays the task being timed under the Running Timer(s) header.
+The following diagram shows the flow of <code>start 1</code> which modifies the current view of the productivity panel:</p>
+</div>
+<div id="activity-settingProductivitylist" class="imageblock">
+<div class="content">
+<img src="images/StartActivityDiagram.png" alt="StartActivityDiagram">
+</div>
+<div class="title">Figure 22. Activity Diagram showing the setting of <code>Productivity</code> in the <code>ProductivityList</code></div>
+</div>
+<div class="paragraph">
+<p>To update the productivity panel to reflect the changes, a new <code>Productivity</code> object will first be created, replacing the existing <code>Productivity</code> object in the <code>ProductivityList</code>.
+Each time a new <code>Productivity</code> object is created, its corresponding booleans will dictate whether the sub-parts (i.e. <code>TimeSpentToday</code>, <code>RunningTimers</code> and <code>TasksCompleted</code>) are to be replaced with new objects.
+As the command executed is <code>start</code>, a new <code>RunningTimers</code> object is created. As detailed above, the iterator method in <code>RunningTimers</code> will be called and a new String representation to be displayed onto the productivity panel will be created.
+This String is subsequently rendered onto the panel under the Running Timer(s) header.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the flow which updates the Running Timer(s) section in the productivity panel:</p>
+</div>
+<div id="activity-updatingProductivityPanel" class="imageblock">
+<div class="content">
+<img src="images/TimerPanelActivityDiagram.png" alt="TimerPanelActivityDiagram">
+</div>
+<div class="title">Figure 23. Activity Diagram showing the updating of Running Timer(s) in the productivity panel</div>
+</div>
+<div class="paragraph">
+<p><strong>Function 2: Stops timer for a specified task</strong><br>
+In order to stop timing a task, the user enters <code>stop INDEX</code> command
+(e.g. <code>stop 1</code>)</p>
+</div>
+<div class="paragraph">
+<p>Upon successful execution of the command, the productivity tab removes the task being timed under the Running Timer(s) header.
+Removing a task from the Running Timer(s) header is similar to adding it, as illustrated by the Activity Diagram <a href="#activity-updatingProductivityPanel">above</a>.
+Under the Time Spent header, the total time spent will be increased depending on the date that the task is due.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Attempting to start timer for a task marked as completed or <code>stop</code> a task that does not have a running timer,
+the command fails its execution so that it does not execute that <code>start</code> or <code>stop</code> operation to <code>start</code> or <code>stop</code> the timer for that task.
 </td>
 </tr>
 </table>
@@ -1325,7 +1475,7 @@ the command fails its execution so that it does not execute that start or stop o
 <div class="content">
 <img src="images/StopSequenceDiagram.png" alt="StopSequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence Diagram after running <code>stop 1</code></div>
+<div class="title">Figure 24. Sequence Diagram after running <code>stop 1</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1339,9 +1489,6 @@ the command fails its execution so that it does not execute that start or stop o
 be updated. All 3 parts are rendered on to the same card.</p>
 <div class="ulist">
 <ul>
-<li>
-<p>Rationale: No need to re-render all 3 parts when changes are made to only one part.</p>
-</li>
 <li>
 <p>Pros: Easy to implement and reduces waste of computational power.</p>
 </li>
@@ -1380,23 +1527,24 @@ an error in displaying.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+Minimal computational power is wasted as only the parts that requires re-rendering are recomputed. Moreover, it is easy to implement and easily extendable to display</p>
+</div>
 </div>
 <div class="sect4">
-<h5 id="aspect-2-allowing-tasks-to-be-added-deleted-or-edited-while-timer-is-running"><a class="link" href="#aspect-2-allowing-tasks-to-be-added-deleted-or-edited-while-timer-is-running">Aspect 2: Allowing tasks to be added, deleted or edited while timer is running</a></h5>
+<h5 id="aspect-2-restriction-of-functionality-while-timer-is-running"><a class="link" href="#aspect-2-restriction-of-functionality-while-timer-is-running">Aspect 2: Restriction of functionality while timer is running</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current solution</strong>: Adding and deleting of tasks are allowed. However, tasks cannot be edited.</p>
+<p><strong>Current solution</strong>: Tasks with running timers cannot be edited or marked as done.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Rationale: Adding and deleting tasks does not affect the task being timed.</p>
+<p>Pros: Other functionality are still available for use. Thus, overall user experience is not affected.</p>
 </li>
 <li>
-<p>Pros: Other functionality are still available for use. Thus, user&#8217;s experience is not affected.</p>
-</li>
-<li>
-<p>Cons: User is unable to make changes to the task being timed.</p>
+<p>Cons: User is unable to make changes to the task being timed nor mark it as complete.</p>
 </li>
 </ul>
 </div>
@@ -1409,12 +1557,29 @@ an error in displaying.</p>
 <p>Pros: User is able to use all features without restriction.</p>
 </li>
 <li>
-<p>Cons: Difficult to implement as the Task model requires a new Task to replace the old Task when edit command is executed.</p>
+<p>Cons: Difficult to implement as the Task model requires a new Task to replace the old Task when edit command is executed. More storage space is also needed to store the additional start time field for each task.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Allow users to mark tasks as done while timer is running.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Similar to the above, user is able to use all features without restriction.</p>
+</li>
+<li>
+<p>Cons: User may have forgotten about running timer and wish to collect such information. However, there is currently no function that supports undoing commands or unmarking a completed task.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+Editing and marking a task require the creation of a new task which overwrites the existing task. Use of space is also minimised and less computational power is used as no new Task objects have to be created.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1425,9 +1590,6 @@ an error in displaying.</p>
 <p><strong>Current solution</strong>: Separating sub-parts by paragraphs and including progress bar for tasks completed.</p>
 <div class="ulist">
 <ul>
-<li>
-<p>Rationale: Paragraphing increases readability and the progress bar provides visual aid.</p>
-</li>
 <li>
 <p>Pros: Easy to see at a glance which parts are which.</p>
 </li>
@@ -1465,6 +1627,10 @@ an error in displaying.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+We feel that paragraphing increases readability and the progress bar provides visual aid. Addtionally, including more images or pie charts may confuse or distract users from their tasks which defeats the purpose of JelphaBot.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1487,17 +1653,20 @@ This feature offers two main functions:</p>
 <div class="sect3">
 <h4 id="classes-for-reminder-feature-in-model"><a class="link" href="#classes-for-reminder-feature-in-model">4.6.1. Classes for Reminder feature in Model</a></h4>
 <div class="paragraph">
-<p>The <code>Reminder</code> feature was implemented by a new set of classes to model. A new <code>Reminder</code> class is stored in
+<p>The <code>Reminder</code> feature was implemented by a new set of classes to <code>Model</code>. A new <code>Reminder</code> class is stored in
 Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <code>Reminder</code> s. Each <code>Reminder</code> consists of 3 objects:<br>
 <strong> <code>Index</code></strong>: the <code>Task</code> 's index of which the user wants to be reminded for.<br>
 <strong> <code>ReminderDay</code></strong>: the number of days before the <code>Task</code> 's deadline that the user wants to be reminded for.<br>
-<strong> <code>ReminderHour</code></strong>: the number of hours before the <code>Tasks</code> 's deadline that the user wants to be reminded for.</p>
+<strong> <code>ReminderHour</code></strong>: the number of hours before the <code>Tasks</code> 's deadline that the user wants to be reminded for.<br></p>
+</div>
+<div class="paragraph">
+<p>The following class diagram summarizes shows the relationship between the classes.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Reminderclass.png" alt="Reminderclass">
 </div>
-<div class="title">Figure 22. Reminder Class Diagram in the Model component</div>
+<div class="title">Figure 25. Reminder Class Diagram in the Model component</div>
 </div>
 </div>
 <div class="sect3">
@@ -1506,33 +1675,6 @@ Jelphabot&#8217;s <code>UniqueReminderList</code>, which consists of a list of <
 <p><strong>Function 1: Creates a reminder for a specified task</strong><br>
 To add a reminder to a certain task, the user enters the <code>reminder INDEX days/DAYS hours/HOURS</code> command.
 (e.g, reminder 2 days/2 hours/1)<br></p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram for interactions between the <code>Logic</code>, <code>Model</code>, and <code>Storage</code> is shown below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
-</div>
-<div class="title">Figure 23. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/getCommandResultReferenceDiagram.png" alt="getCommandResultReferenceDiagram">
-</div>
-<div class="title">Figure 24. The reference frame of getting the <code>CommandResult</code> in the <code>Logic</code> component.</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/addReminderReferenceDiagram.png" alt="addReminderReferenceDiagram">
-</div>
-<div class="title">Figure 25. The reference frame of adding the <code>Reminder</code> in the <code>Model</code> component.</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/saveJelphaBot.png" alt="saveJelphaBot">
-</div>
-<div class="title">Figure 26. The reference frame of saving a <code>Reminder</code> by the <code>Storage</code> component.</div>
 </div>
 <div class="paragraph">
 <p>The <code>Logic</code> <code>execute()</code> method creates a <code>ReminderCommand</code> from the input string by parsing the input according
@@ -1549,7 +1691,34 @@ the <code>UniqueReminderList</code> after checking that there are no other <code
 <div class="paragraph">
 <p>Upon successful execution of the command, the user adds a reminder associated to the task at <code>INDEX</code>. Upon exiting JelphaBot,
 the reminder will be saved. By the next time the users starts JelphaBot, it will remind the user should the task&#8217;s due date fall
-within the period set by the user from the current date.</p>
+within the period set by the user from the current date.<br></p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the <code>Logic</code>, <code>Model</code>, and <code>Storage</code> is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
+</div>
+<div class="title">Figure 26. Sequence Diagram after running <code>reminder 2 days/2 hours/1</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/getCommandResultReferenceDiagram.png" alt="getCommandResultReferenceDiagram">
+</div>
+<div class="title">Figure 27. The reference frame of getting the <code>CommandResult</code> in the <code>Logic</code> component.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addReminderReferenceDiagram.png" alt="addReminderReferenceDiagram">
+</div>
+<div class="title">Figure 28. The reference frame of adding the <code>Reminder</code> in the <code>Model</code> component.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/saveJelphaBot.png" alt="saveJelphaBot">
+</div>
+<div class="title">Figure 29. The reference frame of saving a <code>Reminder</code> by the <code>Storage</code> component.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1622,6 +1791,10 @@ started to read <code>Task</code> from the json files yet, therefore the <code>R
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>We decided to choose the current solution due to the dynamic nature of tasks and users' needs. For upcoming changes in the
+future, it is easier to implement by adding similar classes or attributes to the existing design.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-2-rendering-code-reminder-code-on-code-reminderlistpanel-code"><a class="link" href="#aspect-2-rendering-code-reminder-code-on-code-reminderlistpanel-code">Aspect 2: Rendering <code>Reminder</code> on <code>ReminderListPanel</code></a></h5>
@@ -1648,13 +1821,17 @@ started to read <code>Task</code> from the json files yet, therefore the <code>R
 <p>Pros: Simple, as it only shows the details of the <code>Reminder</code>.</p>
 </li>
 <li>
-<p>Cons: Users need to constantly refer to the <code>TaskListPanel</code> for details.
-both has <code>Index</code> respectively.</p>
+<p>Cons: Users need to constantly refer to the <code>TaskListPanel</code> for details. Both has <code>Index</code> respectively, which may cause confusion.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We decided to choose the current solution after considering users' needs and convenience of fully using the <code>Reminder</code> s.
+Users do not need to switch back and forth between tabs to refer between <code>Task</code> s and <code>Reminder</code> s, which saves time that can
+be better spent by completing the <code>Task</code> s.</p>
 </div>
 </div>
 </div>
@@ -1694,6 +1871,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="images/UndoRedoState0.png" alt="UndoRedoState0">
 </div>
+<div class="title">Figure 30. Initial state of JelphaBot</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th task in JelphaBot. The <code>delete</code> command calls <code>Model#commitJelphaBot()</code>, causing the modified state of JelphaBot after the <code>delete 5</code> command executes to be saved in the <code>jelphaBotStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted JelphaBot state.</p>
@@ -1702,6 +1880,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="images/UndoRedoState1.png" alt="UndoRedoState1">
 </div>
+<div class="title">Figure 31. State of JelphaBot after "delete 5"</div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add d/Assignment &#8230;&#8203;</code> to add a new task. The <code>add</code> command also calls <code>Model#commitJelphaBot()</code>, causing another modified JelphaBot state to be saved into the <code>jelphaBotStateList</code>.</p>
@@ -1710,6 +1889,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
+<div class="title">Figure 32. State of JelphaBot after "add d/Assignment"</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1730,6 +1910,7 @@ If a command fails its execution, it will not call <code>Model#commitJelphaBot()
 <div class="content">
 <img src="images/UndoRedoState3.png" alt="UndoRedoState3">
 </div>
+<div class="title">Figure 33. State of JelphaBot after "undo"</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1750,19 +1931,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial J
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 27. The sequence diagram of the undo feature.</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
+<div class="title">Figure 34. The sequence diagram of the undo feature.</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoJelphaBot()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores JelphaBot to that state.</p>
@@ -1786,6 +1955,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
+<div class="title">Figure 35. State of JelphaBot after "list"</div>
 </div>
 <div class="paragraph">
 <p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitJelphaBot()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>jelphaBotStateList</code>, all JelphaBot states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/Assignment &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
@@ -1794,6 +1964,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
+<div class="title">Figure 36. State of JelphaBot after "clear"</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
@@ -1802,6 +1973,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
 </div>
+<div class="title">Figure 37. Activity diagram showing details of command execution</div>
 </div>
 </div>
 <div class="sect3">
@@ -2153,7 +2325,7 @@ look through entire lists of tasks more quickly than in the terminal.</p>
 <div class="content">
 <img src="images/UseCaseDiagram.png" alt="UseCaseDiagram">
 </div>
-<div class="title">Figure 28. Use case diagram for the below use cases</div>
+<div class="title">Figure 38. Use case diagram for the below use cases</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-uc1-add-task"><a class="link" href="#use-case-uc1-add-task">C.1. Use case: UC1 - Add Task</a></h3>
@@ -3456,4 +3628,4 @@ Sample data should be configured such that there are dates due within the curren
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 19:01:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 02:33:00 UTC</div></div></div></body></html>

@@ -58,28 +58,38 @@ This feature improves the task management process significantly because it allow
 <div class="ulist">
 <ul>
 <li>
-<p>This enhancement affected existing commands as the categorised task list listed tasks with a different index from the list stored in the model.</p>
+<p>This feature involves full-stack development in <code>Logic</code>, <code>Model</code>, <code>Storage</code> and <code>Ui</code> components.</p>
 </li>
 <li>
-<p>It required model objects to be queried from the Ui display instead, a implementation which had many possible design alternatives.</p>
+<p>As all other features use <code>Task</code> as the underlying Model entity, there was high coupling with features implemented by other groupmates.</p>
 </li>
 <li>
-<p>The implementation too was challenging as it required changes to be made to existing commands while still reducing conflict with other teammates' work.</p>
+<p>This enhancement affected existing commands as <code>GroupedTaskList</code> listed showed tasks in a different order from the underlying list stored in the model, and this order would vary depending on the <code>Category</code> displayed.</p>
 </li>
 <li>
-<p>All non-Ui classes added were backed up with tests.</p>
+<p>It required model objects to be queried from the displayed index in <code>Ui</code> instead of the the default order in <code>Model</code> (which was the order in which objects were implemented).</p>
+</li>
+<li>
+<p>The implementation was challenging as it required changes to be made to existing commands while still reducing conflict with other teammates' work.
+This required many design alternatives to be considered.</p>
+</li>
+<li>
+<p>All non-User-Interface classes added were backed up with tests.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Relevant pull requests:
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/298">#298</a>,
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/228">#228</a>,
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/205">#205</a>,
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/204">#204</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/122">#122</a>,
 <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/161">#161</a>,
-<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/122">#122</a></p>
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/196">#196</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/204">#204</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/205">#205</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/212">#212</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/219">#219</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/228">#228</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/298">#298</a>,</p>
 </li>
 </ul>
 </div>
@@ -117,7 +127,11 @@ This feature improves the task management process significantly because it allow
 </li>
 <li>
 <p>Refactored <code>AddressBook 3</code> to <code>JelphaBot</code>
-(Pull requests: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/6">6</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/37">#37</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/41">#41</a>, <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/47">#47</a>)</p>
+(Pull requests: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/6">6</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/37">#37</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/24">#24</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/41">#41</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/47">#47</a>)</p>
 </li>
 </ul>
 </div>
@@ -155,7 +169,7 @@ This feature improves the task management process significantly because it allow
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated Github plugins (gh-pages, Travis) to the team repository.</p>
+<p>Integrated Github plugins (gh-pages, Travis, Netlify) to the team repository.</p>
 </li>
 </ul>
 </div>
@@ -436,7 +450,9 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <p>As the index passed as an argument to <code>lastShownList.get()</code> is a cumulative index, the implementation of <code>get()</code> in <code>ViewTaskList</code> has to iterate through each <code>SubgroupTaskList</code> stored within.</p>
 </div>
 <div class="paragraph">
-<p>Tasks are organized via a two-dimensional list. In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>. A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
+<p>Tasks are organized via a two-dimensional list.
+In this case, a <code>Task</code> is rendered into a <code>TaskCard</code>, and <code>TaskCard</code> elements are rendered within <code>SubGroupTaskListCell</code> elements which are listed in <code>SubgroupTaskListPanel</code>.
+A populated <code>SubgroupTaskListPanel</code> element is rendered as a <code>GroupedTaskListCell</code> which is listed in the top-level <code>GroupedTaskListCell</code>.<br>
 <code>SubgroupTaskListCell</code> and <code>GroupedTaskListCell</code> implement the <code>ListViewCell&lt;T&gt;</code> interface of the <code>ListView&lt;T&gt;</code> class provided by JavaFX.</p>
 </div>
 <div class="imageblock">
@@ -446,10 +462,27 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 <div class="title">Figure 7. Class Diagram for UI classes displaying <code>GroupedTaskList</code></div>
 </div>
 <div class="paragraph">
-<p>The detailed interactions are described in the diagram shown above. As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes. Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>.</p>
+<p>The detailed interactions are described in the diagram shown above.
+As can be seen, the distribution of <code>ListViewCell</code> elements follows the way tasks are distributed within the model classes.
+Each <code>SubgroupTaskListPanel</code> is displaying a singular <code>SubgroupTaskList</code>, which firther contains a list of <code>Task</code> entities.</p>
 </div>
 <div class="paragraph">
-<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list. The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists. The sum of both numbers gives the index for the current element.</p>
+<p>The indexes displayed in each <code>TaskCard</code> is dynamically computed from a <code>NumberBinding</code> which computes the index of that element in the list.
+The <code>NumberBinding</code> observes the place of the task within the current <code>SubgroupTaskList</code> as well as the number of elements in the preceeding sublists.
+The sum of both numbers gives the index for the current element, which is set using <code>setId()</code>. <code>TaskCard</code> elements are updated with <code>populateTaskElements()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>TaskCard</code> will also have a different visual presentation depending on the value of the <code>Priority</code> of the task.
+The method which adjusts the visual presentation of a <code>Task</code> is <code>applyPriorityMarkdown()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following images show how <code>Task</code> entities of different priorities are displayed:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PriorityMarkupForTaskCards.png" alt="PriorityMarkupForTaskCards">
+</div>
+<div class="title">Figure 8. Markdown for Tasks of different priority. (Top to bottom: Normal, High, Low.)</div>
 </div>
 </div>
 <div class="sect3">
@@ -470,7 +503,7 @@ The following diagram shows the process of retrieving a <code>Task</code> from <
 Scalable when more groupings are added.</p>
 </li>
 <li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
+<p>Cons: Consecutive <code>ListCommand</code> operations which swap between different categories are expensive as the list is reinitalized each time.</p>
 </li>
 <li>
 <p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
@@ -493,6 +526,11 @@ Scalable when more groupings are added.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The current solution was chosen in order to accomodate more <code>Category</code> implementations in the future.
+With only two classes inheriting <code>GroupedTaskList</code>, it is entirely feasible to implement both.
+However, since only one <code>GroupedTaskList</code> will be used at any time, and to take account possible performance savings, only one <code>GroupedTaskList</code> implementation will exist at any one time.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks"><a class="link" href="#aspect-2-code-get-code-task-from-code-viewtasklist-code-and-iterate-between-tasks">Aspect 2: <code>get()</code> Task from <code>ViewTaskList</code> and iterate between Tasks.</a></h5>
@@ -510,7 +548,7 @@ Scalable when more groupings are added.</p>
 Scalable when more groupings are added.</p>
 </li>
 <li>
-<p>Cons: Consecutive 'list' operations are expensive as the list is reinitalized each time.</p>
+<p>Cons: Consecutive <code>ListCommand</code> operations are expensive as the list is reinitalized each time.</p>
 </li>
 <li>
 <p>Cons: It is hard to keep track of the exact type of list in <code>lastShownList</code>, which may lead to unexpected behavior.</p>
@@ -539,6 +577,11 @@ Scalable when more groupings are added.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The current solution was chosen with integration with other tabs in mind.
+This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
+This allows <code>add</code>, <code>edit</code>, <code>delete</code> and <code>done</code> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -585,7 +628,10 @@ This second listener directly removes unused categories from <code>GroupedByModu
 Logic is further abstracted to a higher level and the new class is instanced together with the list that affects it.</p>
 </li>
 <li>
-<p>Cons: Implementation is challenging and prone to bugs.
+<p>Pros: The returned <code>ObservableSet&lt;ModuleCode&gt;</code> from <code>UniqueModuleCodeSet</code> can be made unmodifiable which would prevent unauthorized changes to the <code>ObservableSet</code> from other classes.</p>
+</li>
+<li>
+<p>Cons: Implementation is challenging and prone to bugs, requiring significant testing.
 Due to the time of writing this Developer guide, the release is nearing V1.4 and time is spent fixing bugs for release instead.</p>
 </li>
 <li>
@@ -596,8 +642,15 @@ Due to the time of writing this Developer guide, the release is nearing V1.4 and
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The best solution would be to create a <code>UniqueModuleCodeSet</code> instanced in <code>UniqueTaskList</code>, which would have the best scalability and abstraction.
+In addition, since such a set would be updated regularly, less mantainence is needed inside classes that require a list of unique <code>ModuleCode</code> entities.
+However, due to time constraints, such an implementation was not chosen.
+However, the current solution mimics the best solution as closely as possible by using <code>SetChangeListener</code> to update the <code>SubgroupTaskList</code> list.
+This means that a returned <code>UnmodifiableObservableSet</code> from <code>UniqueModuleCodeSet</code> can be substituted easily whenever such a refactoring is done.</p>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 19:01:28 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 02:33:00 UTC</div></div></div></body></html>

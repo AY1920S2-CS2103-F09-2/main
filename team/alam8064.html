@@ -1,0 +1,603 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Amanda Lam - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Amanda Lam - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-jelphabot"><a class="link" href="#project-jelphabot">PROJECT: JelphaBot</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JelphaBot is a desktop application integrated with various features for managing tasks efficiently, mainly focusing on
+NUS students as our target group. It is specially designed by my talented crew of teammates, together with myself.</p>
+</div>
+<div class="paragraph">
+<p>JelphaBot was developed for our software engineering module, CS2103T, where we were tasked to morph an address book
+application that manages contact details into something else. As part of the project constraints, user interactions are
+primarily Command-Line Interface (CLI), assisted with a GUI created using JavaFX.
+It is written in Java, and has about 12 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section contains a summary of my coding, documentation, and other helpful contributions to my team project.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Implemented the Calendar feature</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug_figures/CalendarTab.png" alt="CalendarTab" width="600">
+</div>
+<div class="title">Figure 1. UI of Calendar Tab Feature</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Literally a calendar integrated to display a monthly calendar of overarching tasks due,
+together with a task list panel on the left for detailed tasks to be shown.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow users to navigate to other months of their choice.</p>
+</li>
+<li>
+<p>Allow users to view specific tasks due to be listed on selected dates.</p>
+</li>
+<li>
+<p>Allow users to navigate directly to today&#8217;s date of the calendar view, as well as listing out the tasks due today.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The use of a calendar to display a visual view of these information is neat and easy to navigate, making the feature
+more user-friendly.</p>
+</li>
+<li>
+<p>Integrating a calendar allows users to be able to plan their schedules easily by being able to immediately
+visualise which days are busier with more tasks on hand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The overarching view of the tasks displayed on the calendar (shown by the dot indicators) is done by filtering the
+existing main task list.</p>
+</li>
+<li>
+<p>The implementation was challenging as it required constant updates to be accounted for after other commands
+edits the main task list is input.</p>
+</li>
+<li>
+<p>Moreover, to avoid user mistakes and increase the feature&#8217;s usability, the included commands implementation in
+carrying out various functions as listed above uses the same command keyword : <code>calendar</code>. This involved the heavy use
+and interaction between the <code>Ui</code>, <code>Logic</code>, and <code>Model</code> components.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Relevant pull requests:
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/314">#314</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/299">#299</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/297">#297</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/177">#177</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/174">#174</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/165">#165</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/138">#138</a>,
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/84">#84</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor enhancement</strong>: Added in the panel of tabs in the main Ui layout during initial stages.
+This was done for the subsequence integration of our individual features.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pull requests:
+<a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/78">#78</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=alam8064">View on RepoSense</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2.1</code> - <code>v1.3</code> (2 releases) on GitHub</p>
+</li>
+<li>
+<p>Updated <code>SampleDataUtil</code> to propagate an empty instance of the app with time-sensitive test data to streamline manual testing.
+(Pull requests: <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/pull/357">#357</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added diagrams and documentation for the Calendar feature in the Developer Guide.</p>
+</li>
+<li>
+<p>Updated diagram for the Ui section, the delete command diagram and the proposed undo feature from AB3 in the Developer Guide.</p>
+</li>
+<li>
+<p>Added documentation for Calendar feature in the User Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams:
+<a href="https://github.com/alam8064/ped/issues">Reported 11 bugs during PE Dry Run</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.
+The full User Guide can be found <a href="https://ay1920s2-cs2103t-f09-2.github.io/main/UserGuide.html">here</a>.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="calendar-amanda"><a class="link" href="#calendar-amanda">Calendar (Amanda)</a></h3>
+<div class="paragraph">
+<p>JelphaBot also comes with a built-in calendar view that allows you to view your overarching tasks due on a monthly basis.
+Dates that have tasks due would have a dot indicator shown on the calendar.
+You would also be able to navigate to specific dates to view your tasks due for that day of the month!</p>
+</div>
+<div class="sect3">
+<h4 id="view-calender-code-calendar-code"><a class="link" href="#view-calender-code-calendar-code">View calender : <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>calendar</code> command or its shortcuts <code>:C</code> or <code>:c</code> to manually switch to the calendar tab.
+The calendar panel will then show you your schedule for the current month with today&#8217;s date highlighted.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar</code><br>
+Shorcut: <code>:C</code> or <code>:c</code></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/ug_figures/CalendarTab.png" alt="CalendarTab" width="600">
+</div>
+<div class="title">Figure 2. Example of expected result after running <code>calendar</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Highlighting of Dates: Today&#8217;s date would be highlighted in dark blue, while other dates would be in light blue.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="change-month-and-year-view-of-calendar-code-calendar-code"><a class="link" href="#change-month-and-year-view-of-calendar-code-calendar-code">Change month and year view of Calendar : <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>You can navigate the calendar panel to another month and year by specifying it. The calendar panel would be updated accordingly
+while highlighting the first day of the month.
+The task list panel on the left will display the tasks due on the first day of the month.<br>
+Format: <code>calendar MONTHYEAR</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>For MONTHYEAR format, it should be MMM-YYYY, but it also allows some other formats shown when your format is invalid.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar May-2020</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/CalendarView.png" alt="CalendarView" width="600">
+</div>
+<div class="title">Figure 3. Example of expected result after running <code>calendar May-2020</code></div>
+</div>
+<div class="paragraph">
+<p>Displays month of May in the year 2020 in the calendar panel on the right.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Format of the month in MONTHYEAR (MMM) input has to have the first letter in upper-case.<br>
+E.g <code>Mar</code> instead of <code>mar</code> when specifying the month of March.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-tasks-due-on-specific-date-code-calendar-code"><a class="link" href="#show-tasks-due-on-specific-date-code-calendar-code">Show tasks due on specific date : <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>Displays the tasks due on specified date, while highlighting that day on the calendar<br>
+Format: <code>calendar DATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The date specified <strong>must be for the month and year of the shown Ui</strong> for that corresponding date to be highlighted</p>
+</li>
+<li>
+<p>For DATE formats, we recommend the format to be MMM-dd-YYYY, but it also allows some other formats shown when you type in the command word.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar Apr-1-2020</code></p>
+</li>
+<li>
+<p><code>calendar Apr/1/2020</code><br></p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/CalendarDate.png" alt="CalendarDate" width="600">
+</div>
+<div class="title">Figure 4. Example of expected result after running <code>calendar Apr-1-2020</code></div>
+</div>
+<div class="paragraph">
+<p>Highlights 1st of April in the calendar panel on the right and displays the corresponding tasks due on the left.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Dot indicator showing tasks: Dates that have more than 3 tasks due would have a red dot indicator, while dates with
+at least 1 task but less than 4 tasks due would be represented with a green dot indicator.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-directly-to-today-s-date-on-calendar-code-calendar-code"><a class="link" href="#navigate-directly-to-today-s-date-on-calendar-code-calendar-code">Navigate directly to today&#8217;s date on Calendar : <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>Immediately displays the calendar view for this month and highlights today&#8217;s date.
+The task list panel on the left will display the tasks due today as well.<br>
+Format: <code>calendar today</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar today</code><br></p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/CalendarToday.png" alt="CalendarToday" width="600">
+</div>
+<div class="title">Figure 5. Example of expected result after running <code>calendar today</code></div>
+</div>
+<div class="paragraph">
+<p>Displays month of April in the year 2020 in the calendar panel on the right, with today&#8217;s date highlighted and displays the corresponding tasks due today on the left.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
+The full Developer Guide can be found <a href="https://ay1920s2-cs2103t-f09-2.github.io/main/DeveloperGuide.html">here</a>.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="calendar-feature-amanda"><a class="link" href="#calendar-feature-amanda">Calendar feature (Amanda)</a></h3>
+<div class="paragraph">
+<p>JelphaBot has a calendar feature which provides an overarching view of their schedules and to allow users to view their tasks due.</p>
+</div>
+<div class="paragraph">
+<p>This feature offers two main functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays an overview of tasks in calendar for a selected month and year</p>
+</li>
+<li>
+<p>Displays a list of tasks due for a specified date</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the main calendar panel is facilitated by the <code>CalendarMainPanel</code> class, which serves as the main
+container for this feature. This main container consists of a <code>SplitPane</code> comprising of a <code>CalendarPanel</code> on the right,
+which displays the calendar view in a month, and a <code>CalendarTaskListPanel</code> on the left to display specific tasks.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below describes the class structure of the calendar class structure.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarUiClassDiagram.png" alt="CalendarUiClassDiagram">
+</div>
+<div class="title">Figure 6. Class Diagram for Calendar classes</div>
+</div>
+<div class="paragraph">
+<p>Upon initialisation of the <code>CalendarMainPanel</code>, the <code>CalendarPanel</code> would be set to display the current month and year calendar,
+with the dates filled up by <code>CalendarDayCards</code> by CalendarPanel#fillGridPane() with a <code>CalendarDate</code> starting from the first day of the current month.
+Today&#8217;s date would also be highlighted, with <code>CalendarTaskListPanel</code> set to display the tasks due today by running
+Logic#getFilteredCalendarTaskList() and then Logic#updateFilteredCalendarTaskList() with a predicate to filter by today&#8217;s date.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram depicts how each individual day cell of the calendar will look like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarDayCards.png" alt="CalendarDayCards">
+</div>
+<div class="title">Figure 7. Expected display of dates on calendar</div>
+</div>
+<div class="paragraph">
+<p>After every execution of command, MainWindow#updateTasksInCalendarDayCards() will be run such that any commands that updates
+the JelphaBot task list (e.g <code>DoneCommand</code>, <code>DeleteCommand</code>, <code>EditCommand</code>) would be updated by the dot indicators in the calendar.</p>
+</div>
+<div class="paragraph">
+<p><strong>Function 1: Displays an overview of tasks in calendar for a selected month and year</strong></p>
+</div>
+<div class="paragraph">
+<p>There are 2 commands that users can issue to perform function 1:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>calendar today</code>: Displays calendar for the current month with today&#8217;s date highlighted, and its corresponding tasks due listed.<br></p>
+</li>
+<li>
+<p><code>calendar MONTHYEAR</code>: Displays calendar for the month and year specified, with the first day of the month highlighted,
+and its corresponding tasks due listed (e.g. calendar Apr-2020). Refer <a href="#Calendar-MonthYear-SequenceDiagram">here</a>, for the diagram describing this process.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Upon execution of the <code>calendar MONTHYEAR</code> or the <code>calendar today</code> command, CalendarCommand#execute() will run <code>updateFilteredCalendarTaskList()</code> to
+filter the task list to display the tasks on the <code>CalendarTaskListPanel</code> according to the first day of the <code>MONTHYEAR</code> or the tasks due <code>today</code> respectively.
+The filtering of the tasks according to date is done using the <code>TaskDueWithinDayPredicate</code>. A distinct <code>CommandResult</code> would then be generated according to
+the input command and is returned to the <code>LogicManager</code>. Finally, the  <code>CommandResult</code> is passed to the <code>MainWindow</code> in UI. Now, the updates can be done for the respective components:</p>
+</div>
+<div class="paragraph">
+<p>UI Component: Using the CommandResult, MainWindow calls MainWindow#updateCalendarMainPanel(), which is then passed to call CalendarMainPanel#updateCalendarPanel().
+For the <code>calendar MONTHYEAR</code> command, this updates the <code>CalendarPanel</code> display with the respective <code>MONTHYEAR</code> view, and highlights the first day of the month.
+For the <code>calendar today</code> command, this updates the <code>CalendarPanel</code> display to the current month and year, with today&#8217;s date highlighted.</p>
+</div>
+<div class="paragraph">
+<p>The following example sequence diagram shows you how the <code>calendar MONTHYEAR</code> (e.g. <code>calendar Apr-2020</code>) command works.</p>
+</div>
+<div id="Calendar-MonthYear-SequenceDiagram" class="imageblock">
+<div class="content">
+<img src="../images/CalendarViewSequenceDiagram.png" alt="CalendarViewSequenceDiagram">
+</div>
+<div class="title">Figure 8. Sequence diagram after running <code>calendar Apr-2020</code></div>
+</div>
+<div class="paragraph">
+<p><strong>Function 2: Display a list of tasks due for a selected date in the month</strong></p>
+</div>
+<div class="paragraph">
+<p>In order to display the task list for specific input dates, the user enters the <code>calendar DATE</code> command<br>
+(e.g. calendar Jan-1-2020).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only a date belonging in the current displayed month on the <code>CalendarPanel</code> would be highlighted after
+processing the <code>calendar DATE</code> command. A date that falls in other month and years would just display its
+corresponding tasks due on the <code>CalendarTaskListPanel</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The implementation of the previous two calendar commands (<code>calendar DATE</code> and <code>calendar today</code>) are largely similar and run in the same process.
+The only exception is regarding the <code>calendar DATE</code> command which fulfills <strong>Function 2</strong> listed above, where the <code>GridPane</code> in <code>CalendarPanel</code> is not
+altered by running CalendarPanel#fillGridPane() unlike the other two commands fulfilling <strong>Function 1</strong>. Only <code>CalendarTaskListPanel</code> is updated.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the sequence flow for variants of these three calendar commands which modifies the <code>CalendarMainPanel</code>:</p>
+</div>
+<div id="Calendar-ActivityDiagram" class="imageblock">
+<div class="content">
+<img src="../images/CalendarCommandActivityDiagram.png" alt="CalendarCommandActivityDiagram">
+</div>
+<div class="title">Figure 9. Activity Diagram showing the updating of <code>CalendarMainPanel</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-1-how-the-user-can-navigate-between-specific-dates-and-change-the-calendar-month-view"><a class="link" href="#aspect-1-how-the-user-can-navigate-between-specific-dates-and-change-the-calendar-month-view">Aspect 1: How the user can navigate between specific dates and change the calendar month view</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Solution:</strong> Use the same <code>calendar</code> command word for both viewing tasks in specific dates, and changing the calendar view.
+The next input following the command word (<code>DATE</code>, <code>MONTHYEAR</code>, <code>today</code>) is then parsed separately to give different command results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier and more understandable for user interactions.</p>
+</li>
+<li>
+<p>Pros: More open and accessible to future implementations regarding the calendar feature.</p>
+</li>
+<li>
+<p>Cons: Implementation in the <code>CalendarCommand</code> class might seem a bit bulky.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Use completely separate commands for viewing tasks in specific dates and changing the calendar view.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less chance of a parse exception, with more precise error messages when invalid command formats are input by the user.</p>
+</li>
+<li>
+<p>Cons: Certain areas of the code might be repetitive.</p>
+</li>
+<li>
+<p>Cons: Less intuitive for users to use.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution is more user-friendly as it reduces the number of varying commands that users have to remember in order to
+access the respective information. Additionally, upcoming changes and future implementations can be easily integrated into the
+existing code base as well.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator"><a class="link" href="#aspect-2-method-of-storing-code-observablelist-task-code-of-tasks-for-each-day-card-implementation-of-the-dot-indicator">Aspect 2: Method of storing <code>ObservableList&lt;Task&gt;</code> of tasks for each day card (Implementation of the Dot Indicator)</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Solution:</strong> Each <code>CalendarDayCard</code> stores a filtered list of tasks due on its specific date.
+This is done by obtaining all the tasks in the task list from Logic#getFilteredTaskList() and applying a filter function
+with the <code>TaskDueWithinDayPredicate</code>, specifically with the date of the day card. The list of tasks stored for each day card
+in the calendar panel would be re-filtered after the execution of each command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Do not have to manually update the tasks stored in each <code>CalendarDayCard</code> (e.g add and remove manually in the separately stored copy)</p>
+</li>
+<li>
+<p>Cons: Completely reliant on the main task list, possible errors might be carried over.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1:</strong> Use a static HashMap of Dates as keys and a list of tasks due in that date as values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Retrieving the tasks in a specific date and storing in the day card is fast - can be done in O(1) time.</p>
+</li>
+<li>
+<p>Cons: Implementation would be much more complex.</p>
+</li>
+<li>
+<p>Cons: Updating of this HashMap of the tasks as the main task list is being edited constantly can be very tedious.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Reason for chosen implementation:</strong><br>
+The current solution is easier to implement since we are filtering the tasks we want to see directly from the main task list.
+This reduces the amount of methods to implement over various class and components as constant updates of the tasks
+in each day card of the calendar is done. The ease of implementation is crucial given the tight deadlines we have to meet for the project.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 02:33:00 UTC</div></div></div></body></html>

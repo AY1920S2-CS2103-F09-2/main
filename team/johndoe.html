@@ -233,6 +233,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
 </div>
+<div class="title">Figure 2. Initial state of JelphaBot</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th task in JelphaBot. The <code>delete</code> command calls <code>Model#commitJelphaBot()</code>, causing the modified state of JelphaBot after the <code>delete 5</code> command executes to be saved in the <code>jelphaBotStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted JelphaBot state.</p>
@@ -241,6 +242,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
 </div>
+<div class="title">Figure 3. State of JelphaBot after "delete 5"</div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add d/Assignment &#8230;&#8203;</code> to add a new task. The <code>add</code> command also calls <code>Model#commitJelphaBot()</code>, causing another modified JelphaBot state to be saved into the <code>jelphaBotStateList</code>.</p>
@@ -249,6 +251,7 @@ Additionally, it implements the following operations:</p>
 <div class="content">
 <img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
 </div>
+<div class="title">Figure 4. State of JelphaBot after "add d/Assignment"</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -269,6 +272,7 @@ If a command fails its execution, it will not call <code>Model#commitJelphaBot()
 <div class="content">
 <img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
 </div>
+<div class="title">Figure 5. State of JelphaBot after "undo"</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -289,19 +293,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial J
 <div class="content">
 <img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 2. The sequence diagram of the undo feature.</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
+<div class="title">Figure 6. The sequence diagram of the undo feature.</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoJelphaBot()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores JelphaBot to that state.</p>
@@ -325,6 +317,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
+<div class="title">Figure 7. State of JelphaBot after "list"</div>
 </div>
 <div class="paragraph">
 <p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitJelphaBot()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>jelphaBotStateList</code>, all JelphaBot states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/Assignment &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
@@ -333,6 +326,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
+<div class="title">Figure 8. State of JelphaBot after "clear"</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
@@ -341,6 +335,7 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <div class="content">
 <img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
 </div>
+<div class="title">Figure 9. Activity diagram showing details of command execution</div>
 </div>
 </div>
 <div class="sect3">
@@ -390,4 +385,4 @@ If the <code>currentStatePointer</code> is at index <code>jelphaBotStateList.siz
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 19:01:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 02:33:00 UTC</div></div></div></body></html>
