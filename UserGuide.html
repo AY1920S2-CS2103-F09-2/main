@@ -2,8 +2,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">JelphaBot</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F09-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>JelphaBot - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>AY1920S2-CS2103T-F09-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code></p>
+<div class="paragraph text-center">
+<p>By: <code>AY1920S2-CS2103T-F09-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code><br>
+<br>
+<br>
+A0190055L Ong Eden<br>
+A0187819J Amanda Lam<br>
+A0188384M Lim We Si, Jel<br>
+A0184679H Yap Dian Hao<br>
+A0187280Y Thng Yao Jie</p>
 </div>
 <div style="page-break-after: always;"></div>
 <div id="toc" class="toc">
@@ -389,7 +396,7 @@ Easily remember command shortcuts by checking the bolded letter in the title of 
 <div class="sect2">
 <h3 id="summary-eden"><a class="link" href="#summary-eden">3.2. Summary (Eden)</a></h3>
 <div class="paragraph">
-<p>This tab will be the first panel you see after entering JelphaBot!</p>
+<p>This will be the first panel you see after entering JelphaBot!</p>
 </div>
 <div class="paragraph">
 <p>This section gives you a minimalistic overview of the day, namely tasks that you have due within the day, and tasks that you have completed within the day.
@@ -399,7 +406,8 @@ Tasks displayed will only have it&#8217;s module code as well as their descripti
 <h4 id="viewing-the-summary-tab-code-summary-code"><a class="link" href="#viewing-the-summary-tab-code-summary-code">3.2.1. Viewing the summary tab: <code>summary</code></a></h4>
 <div class="paragraph">
 <p>You can enter the <code>summary</code> command or its shortcuts <code>:S</code> or <code>:s</code> to manually switch to the summary tab.
-The summary panel will then display a summary of your tasks due and completed today.<br></p>
+Summary panel shows your tasks that are due today, and those that you have completed today.
+Once a task that is due today is marked as done, it will appear under the tasks that you have completed today.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>summary</code><br>
@@ -626,11 +634,6 @@ Format: <code>list date</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Pinned</strong> [Coming in V2.0]<br>
-(Pinned tasks will always be displayed at the top.
-To read more about pinning tasks, go <a href="#pin">here</a>)</p>
-</li>
-<li>
 <p><strong>Overdue</strong> <br>
 (Shows tasks which are past their due date)</p>
 </li>
@@ -652,13 +655,12 @@ To read more about pinning tasks, go <a href="#pin">here</a>)</p>
 <p>These categories are arranged to make it easier for you to see what is immediately due.
 By moving tasks that are due soon to the top of the list, you can decide what to focus your time on.</p>
 </div>
-<div style="page-break-after: always;"></div>
 </div>
 <div class="sect4">
 <h5 id="grouping-tasks-by-module-code-list-module-code"><a class="link" href="#grouping-tasks-by-module-code-list-module-code">Grouping Tasks by Module : <code>list module</code></a></h5>
 <div class="paragraph">
 <p>You can also group your tasks based on their module code.<br>
-Format: <code>list module</code></p>
+Format: <code>list module</code><br></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -668,7 +670,7 @@ Format: <code>list module</code></p>
 </div>
 <div class="paragraph">
 <p>This grouping allows you to manage your time by tracking the amount of time spent on each module.
-You can also see which modules are more intensive or have upcoming projects or assignments due.</p>
+You can also see which modules have upcoming projects or assignments due.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -733,7 +735,7 @@ Format: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORI
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="images/ug_figures/editCommand.png" alt="editCommand" width="600">
+<img src="images/ug_figures/editCommand.png" alt="editCommand" width="500">
 </div>
 <div class="title">Figure 11. Example of an expected result after executing <code>edit 1 m/CS2105 d/Tutorial 2</code></div>
 </div>
@@ -1037,12 +1039,12 @@ Format: <code>calendar MONTHYEAR</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="images/ug_figures/CalendarView.png" alt="CalendarView" width="600">
+<img src="images/ug_figures/CalendarView.png" alt="CalendarView" width="500">
 </div>
 <div class="title">Figure 20. Example of expected result after executing <code>calendar May-2020</code></div>
 </div>
 <div class="paragraph">
-<p>This command should displays the calendar for the month of May in the year 2020 in the calendar panel (on the right) and display the corresponding tasks due for 1-May-2020 in the task list (on the left).</p>
+<p>This command should display the calendar for the month of May in the year 2020 in the calendar panel (on the right) and display the corresponding tasks due for 1-May-2020 in the task list (on the left).</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1064,8 +1066,7 @@ E.g <code>Mar</code> instead of <code>mar</code> when specifying the month of Ma
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Dot indicator showing tasks: Dates that have more than 3 tasks due would have a red dot indicator, while dates with
-at least 1 task but less than 4 tasks due would be represented with a green dot indicator.
+Dot indicator showing tasks: Dates that have more than 3 tasks due would have a red dot indicator, while dates with at least 1 task but less than 4 tasks due would be represented with a green dot indicator.
 </td>
 </tr>
 </table>
@@ -1098,10 +1099,10 @@ Format: <code>calendar DATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>calendar Apr-11-2020</code></p>
+<p><code>calendar Apr-6-2020</code></p>
 </li>
 <li>
-<p><code>calendar Apr/11/2020</code><br></p>
+<p><code>calendar Apr/6/2020</code><br></p>
 </li>
 </ul>
 </div>
@@ -1109,7 +1110,7 @@ Format: <code>calendar DATE</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarDate.png" alt="CalendarDate" width="600">
 </div>
-<div class="title">Figure 21. Example of expected result after executing <code>calendar Apr-11-2020</code></div>
+<div class="title">Figure 21. Example of expected result after executing <code>calendar Apr-6-2020</code></div>
 </div>
 <div class="paragraph">
 <p>This command should highlight the 11th of April in the calendar panel (on the right) and display the corresponding tasks due in the task list (on the left).</p>
@@ -1136,7 +1137,7 @@ Format: <code>calendar today</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarToday.png" alt="CalendarToday" width="600">
 </div>
-<div class="title">Figure 22. Example of expected result after executing <code>calendar today</code> on 12th April, 2020</div>
+<div class="title">Figure 22. Example of expected result after executing <code>calendar today</code> on 13th April, 2020</div>
 </div>
 <div class="paragraph">
 <p>This command will display the corresponding calendar for this month and highlight today&#8217;s date in the calendar panel (on the right). The task list panel also will display the corresponding tasks due today (on the left).</p>
@@ -1554,4 +1555,4 @@ e.g. <code>calendar Apr-2020</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:04:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:25:34 UTC</div></div></div></body></html>

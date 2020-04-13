@@ -68,6 +68,7 @@ This feature improves the task management process significantly because it allow
 </li>
 <li>
 <p>It required model objects to be queried from the displayed index in <code>Ui</code> instead of the the default order in <code>Model</code> (which was the order in which objects were implemented).</p>
+<div style="page-break-after: always;"></div>
 </li>
 <li>
 <p>The implementation was challenging as it required changes to be made to existing commands while still reducing conflict with other teammates' work.
@@ -94,11 +95,6 @@ This required many design alternatives to be considered.</p>
 </ul>
 </div>
 </li>
-</ul>
-</div>
-<div style="page-break-after: always;"></div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Minor enhancement</strong>: Updated the Ui layout for each Task to allow tasks to be distinguished by priority.</p>
 <div class="ulist">
@@ -305,11 +301,6 @@ Format: <code>list date</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Pinned</strong> [Coming in V2.0]<br>
-(Pinned tasks will always be displayed at the top.
-To read more about pinning tasks, go <a href="#pin">here</a>)</p>
-</li>
-<li>
 <p><strong>Overdue</strong> <br>
 (Shows tasks which are past their due date)</p>
 </li>
@@ -331,13 +322,12 @@ To read more about pinning tasks, go <a href="#pin">here</a>)</p>
 <p>These categories are arranged to make it easier for you to see what is immediately due.
 By moving tasks that are due soon to the top of the list, you can decide what to focus your time on.</p>
 </div>
-<div style="page-break-after: always;"></div>
 </div>
 <div class="sect4">
 <h5 id="grouping-tasks-by-module-code-list-module-code"><a class="link" href="#grouping-tasks-by-module-code-list-module-code">Grouping Tasks by Module : <code>list module</code></a></h5>
 <div class="paragraph">
 <p>You can also group your tasks based on their module code.<br>
-Format: <code>list module</code></p>
+Format: <code>list module</code><br></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -347,7 +337,7 @@ Format: <code>list module</code></p>
 </div>
 <div class="paragraph">
 <p>This grouping allows you to manage your time by tracking the amount of time spent on each module.
-You can also see which modules are more intensive or have upcoming projects or assignments due.</p>
+You can also see which modules have upcoming projects or assignments due.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -597,7 +587,7 @@ Scalable when more groupings are added.</p>
 <p><strong>Reason for chosen implementation:</strong><br>
 The current solution was chosen with integration with other tabs in mind.
 This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
-This allows <strong><em>add</em></strong>, <strong><em>edit</em></strong>, <em>delete and <strong>_done</em></strong> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
+This allows <strong><em>add</em></strong>, <strong><em>edit</em></strong>, <strong><em>delete</em></strong> and <strong><em>done</em></strong> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -670,4 +660,4 @@ This means that a returned <code>UnmodifiableObservableSet</code> from <code>Uni
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:04:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:25:34 UTC</div></div></div></body></html>

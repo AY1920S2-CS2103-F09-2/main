@@ -2,8 +2,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">JelphaBot</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F09-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>JelphaBot - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>AY1920S2-CS2103T-F09-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code></p>
+<div class="paragraph text-center">
+<p>By: <code>AY1920S2-CS2103T-F09-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code><br>
+<br>
+<br>
+A0190055L Ong Eden<br>
+A0187819J Amanda Lam<br>
+A0188384M Lim We Si, Jel<br>
+A0184679H Yap Dian Hao<br>
+A0187280Y Thng Yao Jie</p>
 </div>
 <div style="page-break-after: always;"></div>
 <div id="toc" class="toc">
@@ -285,7 +292,7 @@ Sections presented in ALL CAPS represent command parameters.</p></td>
 <h2 id="setting-up"><a class="link" href="#setting-up">2. Setting Up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>Refer to the guide <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/docs/SettingUp.adoc">here</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1089,7 +1096,7 @@ Scalable when more groupings are added.</p>
 <p><strong>Reason for chosen implementation:</strong><br>
 The current solution was chosen with integration with other tabs in mind.
 This implementation can easily be expanded to other tabs in a future version if other tabs also inherit from <code>ViewTaskList</code>.
-This allows <strong><em>add</em></strong>, <strong><em>edit</em></strong>, <em>delete and <strong>_done</em></strong> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
+This allows <strong><em>add</em></strong>, <strong><em>edit</em></strong>, <strong><em>delete</em></strong> and <strong><em>done</em></strong> commands to be executable from any tab, while still only requiring one <code>ViewTaskList</code> to be instantiated, which saves performance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2197,7 +2204,7 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="Documentation.html">here</a>.</p>
+<p>Refer to the guide <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/docs/Documentation.adoc">here</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -2206,7 +2213,7 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="Testing.html">here</a>.</p>
+<p>Refer to the guide <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/docs/Testing.adoc">here</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -2215,7 +2222,7 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="DevOps.html">here</a>.</p>
+<p>Refer to the guide <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/blob/master/docs/DevOps.adoc">here</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -3743,7 +3750,7 @@ Expected: Error due to invalid hour count, which can be converted to days if it 
 Expected: The reminder for task at index 1 will be removed, if it exists.</p>
 </li>
 <li>
-<p>Other incorrect commands to try: <strong><em>delrm</em></strong> , <strong><em>delrm x</em></strong> (where x is larger than the list size)</p>
+<p>Other incorrect commands to try: <strong><em>delrem</em></strong> , <strong><em>delrem x</em></strong> (where x is larger than the list size)</p>
 </li>
 </ol>
 </div>
@@ -3831,4 +3838,4 @@ In the end, our group managed to achieve a high level of testing for most <code>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:04:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:25:34 UTC</div></div></div></body></html>
