@@ -161,14 +161,17 @@ Added a command history that allows the user to navigate to previous commands us
 <div class="sect2">
 <h3 id="productivity-tracking-jel"><a class="link" href="#productivity-tracking-jel">Productivity Tracking (Jel)</a></h3>
 <div class="paragraph">
-<p>JelphaBot also comes with a productivity tracking that allows you track the progress of your tasks in that week.
-You would be able to see the progress bar fill up as you complete more tasks!</p>
+<p>JelphaBot automatically tracks your productivity within the day, and displays a progress bar which allows you to track the completion progress of the tasks which are due in the coming week.
+You can see the progress bar fill up as you complete more tasks.</p>
+</div>
+<div class="paragraph">
+<p>JelphaBot also dynamically provides feedback in response to your achievements and task completion rate.
+Hopefully, this would make you even more productive by encouraging you to get more done!</p>
 </div>
 <div class="sect3">
-<h4 id="track-productivity-code-productivity-code"><a class="link" href="#track-productivity-code-productivity-code">Track productivity : <code>productivity</code></a></h4>
+<h4 id="tracking-your-productivity-code-productivity-code"><a class="link" href="#tracking-your-productivity-code-productivity-code">Tracking your productivity : <code>productivity</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>productivity</code> command
-or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
+<p>You can enter the <code>productivity</code> command or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
 The productivity panel will then show you your productivity for the day.<br></p>
 </div>
 <div class="paragraph">
@@ -179,7 +182,7 @@ Shortcut: <code>:P</code> or <code>:p</code></p>
 <div class="content">
 <img src="../images/ug_figures/ProductivityTab.png" alt="ProductivityTab" width="600">
 </div>
-<div class="title">Figure 1. Example of expected result after running <code>productivity</code></div>
+<div class="title">Figure 1. Example of expected result after executing <code>productivity</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -188,14 +191,15 @@ Shortcut: <code>:P</code> or <code>:p</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The progress bar and the text following it only shows tasks that are due on the day JelphaBot is running.
+The progress bar and the text following it only shows tasks that are due within the week JelphaBot is running.
 </td>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="starting-timer-for-a-task-code-start-code"><a class="link" href="#starting-timer-for-a-task-code-start-code">Starting timer for a task : <code>start</code></a></h4>
+<h4 id="starting-the-timer-for-a-task-code-start-code"><a class="link" href="#starting-the-timer-for-a-task-code-start-code">Starting the timer for a task : <code>start</code></a></h4>
 <div class="paragraph">
 <p>You can start a timer for your task.<br>
 Format: <code>start INDEX</code></p>
@@ -204,7 +208,7 @@ Format: <code>start INDEX</code></p>
 <div class="content">
 <img src="../images/ug_figures/startCommand.png" alt="startCommand" width="600">
 </div>
-<div class="title">Figure 2. Example of expected result after running <code>start 1</code></div>
+<div class="title">Figure 2. Example of expected result after executing <code>start 1</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -232,9 +236,10 @@ Format: <code>start INDEX</code></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="stopping-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-timer-for-a-task-code-stop-code">Stopping timer for a task : <code>stop</code></a></h4>
+<h4 id="stopping-the-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-the-timer-for-a-task-code-stop-code">Stopping the timer for a task : <code>stop</code></a></h4>
 <div class="paragraph">
 <p>You can stop a running timer for your task.<br>
 Format: <code>stop INDEX</code></p>
@@ -271,13 +276,17 @@ Format: <code>stop INDEX</code></p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="receiving-encouragement-and-criticism"><a class="link" href="#receiving-encouragement-and-criticism">Receiving encouragement and criticism</a></h4>
-<div class="paragraph">
-<p>JelphaBot automatically tracks the user&#8217;s productivity in a day and outputs the appropriate response to the user&#8217;s
-achievements and task completion rate.<br>
-There is no need to manually request for compliments or criticism.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Exiting the application before stopping any running timer wil cause all recorded time since the timer was started to be lost.
+</td>
+</tr>
+</table>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -490,4 +499,4 @@ Attempting to start a timer for a task which is marked as completed or stop a ta
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:30:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:20:08 UTC</div></div></div></body></html>

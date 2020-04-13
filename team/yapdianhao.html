@@ -168,12 +168,10 @@ and back-end. It involves the <code>Ui</code>, <code>Logic</code>, <code>Model</
 You can view all your existing reminders from the reminders tab.</p>
 </div>
 <div class="sect3">
-<h4 id="view-reminders-code-remindertab-code"><a class="link" href="#view-reminders-code-remindertab-code">View reminders : <code>remindertab</code></a></h4>
+<h4 id="viewing-your-reminders-code-remindertab-code"><a class="link" href="#viewing-your-reminders-code-remindertab-code">Viewing your reminders : <code>remindertab</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>remindertab</code> command
-or its shortcuts <code>:R</code> or <code>:r</code> to manually switch to the reminder tab.
-Every <code>Reminder</code> will show the <code>Task</code> `s module code, description, due date, the days that will be reminded before the
-deadline, and the hours that will be reminded before the deadline.<br></p>
+<p>You can enter the <code>remindertab</code> command or its shortcuts <code>:R</code> or <code>:r</code> to manually switch to the reminder tab.
+The reminder panel will then show all the reminders that you have set.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>remindertab</code><br>
@@ -183,14 +181,17 @@ Shortcut: <code>:R</code> or <code>:r</code></p>
 <div class="content">
 <img src="../images/ug_figures/remindertab.png" alt="remindertab" width="600">
 </div>
-<div class="title">Figure 1. Example of expected result after running <code>remindertab</code></div>
+<div class="title">Figure 1. Example of expected result after executing <code>remindertab</code></div>
 </div>
+<div class="paragraph">
+<p>Every <code>Reminder</code> will show the <code>Task</code> `s module code, description, due date, the days that will be reminded before the deadline, and the hours that will be reminded before the deadline.</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="adding-reminder-code-reminder-code"><a class="link" href="#adding-reminder-code-reminder-code">Adding reminder : <code>reminder</code></a></h4>
 <div class="paragraph">
-<p>You can add a reminder to your specified task to remind yourself of the task if the current time is within the time-frame specified
-by you.<br></p>
+<p>You can add a reminder to your specified task to remind yourself of the task if the current time is within the time-frame specified by you.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>reminder INDEX days/DAYS hours/HOURS</code></p>
@@ -199,7 +200,7 @@ by you.<br></p>
 <div class="content">
 <img src="../images/ug_figures/addReminder.png" alt="addReminder" width="600">
 </div>
-<div class="title">Figure 2. Example of expected result after running <code>reminder 1 days/1 hours/1</code></div>
+<div class="title">Figure 2. Example of expected result after executing <code>reminder 1 days/1 hours/1</code></div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -239,7 +240,7 @@ by you.<br></p>
 <p>A <code>Task</code> that is completed cannot have a <code>Reminder</code> .</p>
 </li>
 <li>
-<p>A <code>Task</code> that is reminded but are not completed after the deadline will still be reminded for.</p>
+<p>A <code>Task</code> that is reminded but is not completed after the deadline will still be reminded for.</p>
 </li>
 <li>
 <p>A <code>Task</code> will not be reminded if the task is completed but it has a <code>Reminder</code> .</p>
@@ -248,12 +249,12 @@ by you.<br></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="removing-reminder-code-delrem-code"><a class="link" href="#removing-reminder-code-delrem-code">Removing reminder : <code>delrem</code></a></h4>
 <div class="paragraph">
-<p>If you would like for a task&#8217;s reminder to be deleted, you can enter the
-<code>delrem</code> command to remove the reminder of that task.<br></p>
+<p>If you would like for a task&#8217;s reminder to be deleted, you can use the <code>delrem</code> command to remove the reminder of that task.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delrem INDEX</code></p>
@@ -262,7 +263,7 @@ by you.<br></p>
 <div class="content">
 <img src="../images/ug_figures/delReminder.png" alt="delReminder" width="600">
 </div>
-<div class="title">Figure 4. Example of expected result after running <code>delrem 1</code></div>
+<div class="title">Figure 4. Example of expected result after executing <code>delrem 1</code></div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -290,12 +291,13 @@ by you.<br></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="reminder-popup-notification"><a class="link" href="#reminder-popup-notification">Reminder popup notification</a></h4>
+<h4 id="reminding-you-with-a-popup-notification"><a class="link" href="#reminding-you-with-a-popup-notification">Reminding you with a popup notification</a></h4>
 <div class="paragraph">
-<p>Every time you run JelphaBot after adding your reminders, JelphaBot will show a list of tasks that will be overdue soon,
-and tasks that are past their deadline but have not been completed.</p>
+<p>Whenever you start up JelphaBot after adding your reminders, JelphaBot&#8217;s reminder window will popup.
+The popup will show a list of tasks that will be overdue soon, and tasks that are past their deadline but have not been completed.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -308,11 +310,7 @@ and tasks that are past their deadline but have not been completed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Whenever JelphaBot is booted, if you have any tasks that is not completed but has a reminder,
-JelphaBot&#8217;s reminder window will popup.</p>
-</li>
-<li>
-<p>This will persist until you either complete the <code>Task</code>, or delete the <code>Reminder</code>.</p>
+<p>Reminders will persist until you either complete the <code>Task</code>, or delete the <code>Reminder</code>.</p>
 </li>
 </ul>
 </div>
@@ -543,4 +541,4 @@ Users do not need to switch back and forth between tabs to refer between <code>T
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:30:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:20:08 UTC</div></div></div></body></html>

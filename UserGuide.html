@@ -5,28 +5,29 @@
 <div class="paragraph">
 <p>By: <code>Team 2103T-F09-02</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code></p>
 </div>
-</div>
+<div style="page-break-after: always;"></div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#preface">1. Preface</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#introduction">1.1. Introduction</a></li>
-<li><a href="#using-this-user-guide">1.2. Using this User Guide</a>
+<li><a href="#what-is-jelphabot">1.1. What is JelphaBot?</a></li>
+<li><a href="#overview-of-features">1.2. Overview of features</a></li>
+<li><a href="#using-this-user-guide">1.3. Using this User Guide</a>
 <ul class="sectlevel3">
-<li><a href="#purpose-of-this-guide">1.2.1. Purpose of this Guide</a></li>
-<li><a href="#notation-used-in-this-guide">1.2.2. Notation used in this Guide</a></li>
+<li><a href="#hyperlink">1.3.1. Notation used in this Guide</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#common-commands">3.1. Common commands</a>
 <ul class="sectlevel3">
 <li><a href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.1.2. Exiting the program : <code>exit</code></a></li>
+<li><a href="#switching-between-tabs">3.1.3. Switching between tabs</a></li>
 </ul>
 </li>
 <li><a href="#summary-eden">3.2. Summary (Eden)</a>
@@ -34,14 +35,14 @@
 <li><a href="#viewing-the-summary-tab-code-summary-code">3.2.1. Viewing the summary tab: <code>summary</code></a></li>
 </ul>
 </li>
-<li><a href="#managing-tasks-yao-jie">3.3. Managing Tasks (Yao Jie)</a>
+<li><a href="#task-management-yao-jie">3.3. Task Management (Yao Jie)</a>
 <ul class="sectlevel3">
 <li><a href="#reading-the-task-list">3.3.1. Reading the Task List</a></li>
 <li><a href="#add">3.3.2. Adding a Task: <code>add</code></a></li>
 <li><a href="#listing-all-tasks-code-list-code">3.3.3. Listing all Tasks : <code>list</code></a>
 <ul class="sectlevel4">
-<li><a href="#group-tasks-by-date-code-list-date-code">Group Tasks by Date : <code>list date</code></a></li>
-<li><a href="#group-tasks-by-module-code-list-module-code">Group Tasks by Module : <code>list module</code></a></li>
+<li><a href="#grouping-tasks-by-date-code-list-date-code">Grouping Tasks by Date : <code>list date</code></a></li>
+<li><a href="#grouping-tasks-by-module-code-list-module-code">Grouping Tasks by Module : <code>list module</code></a></li>
 </ul>
 </li>
 <li><a href="#locating-tasks-by-name-code-find-code">3.3.4. Locating Tasks by name: <code>find</code></a></li>
@@ -49,65 +50,62 @@
 <li><a href="#completing-a-task-code-done-code">3.3.6. Completing a Task : <code>done</code></a></li>
 <li><a href="#deleting-a-task-code-delete-code">3.3.7. Deleting a Task : <code>delete</code></a></li>
 <li><a href="#clearing-all-tasks-code-clear-code">3.3.8. Clearing all Tasks : <code>clear</code></a></li>
-<li><a href="#show-all-completed-tasks-code-show-completed-code-eden">3.3.9. Show all completed Tasks : <code>show-completed</code> (Eden)</a></li>
-<li><a href="#show-all-incomplete-tasks-code-show-incomplete-code-eden">3.3.10. Show all incomplete Tasks: <code>show-incomplete</code> (Eden)</a></li>
-<li><a href="#pin">3.3.11. Pin Important Tasks  : <code>pin</code> [Coming in V2.0]</a></li>
-<li><a href="#sort-tasks-code-sort-code-coming-in-v2-0">3.3.12. Sort Tasks : <code>sort</code>  [Coming in V2.0]</a></li>
+<li><a href="#showing-completed-tasks-code-show-completed-code-eden">3.3.9. Showing completed Tasks : <code>show-completed</code> (Eden)</a></li>
+<li><a href="#showing-incomplete-tasks-code-show-incomplete-code-eden">3.3.10. Showing incomplete Tasks: <code>show-incomplete</code> (Eden)</a></li>
+<li><a href="#pin">3.3.11. Pinning Important Tasks  : <code>pin</code> [Coming in V2.0] (Yao Jie)</a></li>
+<li><a href="#sorting-tasks-code-sort-code-coming-in-v2-0-yao-jie">3.3.12. Sorting Tasks : <code>sort</code>  [Coming in V2.0] (Yao Jie)</a></li>
 </ul>
 </li>
 <li><a href="#calendar-amanda">3.4. Calendar (Amanda)</a>
 <ul class="sectlevel3">
-<li><a href="#view-calender-code-calendar-code">3.4.1. View calender : <code>calendar</code></a></li>
-<li><a href="#change-month-and-year-view-of-calendar-code-calendar-code">3.4.2. Change month and year view of Calendar : <code>calendar</code></a></li>
-<li><a href="#show-tasks-due-on-specific-date-code-calendar-code">3.4.3. Show tasks due on specific date : <code>calendar</code></a></li>
-<li><a href="#navigate-directly-to-today-s-date-on-calendar-code-calendar-code">3.4.4. Navigate directly to today&#8217;s date on Calendar : <code>calendar</code></a></li>
+<li><a href="#viewing-your-calender-code-calendar-code">3.4.1. Viewing your calender : <code>calendar</code></a></li>
+<li><a href="#changing-month-and-year-view-of-your-calendar-code-calendar-code">3.4.2. Changing month and year view of your Calendar : <code>calendar</code></a></li>
+<li><a href="#showing-tasks-due-on-a-specific-date-code-calendar-code">3.4.3. Showing tasks due on a specific date : <code>calendar</code></a></li>
+<li><a href="#navigating-directly-to-today-s-date-on-calendar-code-calendar-code">3.4.4. Navigating directly to today&#8217;s date on Calendar : <code>calendar</code></a></li>
 </ul>
 </li>
 <li><a href="#productivity-tracking-jel">3.5. Productivity Tracking (Jel)</a>
 <ul class="sectlevel3">
-<li><a href="#track-productivity-code-productivity-code">3.5.1. Track productivity : <code>productivity</code></a></li>
-<li><a href="#starting-timer-for-a-task-code-start-code">3.5.2. Starting timer for a task : <code>start</code></a></li>
-<li><a href="#stopping-timer-for-a-task-code-stop-code">3.5.3. Stopping timer for a task : <code>stop</code></a></li>
-<li><a href="#receiving-encouragement-and-criticism">3.5.4. Receiving encouragement and criticism</a></li>
+<li><a href="#tracking-your-productivity-code-productivity-code">3.5.1. Tracking your productivity : <code>productivity</code></a></li>
+<li><a href="#starting-the-timer-for-a-task-code-start-code">3.5.2. Starting the timer for a task : <code>start</code></a></li>
+<li><a href="#stopping-the-timer-for-a-task-code-stop-code">3.5.3. Stopping the timer for a task : <code>stop</code></a></li>
 </ul>
 </li>
 <li><a href="#set-reminders-dian-hao">3.6. Set Reminders (Dian Hao)</a>
 <ul class="sectlevel3">
-<li><a href="#view-reminders-code-remindertab-code">3.6.1. View reminders : <code>remindertab</code></a></li>
+<li><a href="#viewing-your-reminders-code-remindertab-code">3.6.1. Viewing your reminders : <code>remindertab</code></a></li>
 <li><a href="#adding-reminder-code-reminder-code">3.6.2. Adding reminder : <code>reminder</code></a></li>
 <li><a href="#removing-reminder-code-delrem-code">3.6.3. Removing reminder : <code>delrem</code></a></li>
-<li><a href="#reminder-popup-notification">3.6.4. Reminder popup notification</a></li>
+<li><a href="#reminding-you-with-a-popup-notification">3.6.4. Reminding you with a popup notification</a></li>
 </ul>
 </li>
-<li><a href="#colour-code-module-codes-coming-in-v2-0">3.7. Colour-code module codes [Coming in V2.0]</a></li>
+<li><a href="#colour-coded-module-codes-coming-in-v2-0">3.7. Colour-coded module codes [Coming in V2.0]</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
 <li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="preface"><a class="link" href="#preface">1. Preface</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="introduction"><a class="link" href="#introduction">1.1. Introduction</a></h3>
 <div class="paragraph">
 <p>Welcome to JelphaBot!<br>
-If you are just starting out, the quick start section below will help you get JelphaBot started right
-away! It will equip you with the basics so that you can quickly enjoy and master the features offered.</p>
+This user guide is written for <strong>new and experienced users of Jelphabot</strong>. This guide will equip you with the basics so that you can quickly enjoy and master the features offered.</p>
 </div>
 <div class="paragraph">
-<p>JelphaBot is <strong>a desktop app for managing tasks</strong> specially designed by and for NUS students that allows you to
-<strong>recognise important tasks at a glance</strong> so that you can prioritise commitments and manage your time.</p>
+<p>If this is not your first time using JelphaBot, you can refer to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> section to get started right away!</p>
+</div>
+<div class="sect2">
+<h3 id="what-is-jelphabot"><a class="link" href="#what-is-jelphabot">1.1. What is JelphaBot?</a></h3>
+<div class="paragraph">
+<p>JelphaBot is <strong>a desktop app for managing tasks</strong> specially designed by and <strong>for NUS students</strong> that allows you to <strong>recognise important tasks at a glance</strong> so that you can prioritise commitments and manage your time.</p>
 </div>
 <div class="paragraph">
-<p>You can enter commands in JelphaBot through a <strong>Command Line Interface</strong> (CLI), which means that if you can <strong>type quickly</strong>,
-JelphaBot can help you get work done faster than a traditional mouse-controlled Graphical User Interface (GUI),
-<strong>while still retaining the benefits of a beautiful user interface</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Upon running JelphaBot, you will see various components on it&#8217;s main display screen. The components of the main screen is labelled below.</p>
+<p>You can enter commands in JelphaBot through a <strong>Command Line Interface</strong> (CLI), which means that if you can <strong>type quickly</strong>, JelphaBot can help you get work done faster than a traditional mouse-controlled Graphical User Interface (GUI), <strong>while still retaining the benefits of a beautiful user interface</strong>.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -115,49 +113,50 @@ JelphaBot can help you get work done faster than a traditional mouse-controlled 
 </div>
 <div class="title">Figure 1. Brief overview of the app</div>
 </div>
-<div class="paragraph">
-<p>The function of each component is as follows:</p>
+<div style="page-break-after: always;"></div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="sect2">
+<h3 id="overview-of-features"><a class="link" href="#overview-of-features">1.2. Overview of features</a></h3>
+<div class="paragraph">
+<p>The main features of JelphaBot are split into five tabs.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Tabs Pane</strong>: This is where you can navigate between the different features located in various tabs.</p>
+<p><strong><a href="#Summary feature (Eden)">Summary</a></strong> -  Summary of the updates to your task list over the past day.</p>
 </li>
 <li>
-<p><strong>Main Panel</strong>: This is the main display screen which corresponds to the tab it is under.</p>
+<p><strong><a href="#task-management-yao-jie">Task List</a></strong> - View and manage tasks in your task list.</p>
 </li>
 <li>
-<p><strong>Results Display</strong>: This is where JelphaBot interacts with you by showing you the results of your commands!</p>
+<p><strong><a href="#Calendar feature (Amanda)">Calendar</a></strong> - View your schedule on a specific day or within a specific month.</p>
 </li>
 <li>
-<p><strong>Command Box</strong>: This is where you key in your commands.</p>
+<p><strong><a href="#Productivity feature (Jel)">Productivity</a></strong> - Track your overall productivity through metrics such as task completion rate.</p>
 </li>
-</ol>
+<li>
+<p><strong><a href="#Reminder feature (Dian Hao)">Reminder</a></strong> -  Set and manage your upcoming reminders.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>As seen from above, JelphaBot has five tabs; Summary, Task List, Calendar Productivity and Reminder.
-You can switch between tabs anytime by pressing <kbd>Ctrl</kbd> + <kbd>Tab</kbd> on your keyboard to move to the tab on the right.
-If you are already on the rightmost tab, it wraps around to the leftmost tab.</p>
+<p>Each tab provides a specific feature aimed to help you manage your tasks and deadlines more productively!</p>
 </div>
 <div class="paragraph">
-<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.
-Enjoy!</p>
+<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-this-user-guide"><a class="link" href="#using-this-user-guide">1.2. Using this User Guide</a></h3>
-<div class="sect3">
-<h4 id="purpose-of-this-guide"><a class="link" href="#purpose-of-this-guide">1.2.1. Purpose of this Guide</a></h4>
+<h3 id="using-this-user-guide"><a class="link" href="#using-this-user-guide">1.3. Using this User Guide</a></h3>
 <div class="paragraph">
 <p>This User Guide is filled with information to help you set up and make the best out of you very own JelphaBot!
 You will be able to learn more about the commands that are available for you, together with examples of how they are used.
-These commands are also consolidated under <a href="#command-summary">this section</a> for your convenience.</p>
-</div>
+These commands are also consolidated in <a href="#command-summary">Section 5, &#8220;Command Summary&#8221;</a> for your convenience.</p>
 </div>
 <div class="sect3">
-<h4 id="notation-used-in-this-guide"><a class="link" href="#notation-used-in-this-guide">1.2.2. Notation used in this Guide</a></h4>
+<h4 id="hyperlink"><a class="link" href="#hyperlink">1.3.1. Notation used in this Guide</a></h4>
 <div class="paragraph">
-<p>To aid in your understanding throughout this User Guide, you may find below the different symbols and formatting used throughout this guide.</p>
+<p>To aid in your understanding throughout this User Guide, you may find below the different symbols and formatting used throughout this guide. We have also provided <a href="#hyperlink">hyperlinks</a> to help you navigate between related sections.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Common symbols used throughout this guide.</caption>
@@ -167,47 +166,36 @@ These commands are also consolidated under <a href="#command-summary">this secti
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Symbol</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Symbol</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>What does it mean?</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>command</code></p>
-</div></div></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>command</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Command that can be typed into the command box</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><kbd>Key</kbd></p>
-</div></div></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>Key</kbd></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Key that you should press on your keyboard</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><span class="icon icon-tip"><i class="fa fa-lightbulb-o fa-2x"></i></span></p>
-</div></div></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="images/icons/bulb.png" alt="bulb" width="40"></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tips and tricks that might be useful</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><span class="icon icon-note"><i class="fa fa-info-circle fa-2x"></i></span></p>
-</div></div></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="images/icons/note.png" alt="note" width="40"></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional information that is good to know</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><span class="icon icon-important"><i class="fa fa-exclamation-circle fa-2x"></i></span></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note of</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="images/icons/Important.png" alt="Important" width="40"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><a href="#Blue-text-underlined">blue text, underlined</a></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="Blue-text-underlined"></a> Links</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#hyperlink">Hyperlink</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to another section or website</p></td>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -224,18 +212,7 @@ These commands are also consolidated under <a href="#command-summary">this secti
 <p>Download the latest <code>jelphabot.jar</code> <a href="https://github.com/AY1920S2-CS2103T-F09-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your JelphaBot.</p>
-</li>
-<li>
-<p>Double-click the file to start the app.
-The GUI should appear in a few seconds.
-JelphaBot should initialize with a sample list of tasks as shown in the following diagram.</p>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/ug_figures/Ui.png" alt="Ui" width="600">
-</div>
-<div class="title">Figure 2. Expected result after running JelphaBot</div>
-</div>
+<p>Copy the file to the folder you want to use as JelphaBot&#8217;s home folder.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -243,7 +220,39 @@ JelphaBot should initialize with a sample list of tasks as shown in the followin
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The sample list of tasks helps test if you installed JelphaBot correctly!<br>
+This is important because it decides where your information is saved!<br>
+Ensure that JelphaBot has write permissions to that folder.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Double-click the file to start the app.
+The GUI should appear in a few seconds.<br>
+JelphaBot should initialize with a sample list of tasks as shown in the following diagram.</p>
+<div class="paragraph">
+<p>Upon running JelphaBot, you will see various components on it&#8217;s main display screen.
+The components of the main screen is labelled below.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ug_figures/UiAnnotated.png" alt="UiAnnotated">
+</div>
+<div class="title">Figure 2. Expected result after running JelphaBot</div>
+</div>
+<div style="page-break-after: always;"></div>
+</li>
+<li>
+<p>Some commands should already be present in JelphaBot.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+JelphaBot is initialized with a sample list of tasks, to test if you installed JelphaBot correctly!<br>
 If you do not see this, please try deleting JelphaBot and its accompanying files and folders and repeat steps 2 to 4.
 </td>
 </tr>
@@ -252,33 +261,24 @@ If you do not see this, please try deleting JelphaBot and its accompanying files
 </li>
 <li>
 <p>Type a command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window. To start entering your own commands, use <code>clear</code> to reset JelphaBot.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>d/Assignment 1 dt/10-Mar-2020 23 59 m/CS2103T</code> : adds a task with description <code>Assignment 1</code> to the task list.</p>
+<p><code>add d/Assignment 1 dt/10-Mar-2020 23 59 m/CS2103T</code> :<br>
+adds a task with description "Assignment 1" to the task list.</p>
 </li>
 <li>
-<p><strong><code>list</code></strong> : lists all tasks.</p>
+<p><code>list</code> : lists all tasks.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>1</code> : deletes the 1st task shown in the current list.</p>
+<p><code>delete 1</code> : deletes the 1st task shown in the current list.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">this section</a> for details of each command.
-A full list of commands is available <a href="#command-summary">here</a>.</p>
-</li>
-</ol>
-</div>
+<p><code>exit</code> : exits the app.</p>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -286,27 +286,43 @@ A full list of commands is available <a href="#command-summary">here</a>.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You can use the <kbd>UP</kbd> and <kbd>DOWN</kbd> keys to view your last entered commands!
+You can use the <kbd>UP</kbd> and <kbd>DOWN</kbd> keys to view your last entered commands,<br>
+and <kbd>Ctrl</kbd> + <kbd>Tab</kbd> to nagivate to the next tab quickly!
 </td>
 </tr>
 </table>
 </div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#features">Section 3, &#8220;Features&#8221;</a> to learn about how each command can help you.<br>
+A summarized list of commands is available <a href="#command-summary">here</a>.<br>
+We hope you have a great time using JelphaBot!</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="features"><a class="link" href="#features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section, you can find details about the commands that JelphaBot supports.
-These include the function of the command, its format, and example usages.
-The features will be depicted in the order of the tabs shown on the main User Interface as seen above for your ease of navigation!</p>
+These include the function of the command, its format, and example usages.</p>
+</div>
+<div class="paragraph">
+<p>For easier naviagation, this guide will go through features according to the order of tabs shown on the User Interface.</p>
 </div>
 <div class="sect2">
 <h3 id="common-commands"><a class="link" href="#common-commands">3.1. Common commands</a></h3>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>If you can&#8217;t recall the command you need, you can enter the <code>help</code> command in any panel. A help window which links to this user guide will pop up.<br>
+<p>If you can&#8217;t recall the command you need, you can enter the <code>help</code> command in any panel.<br>
+A help window will appear with a link to this user guide.<br>
 Format: <code>help</code></p>
 </div>
 <div class="imageblock text-center">
@@ -322,18 +338,52 @@ Format: <code>help</code></p>
 <p>You can exit the program anytime by entering the <code>exit</code> command directly from any panel.<br>
 Format: <code>exit</code></p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Exiting the application before stopping any running timer wil cause all recorded time since the timer was started to be lost.
-</td>
-</tr>
-</table>
 </div>
+<div class="sect3">
+<h4 id="switching-between-tabs"><a class="link" href="#switching-between-tabs">3.1.3. Switching between tabs</a></h4>
+<div class="paragraph">
+<p>You can switch between tabs anytime by pressing <kbd>Ctrl</kbd> + <kbd>Tab</kbd> on your keyboard to move to the next tab on the right.
+If you are already on the rightmost tab, it wraps around to the leftmost tab.
+You can also move to tabs directly by using the respective shortcut commands.
+These make JelphaBot easier to use for experienced users.
+Easily remember command shortcuts by checking the bolded letter in the title of every panel!</p>
+</div>
+<table class="tableblock frame-all grid-all text-center" style="width: 70%;">
+<caption class="title">Table 2. List of applicable Switch Tab commands.</caption>
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Tab switched to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>summary</code>, or <code>:s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code>, or <code>:t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Task List</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendar</code>, or <code>:c</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calendar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>productivity</code>, or <code>:p</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Productivity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>remindertab</code>, or <code>:r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reminder</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -348,8 +398,7 @@ Tasks displayed will only have it&#8217;s module code as well as their descripti
 <div class="sect3">
 <h4 id="viewing-the-summary-tab-code-summary-code"><a class="link" href="#viewing-the-summary-tab-code-summary-code">3.2.1. Viewing the summary tab: <code>summary</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>summary</code> command
-or its shortcuts <code>:S</code> or <code>:s</code> to manually switch to the summary tab.
+<p>You can enter the <code>summary</code> command or its shortcuts <code>:S</code> or <code>:s</code> to manually switch to the summary tab.
 The summary panel will then display a summary of your tasks due and completed today.<br></p>
 </div>
 <div class="paragraph">
@@ -360,13 +409,14 @@ Shortcut: <code>:S</code> or <code>:s</code></p>
 <div class="content">
 <img src="images/ug_figures/Ui.png" alt="Ui" width="600">
 </div>
-<div class="title">Figure 4. Example of expected result after running <code>summary</code></div>
+<div class="title">Figure 4. Example of expected result after executing <code>summary</code></div>
 </div>
 <div class="paragraph">
-<p>Displays the two dropdown tabs that show the tasks that are Due Today, and Completed Today.</p>
+<p>Summary panel shows the tasks that are Due Today, and Completed Today.</p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Once a task under the Due Today tab is marked as done, it will appear under the Completed Today tab.</p>
+<p>Once a task under the Due Today header is marked as done, it will appear under the Completed Today tab.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -374,17 +424,16 @@ Shortcut: <code>:S</code> or <code>:s</code></p>
 </div>
 <div class="title">Figure 5. Expected view of the Summary tab after completing the task, ACC1101 Tutorial 4</div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-tasks-yao-jie"><a class="link" href="#managing-tasks-yao-jie">3.3. Managing Tasks (Yao Jie)</a></h3>
+<h3 id="task-management-yao-jie"><a class="link" href="#task-management-yao-jie">3.3. Task Management (Yao Jie)</a></h3>
 <div class="paragraph">
 <p>JelphaBot allows you to track and manage your tasks comprehensively as well!
-You can view and sort all your tasks from the Task List page.</p>
-</div>
-<div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>list</code> command or its shortcuts <code>:T</code> or <code>:t</code> to manually switch to the task list tab.
-The task list panel will then display all your tasks sorted into various sections.<br></p>
+You can view and sort all your tasks from the Task List page.<br>
+You can enter the <code>list</code> command or its shortcuts <code>:T</code> or <code>:t</code> to instantly switch to the task list tab.
+The task list panel will then display all your tasks sorted into various categories.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>list</code><br>
@@ -394,33 +443,9 @@ Shortcut: <code>:T</code> or <code>:t</code></p>
 <div class="content">
 <img src="images/ug_figures/TaskListTab.png" alt="TaskListTab" width="600">
 </div>
-<div class="title">Figure 6. Example of expected result after running <code>list</code></div>
+<div class="title">Figure 6. Example of expected result after executing <code>list</code></div>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Command Format for Task list commands</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Parts of the command in <code>UPPER_CASE</code> represent command parameters that have to be supplied by you.<br>
-e.g. in <code>add d/DESCRIPTION</code>, <code>DESCRIPTION</code> represents a field where you can provide the appropriate description, such as <code>add d/Assignment 1</code>.</p>
-</li>
-<li>
-<p>Parameters in square brackets are optional e.g <code>d/DESCRIPTION [p/PRIORITY]</code> can be used as <code>d/Assignment 1 p/0</code> or as <code>d/Assignment 1</code>.</p>
-</li>
-<li>
-<p>Parameters with a trailing <code>…</code>​can be used as many times as you want, or can also be omitted.<br>
-e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>t/project</code>, <code>t/project t/graded</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>d/DESCRIPTION p/PRIORITY</code>, <code>p/PRIORITY d/DESCRIPTION</code> is also acceptable.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
+<div style="page-break-after: always;"></div>
 <div class="sect3">
 <h4 id="reading-the-task-list"><a class="link" href="#reading-the-task-list">3.3.1. Reading the Task List</a></h4>
 <div class="paragraph">
@@ -445,19 +470,48 @@ Tasks are tagged according to their importance:</p>
 <p>The start of every task will be labelled with a module code so that you can visually categorize them.<br>
 Go <a href="#add">here</a> to read more about adding tasks with priority and <a href="#edit">here</a> for editing task priority.</p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format for Task list commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Parts of the command in <code>UPPER_CASE</code> represent command parameters that have to be supplied by you.<br>
+e.g. in <code>add d/DESCRIPTION</code>, <code>DESCRIPTION</code> represents a field where you can provide the appropriate description, such as <code>add d/Assignment 1</code>.</p>
+</li>
+<li>
+<p>Parameters in square brackets are optional e.g <code>d/DESCRIPTION [p/PRIORITY]</code> can be used as <code>d/Assignment 1 p/0</code> or as <code>d/Assignment 1</code>.</p>
+</li>
+<li>
+<p>Parameters with a trailing <code>…</code> ​can be used as many times as you want, or can also be omitted.<br>
+e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used once as <code>t/project</code>, or multiple times like <code>t/project t/graded</code>, and so on.</p>
+</li>
+<li>
+<p>Parameters can be in any order e.g. if the command specifies <code>d/DESCRIPTION p/PRIORITY</code>, <code>p/PRIORITY d/DESCRIPTION</code> is also acceptable.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="add"><a class="link" href="#add">3.3.2. Adding a Task: <code>add</code></a></h4>
 <div class="paragraph">
-<p>You can add a task to your task list.<br>
-Format: <code>add d/DESCRIPTION dt/DATETIME m/MODULE_CODE [p/PRIORITY] [t/TAG]&#8230;&#8203;</code></p>
+<p>You can add new tasks to your task list in JelphaBot with the <code>add</code> command. This allows you to update your task lists with new tasks whenever they arise.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add d/DESCRIPTION dt/DATETIME m/MODULE_CODE [p/PRIORITY] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/addCommand.png" alt="addCommand" width="600">
 </div>
-<div class="title">Figure 7. Example of an expected result after running <code>add d/Assignment 1 dt/Jan-01-2020 23 59 m/CS1231 t/graded</code></div>
+<div class="title">Figure 7. Example of an expected result after executing <code>add d/Assignment 1 dt/Jan-01-2020 23 59 m/CS1231 t/graded</code></div>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -504,19 +558,6 @@ E.g <code>Mar</code> instead of <code>mar</code> when specifying the month of Ma
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A task can have any number of tags (including 0)!<br>
-If the priority field is not specified, the default priority used is Normal Priority.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -530,36 +571,57 @@ If the priority field is not specified, the default priority used is Normal Prio
 </li>
 </ul>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A task can have any number of tags (including 0)!<br>
+If the priority field is not specified, priority is set to Default priority.
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="listing-all-tasks-code-list-code"><a class="link" href="#listing-all-tasks-code-list-code">3.3.3. Listing all Tasks : <code>list</code></a></h4>
 <div class="paragraph">
-<p>You can list all tasks in your task list. Optional arguments can be added to dictate sorting order for your tasks.<br>
-Format: <code>list [SORTING_ORDER]</code></p>
+<p>JelphaBot allows you to list all your current tasks. In order to make it easier for you to view and use JelphaBot, you can group your tasks by some categories. These categories can be specified through optional arguments.
+Format: <code>list [GROUPING_CATEGORY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>If no <code>SORTING_ORDER</code> is provided, tasks will be grouped by date by default, similar to the task list&#8217;s tab default page as mentioned in the start of this section.</p>
+<p>If no <code>GROUPING_CATEGORY</code> is provided, the <code>date</code> grouping will be applied by default.</p>
 </li>
 <li>
-<p>Valid <code>SORTING_ORDER</code> values are <code>date</code> (groups tasks by date) and <code>module</code> (Groups tasks by module code)</p>
+<p>Valid <code>GROUPING_CATEGORY</code> values are <code>date</code> (groups tasks by date) and <code>module</code> (Groups tasks by module code)</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="group-tasks-by-date-code-list-date-code"><a class="link" href="#group-tasks-by-date-code-list-date-code">Group Tasks by Date : <code>list date</code></a></h5>
+<h5 id="grouping-tasks-by-date-code-list-date-code"><a class="link" href="#grouping-tasks-by-date-code-list-date-code">Grouping Tasks by Date : <code>list date</code></a></h5>
 <div class="paragraph">
 <p>You can group tasks based on their due date.
 This is also the default interface for the task list tab.<br>
 Format: <code>list date</code></p>
 </div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/ug_figures/listByDate.png" alt="listByDate" width="600">
+</div>
+<div class="title">Figure 8. Example of an expected result after executing <code>list date</code></div>
+</div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Group your tasks into the following categories:</p>
+<p><code>list date</code> allows you to group your tasks into the following categories:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -581,30 +643,34 @@ To read more about pinning tasks, go <a href="#pin">here</a>)</p>
 (Shows tasks due within the next seven days)</p>
 </li>
 <li>
-<p><strong>Due Sometime</strong><br>
+<p><strong>Due Someday</strong><br>
 (Shows all other tasks that do not fit into prior categories)</p>
 </li>
 </ul>
 </div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/ug_figures/listByDate.png" alt="listByDate" width="600">
+<div class="paragraph">
+<p>These categories are arranged to make it easier for you to see what is immediately due.
+By moving tasks that are due soon to the top of the list, you can decide what to focus your time on.</p>
 </div>
-<div class="title">Figure 8. Example of an expected result after running <code>list date</code></div>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect4">
-<h5 id="group-tasks-by-module-code-list-module-code"><a class="link" href="#group-tasks-by-module-code-list-module-code">Group Tasks by Module : <code>list module</code></a></h5>
+<h5 id="grouping-tasks-by-module-code-list-module-code"><a class="link" href="#grouping-tasks-by-module-code-list-module-code">Grouping Tasks by Module : <code>list module</code></a></h5>
 <div class="paragraph">
-<p>You can groups tasks based on their module code.<br>
+<p>You can also group your tasks based on their module code.<br>
 Format: <code>list module</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/listByModule.png" alt="listByModule" width="600">
 </div>
-<div class="title">Figure 9. Example of an expected result after running <code>list module</code></div>
+<div class="title">Figure 9. Example of an expected result after executing <code>list module</code></div>
 </div>
+<div class="paragraph">
+<p>This grouping allows you to manage your time by tracking the amount of time spent on each module.
+You can also see which modules are more intensive or have upcoming projects or assignments due.</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect3">
@@ -617,7 +683,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="content">
 <img src="images/ug_figures/findCommand.png" alt="findCommand" width="600">
 </div>
-<div class="title">Figure 10. Example of an expected result after running <code>find tutorial</code></div>
+<div class="title">Figure 10. Example of an expected result after executing <code>find tutorial</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -657,44 +723,36 @@ Returns any task having descriptions of <code>Tutorial</code>, <code>Project</co
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="edit"><a class="link" href="#edit">3.3.5. Editing a Task : <code>edit</code></a></h4>
 <div class="paragraph">
-<p>You can edit an existing task in your task list.<br>
-Format: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORITY (-1, 0, or 1)]
-[t/TAG]&#8230;&#8203;</code></p>
+<p>If there are changes to existing tasks in JelphaBot, you can edit it with the <code>edit</code> command.<br>
+Format: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORITY (-1, 0, or 1)] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/editCommand.png" alt="editCommand" width="600">
 </div>
-<div class="title">Figure 11. Example of an expected result after running <code>edit 1 m/CS2105 d/Tutorial 2</code></div>
+<div class="title">Figure 11. Example of an expected result after executing <code>edit 1 m/CS2105 d/Tutorial 2</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the task at the specified <code>INDEX</code>, which is the index number shown in the displayed task list.</p>
+<p>Edits the task at the specified <code>INDEX</code> number shown in the displayed task list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index provided <strong>must be positive</strong> and the task to edit cannot have a running timer.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the task&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-<li>
-<p>The task to edit cannot have a running timer.</p>
+<p>Existing values will be updated to the input values.<br>
+When tags are edited, all existing tags will be removed and replaced with the new tags.</p>
 </li>
 </ul>
 </div>
@@ -707,26 +765,39 @@ Format: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORI
 <ul>
 <li>
 <p><code>edit 1 m/CS2105 d/Tutorial 2</code><br>
-Edits the moduleCode of the 1st task to be <code>cs2105</code> and description to <code>Tutorial 2</code> respectively.</p>
+Edits the Module Code of the first task to <code>CS2105</code> and Description to <code>Tutorial 2</code>.</p>
 </li>
 <li>
 <p><code>edit 2 dt/Jan-2-2020 23 59 t/</code><br>
-Edits the date and time of the 2nd task to be <code>Jan-2-2020 23 59</code> and clears all existing tags.</p>
+Edits the Date and Time of the second task to be <code>Jan-2-2020 23 59</code> and clears all existing tags.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can remove all the task&#8217;s tags by typing <code>t/</code> without specifying any tags after it.
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="completing-a-task-code-done-code"><a class="link" href="#completing-a-task-code-done-code">3.3.6. Completing a Task : <code>done</code></a></h4>
 <div class="paragraph">
-<p>You can mark a task in your task list as done and the task&#8217;s status will be updated in the display.<br>
+<p>When you complete a task, you can mark the corresponding task as done in JelphaBot. The task&#8217;s status will automatically be updated in the display.<br>
 Format: <code>done INDEX</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/doneCommand.png" alt="doneCommand" width="600">
 </div>
-<div class="title">Figure 12. Example of an expected result after running <code>done 1</code></div>
+<div class="title">Figure 12. Example of an expected result after executing <code>done 1</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -748,18 +819,21 @@ Format: <code>done INDEX</code></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="deleting-a-task-code-delete-code"><a class="link" href="#deleting-a-task-code-delete-code">3.3.7. Deleting a Task : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>You can delete a task from your task list.<br>
-Format: <code>delete INDEX</code></p>
+<p>If you no longer need a task stored in JelphaBot, you can delete it with the <code>delete</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/deleteCommand.png" alt="deleteCommand" width="600">
 </div>
-<div class="title">Figure 13. Example of an expected result after running <code>delete 1</code></div>
+<div class="title">Figure 13. Example of an expected result after executing <code>delete 1</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -798,75 +872,85 @@ Deletes the 1st task in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="clearing-all-tasks-code-clear-code"><a class="link" href="#clearing-all-tasks-code-clear-code">3.3.8. Clearing all Tasks : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>You can clear all tasks from your task list.<br>
-Format: <code>clear</code></p>
+<p>If you want to reset JelphaBot and start over, you can use the <code>clear</code> command.
+This command will delete all existing Tasks and Reminders from JelphaBot.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/clearCommand.png" alt="clearCommand" width="600">
 </div>
-<div class="title">Figure 14. Example of an expected result after running <code>clear</code></div>
+<div class="title">Figure 14. Example of an expected result after executing <code>clear</code></div>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>All reminders will be cleared together with the tasks.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="show-all-completed-tasks-code-show-completed-code-eden"><a class="link" href="#show-all-completed-tasks-code-show-completed-code-eden">3.3.9. Show all completed Tasks : <code>show-completed</code> (Eden)</a></h4>
+<h4 id="showing-completed-tasks-code-show-completed-code-eden"><a class="link" href="#showing-completed-tasks-code-show-completed-code-eden">3.3.9. Showing completed Tasks : <code>show-completed</code> (Eden)</a></h4>
 <div class="paragraph">
-<p>You can display all the tasks in your task list that have been completed.</p>
+<p>You can keep a log of all the tasks that have been completed with the <code>show-completed</code> command.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/showCompletedCommand.png" alt="showCompletedCommand" width="600">
 </div>
-<div class="title">Figure 15. Example of an expected result after running <code>show-completed</code></div>
+<div class="title">Figure 15. Example of an expected result after executing <code>show-completed</code></div>
 </div>
 <div class="paragraph">
-<p>If you do not have any tasks that are complete in your tasklist, the displayed list will be empty and a message will be shown telling you that you currently do not have any completed tasks!</p>
+<p>The figure above shows a task list with a single task completed.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>If you do not have any currently complete tasks, the displayed list will be empty and a message will be shown telling you that you currently do not have any completed tasks!</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/showCompletedCommandNoCompleted.png" alt="showCompletedCommandNoCompleted" width="600">
 </div>
-<div class="title">Figure 16. Example of an expected result after running <code>show-completed</code>, if the tasklist does not have any completed tasks</div>
+<div class="title">Figure 16. Example of an expected result after executing <code>show-completed</code>, if the task list does not have any completed tasks</div>
 </div>
+<div class="paragraph">
+<p>The corresponding message is shown in the Results Display.</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="show-all-incomplete-tasks-code-show-incomplete-code-eden"><a class="link" href="#show-all-incomplete-tasks-code-show-incomplete-code-eden">3.3.10. Show all incomplete Tasks: <code>show-incomplete</code> (Eden)</a></h4>
+<h4 id="showing-incomplete-tasks-code-show-incomplete-code-eden"><a class="link" href="#showing-incomplete-tasks-code-show-incomplete-code-eden">3.3.10. Showing incomplete Tasks: <code>show-incomplete</code> (Eden)</a></h4>
 <div class="paragraph">
-<p>You can display all the tasks in your task list that are currently incomplete.</p>
+<p>You can display all the tasks in your task list that are currently incomplete, so that you can see what you should do next.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/showIncompleteCommand.png" alt="showIncompleteCommand" width="600">
 </div>
-<div class="title">Figure 17. Example of an expected result after running <code>show-incomplete</code></div>
+<div class="title">Figure 17. Example of an expected result after executing <code>show-incomplete</code></div>
 </div>
 <div class="paragraph">
-<p>If you do not have any tasks that are incomplete in your tasklist, the displayed list will be empty and a message will be shown telling you that you currently do not have any incomplete tasks!</p>
+<p>In the example above, there are many overdue tasks. The task list can be further scrolled to view all the tasks.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>If you do not have any tasks that are incomplete in your task list, the displayed list will be empty and a message will be shown telling you that you currently do not have any incomplete tasks!</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="images/ug_figures/showIncompleteCommandNoIncomplete.png" alt="showIncompleteCommandNoIncomplete" width="600">
 </div>
-<div class="title">Figure 18. Example of an expected result after running <code>show-incomplete</code>, if the tasklist does not have any incomplete tasks</div>
+<div class="title">Figure 18. Example of an expected result after executing <code>show-incomplete</code>, if the task list does not have any incomplete tasks</div>
 </div>
+<div class="paragraph">
+<p>The corresponding message is shown in the Results Display.</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="pin"><a class="link" href="#pin">3.3.11. Pin Important Tasks  : <code>pin</code> [Coming in V2.0]</a></h4>
+<h4 id="pin"><a class="link" href="#pin">3.3.11. Pinning Important Tasks  : <code>pin</code> [Coming in V2.0] (Yao Jie)</a></h4>
 <div class="paragraph">
 <p>You can pin important tasks to the top of the task list with the <code>pin</code> command.<br>
 Pinned tasks will always be displayed in the Pinned Tasks group in the task list.<br>
@@ -874,7 +958,7 @@ Trying to <code>pin</code> a task that is already pinned will unpin it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-tasks-code-sort-code-coming-in-v2-0"><a class="link" href="#sort-tasks-code-sort-code-coming-in-v2-0">3.3.12. Sort Tasks : <code>sort</code>  [Coming in V2.0]</a></h4>
+<h4 id="sorting-tasks-code-sort-code-coming-in-v2-0-yao-jie"><a class="link" href="#sorting-tasks-code-sort-code-coming-in-v2-0-yao-jie">3.3.12. Sorting Tasks : <code>sort</code>  [Coming in V2.0] (Yao Jie)</a></h4>
 <div class="paragraph">
 <p>You can change how tasks are sorted with the <code>sort</code> command.
 Format: <code>sort SORTING_ORDER</code></p>
@@ -882,6 +966,7 @@ Format: <code>sort SORTING_ORDER</code></p>
 <div class="paragraph">
 <p>Valid <code>SORTING_ORDER</code> values include <code>date</code>, <code>module</code>, and <code>priority</code>.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -892,9 +977,9 @@ Dates that have tasks due would have a dot indicator shown on the calendar.
 You would also be able to navigate to specific dates to view your tasks due for that day of the month!</p>
 </div>
 <div class="sect3">
-<h4 id="view-calender-code-calendar-code"><a class="link" href="#view-calender-code-calendar-code">3.4.1. View calender : <code>calendar</code></a></h4>
+<h4 id="viewing-your-calender-code-calendar-code"><a class="link" href="#viewing-your-calender-code-calendar-code">3.4.1. Viewing your calender : <code>calendar</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>calendar</code> command or its shortcuts <code>:C</code> or <code>:c</code> to manually switch to the calendar tab.
+<p>You can enter the <code>calendar</code> command or its shortcuts <code>:C</code> or <code>:c</code> to manually switch to the calendar tab.
 The calendar panel will then show you your schedule for the current month with today&#8217;s date highlighted.<br></p>
 </div>
 <div class="paragraph">
@@ -905,7 +990,7 @@ Shorcut: <code>:C</code> or <code>:c</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarTab.png" alt="CalendarTab" width="600">
 </div>
-<div class="title">Figure 19. Example of expected result after running <code>calendar</code></div>
+<div class="title">Figure 19. Example of expected result after executing <code>calendar</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -919,9 +1004,10 @@ Highlighting of Dates: Today&#8217;s date would be highlighted in dark blue, whi
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="change-month-and-year-view-of-calendar-code-calendar-code"><a class="link" href="#change-month-and-year-view-of-calendar-code-calendar-code">3.4.2. Change month and year view of Calendar : <code>calendar</code></a></h4>
+<h4 id="changing-month-and-year-view-of-your-calendar-code-calendar-code"><a class="link" href="#changing-month-and-year-view-of-your-calendar-code-calendar-code">3.4.2. Changing month and year view of your Calendar : <code>calendar</code></a></h4>
 <div class="paragraph">
 <p>You can navigate the calendar panel to another month and year by specifying it. The calendar panel would be updated accordingly
 while highlighting the first day of the month.
@@ -953,11 +1039,10 @@ Format: <code>calendar MONTHYEAR</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarView.png" alt="CalendarView" width="600">
 </div>
-<div class="title">Figure 20. Example of expected result after running <code>calendar May-2020</code></div>
+<div class="title">Figure 20. Example of expected result after executing <code>calendar May-2020</code></div>
 </div>
 <div class="paragraph">
-<p>Displays month of May in the year 2020 in the calendar panel on the right. Task list panel on the left
-is empty as there are no tasks due on 1-May-2020.</p>
+<p>This command should displays the calendar for the month of May in the year 2020 in the calendar panel (on the right) and display the corresponding tasks due for 1-May-2020 in the task list (on the left).</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -985,9 +1070,10 @@ at least 1 task but less than 4 tasks due would be represented with a green dot 
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="show-tasks-due-on-specific-date-code-calendar-code"><a class="link" href="#show-tasks-due-on-specific-date-code-calendar-code">3.4.3. Show tasks due on specific date : <code>calendar</code></a></h4>
+<h4 id="showing-tasks-due-on-a-specific-date-code-calendar-code"><a class="link" href="#showing-tasks-due-on-a-specific-date-code-calendar-code">3.4.3. Showing tasks due on a specific date : <code>calendar</code></a></h4>
 <div class="paragraph">
 <p>Displays the tasks due on specified date, while highlighting that day on the calendar<br>
 Format: <code>calendar DATE</code></p>
@@ -997,7 +1083,7 @@ Format: <code>calendar DATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The date specified <strong>must be for the month and year of the shown Ui</strong> for that corresponding date to be highlighted</p>
+<p>The date specified <strong>must be for a day within the date range displayed in the current Calendar panel</strong> for the corresponding date to be highlighted.</p>
 </li>
 <li>
 <p>For DATE formats, we recommend the format to be MMM-dd-YYYY, but it also allows some other formats shown when you type in the command word.</p>
@@ -1012,10 +1098,10 @@ Format: <code>calendar DATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>calendar Apr-1-2020</code></p>
+<p><code>calendar Apr-11-2020</code></p>
 </li>
 <li>
-<p><code>calendar Apr/1/2020</code><br></p>
+<p><code>calendar Apr/11/2020</code><br></p>
 </li>
 </ul>
 </div>
@@ -1023,17 +1109,17 @@ Format: <code>calendar DATE</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarDate.png" alt="CalendarDate" width="600">
 </div>
-<div class="title">Figure 21. Example of expected result after running <code>calendar Apr-1-2020</code></div>
+<div class="title">Figure 21. Example of expected result after executing <code>calendar Apr-11-2020</code></div>
 </div>
 <div class="paragraph">
-<p>Highlights 1st of April in the calendar panel on the right and displays the corresponding tasks due on the left.</p>
+<p>This command should highlight the 11th of April in the calendar panel (on the right) and display the corresponding tasks due in the task list (on the left).</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="navigate-directly-to-today-s-date-on-calendar-code-calendar-code"><a class="link" href="#navigate-directly-to-today-s-date-on-calendar-code-calendar-code">3.4.4. Navigate directly to today&#8217;s date on Calendar : <code>calendar</code></a></h4>
+<h4 id="navigating-directly-to-today-s-date-on-calendar-code-calendar-code"><a class="link" href="#navigating-directly-to-today-s-date-on-calendar-code-calendar-code">3.4.4. Navigating directly to today&#8217;s date on Calendar : <code>calendar</code></a></h4>
 <div class="paragraph">
-<p>Immediately displays the calendar view for this month and highlights today&#8217;s date.
-The task list panel on the left will display the tasks due today as well.<br>
+<p>You can directly navigate to the current day&#8217;s date in the calendar view.
 Format: <code>calendar today</code></p>
 </div>
 <div class="paragraph">
@@ -1050,24 +1136,28 @@ Format: <code>calendar today</code></p>
 <div class="content">
 <img src="images/ug_figures/CalendarToday.png" alt="CalendarToday" width="600">
 </div>
-<div class="title">Figure 22. Example of expected result after running <code>calendar today</code></div>
+<div class="title">Figure 22. Example of expected result after executing <code>calendar today</code> on 12th April, 2020</div>
 </div>
 <div class="paragraph">
-<p>Displays month of April in the year 2020 in the calendar panel on the right, with today&#8217;s date highlighted and displays the corresponding tasks due today on the left.</p>
+<p>This command will display the corresponding calendar for this month and highlight today&#8217;s date in the calendar panel (on the right). The task list panel also will display the corresponding tasks due today (on the left).</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="productivity-tracking-jel"><a class="link" href="#productivity-tracking-jel">3.5. Productivity Tracking (Jel)</a></h3>
 <div class="paragraph">
-<p>JelphaBot also comes with a productivity tracking that allows you track the progress of your tasks in that week.
-You would be able to see the progress bar fill up as you complete more tasks!</p>
+<p>JelphaBot automatically tracks your productivity within the day, and displays a progress bar which allows you to track the completion progress of the tasks which are due in the coming week.
+You can see the progress bar fill up as you complete more tasks.</p>
+</div>
+<div class="paragraph">
+<p>JelphaBot also dynamically provides feedback in response to your achievements and task completion rate.
+Hopefully, this would make you even more productive by encouraging you to get more done!</p>
 </div>
 <div class="sect3">
-<h4 id="track-productivity-code-productivity-code"><a class="link" href="#track-productivity-code-productivity-code">3.5.1. Track productivity : <code>productivity</code></a></h4>
+<h4 id="tracking-your-productivity-code-productivity-code"><a class="link" href="#tracking-your-productivity-code-productivity-code">3.5.1. Tracking your productivity : <code>productivity</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>productivity</code> command
-or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
+<p>You can enter the <code>productivity</code> command or its shortcuts <code>:P</code> or <code>:p</code> to manually switch to the productivity tab.
 The productivity panel will then show you your productivity for the day.<br></p>
 </div>
 <div class="paragraph">
@@ -1078,7 +1168,7 @@ Shortcut: <code>:P</code> or <code>:p</code></p>
 <div class="content">
 <img src="images/ug_figures/ProductivityTab.png" alt="ProductivityTab" width="600">
 </div>
-<div class="title">Figure 23. Example of expected result after running <code>productivity</code></div>
+<div class="title">Figure 23. Example of expected result after executing <code>productivity</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1087,14 +1177,15 @@ Shortcut: <code>:P</code> or <code>:p</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The progress bar and the text following it only shows tasks that are due on the day JelphaBot is running.
+The progress bar and the text following it only shows tasks that are due within the week JelphaBot is running.
 </td>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="starting-timer-for-a-task-code-start-code"><a class="link" href="#starting-timer-for-a-task-code-start-code">3.5.2. Starting timer for a task : <code>start</code></a></h4>
+<h4 id="starting-the-timer-for-a-task-code-start-code"><a class="link" href="#starting-the-timer-for-a-task-code-start-code">3.5.2. Starting the timer for a task : <code>start</code></a></h4>
 <div class="paragraph">
 <p>You can start a timer for your task.<br>
 Format: <code>start INDEX</code></p>
@@ -1103,7 +1194,7 @@ Format: <code>start INDEX</code></p>
 <div class="content">
 <img src="images/ug_figures/startCommand.png" alt="startCommand" width="600">
 </div>
-<div class="title">Figure 24. Example of expected result after running <code>start 1</code></div>
+<div class="title">Figure 24. Example of expected result after executing <code>start 1</code></div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1131,9 +1222,10 @@ Format: <code>start INDEX</code></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="stopping-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-timer-for-a-task-code-stop-code">3.5.3. Stopping timer for a task : <code>stop</code></a></h4>
+<h4 id="stopping-the-timer-for-a-task-code-stop-code"><a class="link" href="#stopping-the-timer-for-a-task-code-stop-code">3.5.3. Stopping the timer for a task : <code>stop</code></a></h4>
 <div class="paragraph">
 <p>You can stop a running timer for your task.<br>
 Format: <code>stop INDEX</code></p>
@@ -1170,14 +1262,19 @@ Format: <code>stop INDEX</code></p>
 </div>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Exiting the application before stopping any running timer wil cause all recorded time since the timer was started to be lost.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect3">
-<h4 id="receiving-encouragement-and-criticism"><a class="link" href="#receiving-encouragement-and-criticism">3.5.4. Receiving encouragement and criticism</a></h4>
-<div class="paragraph">
-<p>JelphaBot automatically tracks the user&#8217;s productivity in a day and outputs the appropriate response to the user&#8217;s
-achievements and task completion rate.<br>
-There is no need to manually request for compliments or criticism.</p>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -1187,12 +1284,10 @@ There is no need to manually request for compliments or criticism.</p>
 You can view all your existing reminders from the reminders tab.</p>
 </div>
 <div class="sect3">
-<h4 id="view-reminders-code-remindertab-code"><a class="link" href="#view-reminders-code-remindertab-code">3.6.1. View reminders : <code>remindertab</code></a></h4>
+<h4 id="viewing-your-reminders-code-remindertab-code"><a class="link" href="#viewing-your-reminders-code-remindertab-code">3.6.1. Viewing your reminders : <code>remindertab</code></a></h4>
 <div class="paragraph">
-<p>Apart from the function to switch tabs by pressing <kbd>Ctrl</kbd> + <kbd>tab</kbd> on your keyboard, you can enter the <code>remindertab</code> command
-or its shortcuts <code>:R</code> or <code>:r</code> to manually switch to the reminder tab.
-Every <code>Reminder</code> will show the <code>Task</code> `s module code, description, due date, the days that will be reminded before the
-deadline, and the hours that will be reminded before the deadline.<br></p>
+<p>You can enter the <code>remindertab</code> command or its shortcuts <code>:R</code> or <code>:r</code> to manually switch to the reminder tab.
+The reminder panel will then show all the reminders that you have set.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>remindertab</code><br>
@@ -1202,14 +1297,17 @@ Shortcut: <code>:R</code> or <code>:r</code></p>
 <div class="content">
 <img src="images/ug_figures/remindertab.png" alt="remindertab" width="600">
 </div>
-<div class="title">Figure 26. Example of expected result after running <code>remindertab</code></div>
+<div class="title">Figure 26. Example of expected result after executing <code>remindertab</code></div>
 </div>
+<div class="paragraph">
+<p>Every <code>Reminder</code> will show the <code>Task</code> `s module code, description, due date, the days that will be reminded before the deadline, and the hours that will be reminded before the deadline.</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="adding-reminder-code-reminder-code"><a class="link" href="#adding-reminder-code-reminder-code">3.6.2. Adding reminder : <code>reminder</code></a></h4>
 <div class="paragraph">
-<p>You can add a reminder to your specified task to remind yourself of the task if the current time is within the time-frame specified
-by you.<br></p>
+<p>You can add a reminder to your specified task to remind yourself of the task if the current time is within the time-frame specified by you.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>reminder INDEX days/DAYS hours/HOURS</code></p>
@@ -1218,7 +1316,7 @@ by you.<br></p>
 <div class="content">
 <img src="images/ug_figures/addReminder.png" alt="addReminder" width="600">
 </div>
-<div class="title">Figure 27. Example of expected result after running <code>reminder 1 days/1 hours/1</code></div>
+<div class="title">Figure 27. Example of expected result after executing <code>reminder 1 days/1 hours/1</code></div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1258,7 +1356,7 @@ by you.<br></p>
 <p>A <code>Task</code> that is completed cannot have a <code>Reminder</code> .</p>
 </li>
 <li>
-<p>A <code>Task</code> that is reminded but are not completed after the deadline will still be reminded for.</p>
+<p>A <code>Task</code> that is reminded but is not completed after the deadline will still be reminded for.</p>
 </li>
 <li>
 <p>A <code>Task</code> will not be reminded if the task is completed but it has a <code>Reminder</code> .</p>
@@ -1267,12 +1365,12 @@ by you.<br></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="removing-reminder-code-delrem-code"><a class="link" href="#removing-reminder-code-delrem-code">3.6.3. Removing reminder : <code>delrem</code></a></h4>
 <div class="paragraph">
-<p>If you would like for a task&#8217;s reminder to be deleted, you can enter the
-<code>delrem</code> command to remove the reminder of that task.<br></p>
+<p>If you would like for a task&#8217;s reminder to be deleted, you can use the <code>delrem</code> command to remove the reminder of that task.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delrem INDEX</code></p>
@@ -1281,7 +1379,7 @@ by you.<br></p>
 <div class="content">
 <img src="images/ug_figures/delReminder.png" alt="delReminder" width="600">
 </div>
-<div class="title">Figure 29. Example of expected result after running <code>delrem 1</code></div>
+<div class="title">Figure 29. Example of expected result after executing <code>delrem 1</code></div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1309,12 +1407,13 @@ by you.<br></p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="reminder-popup-notification"><a class="link" href="#reminder-popup-notification">3.6.4. Reminder popup notification</a></h4>
+<h4 id="reminding-you-with-a-popup-notification"><a class="link" href="#reminding-you-with-a-popup-notification">3.6.4. Reminding you with a popup notification</a></h4>
 <div class="paragraph">
-<p>Every time you run JelphaBot after adding your reminders, JelphaBot will show a list of tasks that will be overdue soon,
-and tasks that are past their deadline but have not been completed.</p>
+<p>Whenever you start up JelphaBot after adding your reminders, JelphaBot&#8217;s reminder window will popup.
+The popup will show a list of tasks that will be overdue soon, and tasks that are past their deadline but have not been completed.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1327,24 +1426,22 @@ and tasks that are past their deadline but have not been completed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Whenever JelphaBot is booted, if you have any tasks that is not completed but has a reminder,
-JelphaBot&#8217;s reminder window will popup.</p>
-</li>
-<li>
-<p>This will persist until you either complete the <code>Task</code>, or delete the <code>Reminder</code>.</p>
+<p>Reminders will persist until you either complete the <code>Task</code>, or delete the <code>Reminder</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="colour-code-module-codes-coming-in-v2-0"><a class="link" href="#colour-code-module-codes-coming-in-v2-0">3.7. Colour-code module codes [Coming in V2.0]</a></h3>
+<h3 id="colour-coded-module-codes-coming-in-v2-0"><a class="link" href="#colour-coded-module-codes-coming-in-v2-0">3.7. Colour-coded module codes [Coming in V2.0]</a></h3>
 <div class="paragraph">
 <p>Users can customise the font colours of different modules to better distinguish between different tasks.
 The module codes displayed in the Main Window will be similar to the tags displayed to make it easier for users to view them.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -1371,13 +1468,15 @@ We will consider this in v2.0.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q5</strong>: How do I add tasks with no deadline or description?<br>
-A : Sorry, we currently do not support task entries with no deadline or descriptions.
+<strong>A</strong>: Sorry, we currently do not support task entries with no deadline or descriptions.
 We will consider this in v2.0.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q6</strong>: Do I need an Internet connection to use JelphaBot?<br>
-A: No, you don’t. JelphaBot works completely offline.</p>
+<strong>A</strong>: No, you don’t.
+JelphaBot works completely offline.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
@@ -1386,7 +1485,7 @@ A: No, you don’t. JelphaBot works completely offline.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><strong>Help</strong>: <code>help</code></p>
 </li>
 <li>
 <p><strong>Summary</strong>: <code>summary</code> or <code>:s</code> or <code>:S</code></p>
@@ -1396,35 +1495,35 @@ A: No, you don’t. JelphaBot works completely offline.</p>
 e.g. <code>add d/Project TP dt/Jan-01-2020 23 59 m/CS2103T p/1 t/pair work</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code> or <code>:t</code> or <code>:T</code></p>
+<p><strong>List</strong>: <code>list</code> or <code>:t</code> or <code>:T</code></p>
 </li>
 <li>
-<p><strong>List by Date</strong> : <code>list date</code></p>
+<p><strong>List by Date</strong>: <code>list date</code></p>
 </li>
 <li>
-<p><strong>List by Modules</strong> : <code>list module</code></p>
+<p><strong>List by Modules</strong>: <code>list module</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<p><strong>Find</strong>: <code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>find Tutorial Assignment</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORITY] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong>: <code>edit INDEX [d/DESCRIPTION] [dt/DATETIME] [m/MODULE_CODE] [p/PRIORITY] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 1 m/CS2105 d/Tutorial 2</code></p>
 </li>
 <li>
-<p><strong>Done</strong> : <code>done INDEX</code><br>
+<p><strong>Done</strong>: <code>done INDEX</code><br>
 e.g. <code>done 1</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+<p><strong>Delete</strong>: <code>delete INDEX</code><br>
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Clear</strong>: <code>clear</code></p>
 </li>
 <li>
-<p><strong>Exit</strong> : <code>exit</code></p>
+<p><strong>Exit</strong>: <code>exit</code></p>
 </li>
 <li>
 <p><strong>Show Completed Tasks</strong>: <code>show-completed</code></p>
@@ -1433,38 +1532,38 @@ e.g. <code>delete 3</code></p>
 <p><strong>Show Incomplete Tasks</strong>: <code>show-incomplete</code></p>
 </li>
 <li>
-<p><strong>Add Reminder</strong> : <code>reminder INDEX days/DAYS hours/HOURS</code><br>
+<p><strong>Add Reminder</strong>: <code>reminder INDEX days/DAYS hours/HOURS</code><br>
 e.g. <code>reminder 2 days/1 hours/1</code></p>
 </li>
 <li>
-<p><strong>Delete Reminder</strong> : <code>delrem INDEX</code><br>
+<p><strong>Delete Reminder</strong>: <code>delrem INDEX</code><br>
 e.g. <code>delrem 2</code></p>
 </li>
 <li>
 <p><strong>View Reminders</strong>: <code>remindertab</code> or <code>:r</code> or <code>:R</code><br></p>
 </li>
 <li>
-<p><strong>Productivity</strong> : <code>productivity</code> or <code>:p</code> or <code>:P</code></p>
+<p><strong>Productivity</strong>: <code>productivity</code> or <code>:p</code> or <code>:P</code></p>
 </li>
 <li>
-<p><strong>Timer</strong> : <code>start INDEX</code> or <code>stop INDEX</code><br>
+<p><strong>Timer</strong>: <code>start INDEX</code> or <code>stop INDEX</code><br>
 e.g. <code>start 1</code> or <code>stop 1</code></p>
 </li>
 <li>
-<p><strong>Calendar</strong> : <code>calendar</code> or <code>:c</code> or <code>:C</code></p>
+<p><strong>Calendar</strong>: <code>calendar</code> or <code>:c</code> or <code>:C</code></p>
 </li>
 <li>
-<p><strong>Calendar Date</strong> : <code>calendar DATE</code><br>
+<p><strong>Calendar Date</strong>: <code>calendar DATE</code><br>
 e.g. <code>calendar Jan-1-2020</code></p>
 </li>
 <li>
-<p><strong>Change Calendar View</strong> : <code>calendar MONTHYEAR</code><br>
+<p><strong>Change Calendar View</strong>: <code>calendar MONTHYEAR</code><br>
 e.g. <code>calendar Apr-2020</code></p>
 </li>
 <li>
-<p><strong>Today&#8217;s Calendar View</strong> : <code>calendar today</code></p>
+<p><strong>Today&#8217;s Calendar View</strong>: <code>calendar today</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:30:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:20:08 UTC</div></div></div></body></html>
